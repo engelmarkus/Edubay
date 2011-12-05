@@ -25,7 +25,11 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+
+gem "mongrel"
+gem "cgi_multipart_eof_fix"
+gem "fastthread"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

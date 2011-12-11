@@ -1,14 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Edubay</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Edubay</title>
+		
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		
+		<style type="text/css" media="screen">
+			@import url(<%= asset_path 'layout.css' %>);
+		</style>
+	</head>
+	
+	<body>
+		<!-- display with decoration -->
+		<div id="visual-portal-wrapper">
+			<div id="portal-top">
+				<h1 style=""><a href="/welcome?current_group=home">Technische Universität München</a></h1>
+				<h2 style="">Headerimage</h2>
+				<h3 style="position:absolute; z-index:222; left:197px; height:117px; width:100%; margin:0; background:url(<%= asset_path 'zeichnung.gif' %>) no-repeat;">Zeichnung</h3>
+				<h4 style="float:right; height:117px; margin:0; width:177px; z-index:333; background:url(<%= asset_path 'header_foto.jpg' %>)  no-repeat;">Headerfoto</h4>
+				<h5 id="claim_de">Slogan TUM fuer Deutsche Sprache</h5>
+			</div>
+			
+			<div id="portal-personaltools">
+				<!-- user_actions (category: user)-->
+				Sie sind nicht angemeldet.
+				
+				<a href="http://portal.mytum.de/login_form">
+					<%= image_tag "login.gif", :height => 16, :border => 0 %>
+					Login
+				</a>
+				
+				<!-- user_links (category: user_links) -->
+				<!-- new style dropdown for subgrouped actions-->
+				&nbsp;&nbsp;&nbsp;|
+				
+				<div class="actions_submenu inline_block_fix">
+					<span class="actions_submenu_title">
+						<%= image_tag "dropdown.gif", :height => 16, :border => 0 %>
+						<span>Support</span>
+					</span>
+					
+					<ul>
+						<li>
+							<a id="login" href="http://portal.mytum.de/site_methods/getHelp">
+								<%= image_tag "help.gif", :height => 16, :border => 0 %>
+								Hilfe
+							</a>
+						</li>
+						
+						<li>
+							<a id="login" href=" http://portal.mytum.de/documentation">
+								<%= image_tag "documentation.gif", :height => 16, :border => 0 %>
+								Documentation
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<!--  old style for ungrouped -->
+				<!-- language selector  We need to replace this later and set it by method -->
+				<!--<div id="language_switch">
+				<form name="chooser" method="post" action="">
+				<a class="selected_language"
+				href="">Deutsch</a>
+				<a href="http://portal.mytum.de/welcome/document_view?set_language=en">English</a>
+				</form>
+				</div>-->
+				<div id="language_switch">
+					<div class="actions_submenu inline_block_fix">
+						<span class="actions_submenu_title">
+							<%= image_tag "dropdown.gif", :height => 16, :border => 0 %>
+							<span>Sprache auswählen / Select Language</span>
+						</span>
+						
+						<ul>
+							<li>
+								<a id="german"> Deutsch </a>
+							</li>
+							
+							<li>
+								<a id="english"> English </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row_blank"></div>
+			
+			<table id="layouttable">
+				<tr>
+					<!-- linker Portlet-Bereich Start -->
+					<td id="portal-column-one">
+						<!-- sticky portlets left--><!-- standard portlets -->
+						<span>
+							<div class="portlet">
+								<h3>Links</h3>
+								
+								<span>
+									<h3 id="navigationheading" class="access_aural">Navigation</h3>
+									
+									<!--<ul id="navigationlist">
+										<li>
+											<a href="http://portal.mytum.de/" target="">Home</a>
+										</li>
 
-<%= yield %>
+										<li>
+											<a class="collapsed" href="http://portal.mytum.de/">Die TU München</a>
+											<a href="http://portal.mytum.de/" target="">Die TU München</a>
+										</li>
+										
+										<li>
+											<a class="collapsed" href="http://portal.mytum.de/">Fakultäten</a>
+											<a href="http://portal.mytum.de/" target="">Fakultäten</a>
+										</li>
+									</ul>-->
+									<%= render_navigation :expand_all => false %>
+								</span>
+							</div>
+						</span>
+						
+						<span>
+							<div class="portlet_no_box">
+								<div style="padding: 0px; margin-top:20px;">
+									<a target="blank" href="http://www.exzellente-lehre.de/index.html">
+										<img src="http://portal.mytum.de/ccc/banner/exzellente_lehre" border="0"/>
+									</a>
+								</div>
+							</div>
+						</span>
+					</td>
+					<!-- linker Portlet-Bereich Ende -->
+					
+					<!-- Inhalts-Bereich Start -->
+					<td id="portal-column-content">
+						<div class="contentBox" id="content">
+							<!-- Breadcrumbs aus Unter-Template -->
+							<!--<div id="portal-breadcrumbs">
+								<a href="/navigation_view">Sitemap</a>-->
+								<!--end set group -->
+								<!--<span id="last_breadcrumb_link">TU München</span>
+							</div>-->
+							<!-- Eigentlicher Inhalt: Start -->
+							<div class="document">
+								<!-- portal message -->
+								<!--<a id="hereistthecontent" name="hereistthecontent"></a>-->
+								<!-- THE CONTENT -->
+								<div id="maincontentwrapper">
+									<div class="documentBody">
+										<%= yield %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+			<div id="footer">
+    	  <span class="footer_left">&copy;&nbsp;TUM 2003-2011,
+    	   	<a href="/about/about">TU M&uuml;nchen, WWW & Online Services</a>
+    	  </span>
 
-</body>
+	      <span class="footer_right">
+	        <a href="/impressum">Impressum</a>
+	      	&nbsp;
+	      	<a href="/about/about">About</a>
+	      </span>
+      </div>
+		</div>
+	</body>
 </html>

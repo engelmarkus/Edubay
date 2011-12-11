@@ -1372,9 +1372,9 @@ a.link-parent {display:block; font-size: 80%; margin:0.25em 0 0.4em 0; backgroun
 
 /* Class for error indication in forms */
 
-background: #FFB98A; !important;
+background: #FFB98A; /* !important;*/
 
-border: 1px solid #FF6600; !important;
+border: 1px solid #FF6600; /*!important;*/
 
 padding: 1em;
 
@@ -1388,9 +1388,9 @@ width: 68% !important;
 
 .inlinemessage {
 
-background: #FFB98A; !important;
+background: #FFB98A; /* !important;*/
 
-border: 1px solid #FF6600; !important;
+border: 1px solid #FF6600; /*!important;*/
 
 padding: 0.25em 0.5em;
 
@@ -1408,7 +1408,7 @@ background-color:#ffe0b0;
 
 padding: 0.25em 0.5em;
 
-border: 1px solid #FF6600; !important;
+border: 1px solid #FF6600; /*!important;*/
 
 width:auto;
 
@@ -1508,7 +1508,7 @@ font-size:80%;
 
 .hilite {
 
-background: #E6EDFB; !important;
+background: #E6EDFB; /*!important;*/
 
 }
 

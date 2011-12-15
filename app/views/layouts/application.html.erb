@@ -6,17 +6,13 @@
 		<%= stylesheet_link_tag    "application" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
-		
-		<style type="text/css" media="screen">
-			@import url(<%= asset_path 'layout.css' %>);
-		</style>
 	</head>
 	
 	<body>
 		<!-- display with decoration -->
 		<div id="visual-portal-wrapper">
 			<div id="portal-top">
-				<h1 style=""><a href="/welcome?current_group=home">Technische Universität München</a></h1>
+				<h1 style=""><a href="http://portal.mytum.de/welcome?current_group=home">Technische Universität München</a></h1>
 				<h2 style="">Headerimage</h2>
 				<h3 style="position:absolute; z-index:222; left:197px; height:117px; width:100%; margin:0; background:url(<%= asset_path 'zeichnung.gif' %>) no-repeat;">Zeichnung</h3>
 				<h4 style="float:right; height:117px; margin:0; width:177px; z-index:333; background:url(<%= asset_path 'header_foto.jpg' %>)  no-repeat;">Headerfoto</h4>
@@ -27,7 +23,7 @@
 				<!-- user_actions (category: user)-->
 				Sie sind nicht angemeldet.
 				
-				<a href="http://portal.mytum.de/login_form">
+				<a href="">
 					<%= image_tag "login.gif", :height => 16, :border => 0 %>
 					Login
 				</a>
@@ -44,14 +40,14 @@
 					
 					<ul>
 						<li>
-							<a id="login" href="http://portal.mytum.de/site_methods/getHelp">
+							<a id="login" href="">
 								<%= image_tag "help.gif", :height => 16, :border => 0 %>
 								Hilfe
 							</a>
 						</li>
 						
 						<li>
-							<a id="login" href=" http://portal.mytum.de/documentation">
+							<a id="login" href="">
 								<%= image_tag "documentation.gif", :height => 16, :border => 0 %>
 								Documentation
 							</a>
@@ -72,7 +68,7 @@
 					<div class="actions_submenu inline_block_fix">
 						<span class="actions_submenu_title">
 							<%= image_tag "dropdown.gif", :height => 16, :border => 0 %>
-							<span>Sprache auswählen / Select Language</span>
+							<span>Select Language</span>
 						</span>
 						
 						<ul>
@@ -161,13 +157,13 @@
 			
 			<div id="footer">
     	  <span class="footer_left">&copy;&nbsp;TUM 2003-2011,
-    	   	<a href="/about/about">TU M&uuml;nchen, WWW & Online Services</a>
+    	   	<a href="">TU M&uuml;nchen, WWW & Online Services</a>
     	  </span>
 
 	      <span class="footer_right">
-	        <a href="/impressum">Impressum</a>
+	        <a href="">Impressum</a>
 	      	&nbsp;
-	      	<a href="/about/about">About</a>
+	      	<a href="">About</a>
 	      </span>
       </div>
 		</div>

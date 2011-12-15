@@ -51,7 +51,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     #primary.item :key_1, 'name', url, options
-    primary.item :home, 'Home', 'home#index'
+    primary.item :home, 'Home', '/'
 
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|
@@ -59,32 +59,56 @@ SimpleNavigation::Configuration.run do |navigation|
       #sub_nav.item :key_2_1, 'name', url, options
     #end
     
-    primary.item :fak, 'Fakultaeten', 'fak' do |sub_nav|
-      sub_nav.item :fak1, 'Informatik', ''
-      sub_nav.item :fak2, 'Mathematik', 'math'
+    primary.item :terms, 'Semester', '/terms' do |sub_nav|
+      sub_nav.item :terms_list, 'Auflisten', '/terms'
+      sub_nav.item :terms_new, 'Erstellen', '/terms/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :stud, 'Studium', 'stud' do |sub_nav|
-      sub_nav.item :st2011, 'Studienbeginn 2011', '' do |sub_sub_nav|
-        sub_sub_nav.item :two, 'Twoinone', ''
-        sub_sub_nav.item :bew, 'Bewerbung', '', :highlights_on => Proc.new { true }
-        
-        sub_sub_nav.dom_class = 'nav_depth03'
-      end
-      
-      sub_nav.item :lehr, 'Lehrangebote', ''
-      sub_nav.item :ber, 'Beratung', ''
+    primary.item :lecturers, 'Vortragende', '/lecturers' do |sub_nav|
+      sub_nav.item :lecturers_list, 'Auflisten', '/lecturers'
+      sub_nav.item :lecturers_new, 'Erstellen', '/lecturers/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
+    primary.item :lectures, 'Vorlesungen', '/lectures' do |sub_nav|
+      sub_nav.item :lectures_list, 'Auflisten', '/lectures'
+      sub_nav.item :lecturers_new, 'Erstellen', '/lectures/new'
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
+    primary.item :doc_types, 'Dateitypen', '/doc_types' do |sub_nav|
+      sub_nav.item :doc_types_list, 'Auflisten', '/doc_types'
+      sub_nav.item :doc_types_new, 'Erstellen', '/doc_types/new'
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
+    primary.item :documents, 'Dateien', '/documents' do |sub_nav|
+      sub_nav.item :documents_list, 'Auflisten', '/documents'
+      sub_nav.item :documents_new, 'Erstellen', '/documents/new'
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
+    #primary.item :stud, 'Studium', 'stud' do |sub_nav|
+    #  sub_nav.item :st2011, 'Studienbeginn 2011', '' do |sub_sub_nav|
+    #    sub_sub_nav.item :two, 'Twoinone', ''
+    #    sub_sub_nav.item :bew, 'Bewerbung', ''#, :highlights_on => Proc.new { true }
+    #    
+    #    sub_sub_nav.dom_class = 'nav_depth03'
+    #  end
+    #  
+    #  sub_nav.item :lehr, 'Lehrangebote', ''
+    #  sub_nav.item :ber, 'Beratung', ''
+    #  
+    #  sub_nav.dom_class = 'nav_depth02'
+    #end
     
     
-    
-     #, :highlights_on => Proc.new { true }
-
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

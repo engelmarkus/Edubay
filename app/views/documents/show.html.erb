@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @document.description %>
+</p>
+
+<p>
+  <b>Lecture date:</b>
+  <%= @document.lecture_date %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @document.doc_type.name %>
+</p>
+
+<p>
+  <b>Lecture:</b>
+  <%= @document.lecture.name %>
+</p>
+
+<p>
+  <b>Uploader:</b>
+  <%= @document.uploader_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>

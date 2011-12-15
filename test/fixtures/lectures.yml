@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+lecture1:
+  name: Lecture1
+  abbreviation: abbrL1
+  term: term1
+  lecturer: lecturer1
+
+lecture2:
+  name: Lecture2
+  abbreviation: abbrL2
+  term: term2
+  lecturer: lecturer2

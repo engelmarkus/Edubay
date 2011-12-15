@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lecture.name %>
+</p>
+
+<p>
+  <b>Abbreviation:</b>
+  <%= @lecture.abbreviation %>
+</p>
+
+<p>
+  <b>Term:</b>
+  <%= @lecture.term.name %>
+</p>
+
+<p>
+  <b>Lecturer:</b>
+  <%= @lecture.lecturer.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Back', lectures_path %>

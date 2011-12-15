@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: Document1
+  lecture_date: 2011-12-14
+  doc_type: doc_type1
+  lecture: lecture1
+  uploader: 0
+
+two:
+  description: Document2
+  lecture_date: 2011-12-14
+  doc_type: doc_type2
+  lecture: lecture2
+  uploader: 0

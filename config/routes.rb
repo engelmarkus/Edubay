@@ -1,4 +1,14 @@
 Edubay::Application.routes.draw do
+  resources :lectures
+
+  resources :documents
+
+  resources :doc_types
+
+  resources :terms
+
+  resources :lecturers
+
   get "home/index"
 
   # The priority is based upon order of creation:

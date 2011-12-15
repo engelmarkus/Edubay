@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+term1:
+  name: Term1
+
+term2:
+  name: Term2

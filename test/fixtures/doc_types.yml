@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+doc_type1:
+  name: Pencast
+
+doc_type2:
+  name: Slides

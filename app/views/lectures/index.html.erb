@@ -6,20 +6,18 @@
     <th>Abbreviation</th>
     <th>Term</th>
     <th>Lecturer</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
 
 <% @lectures.each do |lecture| %>
   <tr>
-    <td><%= lecture.name %></td>
+    <td><%= link_to lecture.name, lecture %></td>
     <td><%= lecture.abbreviation %></td>
     <td><%= lecture.term.name %></td>
     <td><%= lecture.lecturer.name %></td>
-    <td><%= link_to 'Show', lecture %></td>
     <td><%= link_to image_tag("edit.gif", :title => 'Edit'), edit_lecture_path(lecture) %></td>
-    <td><%= link_to image_tag("delete.gif", :title => 'Destroy'), lecture, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to image_tag("delete.gif", :title => 'Destroy'), lecture, confirm: 'Are you sure?', method: :delete, remote: true, class: 'delete_lecture' %></td>
   </tr>
 <% end %>
 </table>

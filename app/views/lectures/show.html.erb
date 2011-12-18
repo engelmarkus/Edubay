@@ -1,25 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @lecture.name %>
-</p>
+<h1>Showing lecture details</h1>
+<ul>
+  <li>
+    <b>Name:</b>
+    <%= @lecture.name %>
+  </li>
+  
+  <li>
+    <b>Abbreviation:</b>
+    <%= @lecture.abbreviation %>
+  </li>
+  
+  <li>
+    <b>Term:</b>
+    <%= @lecture.term.name %>
+  </li>
+  
+  <li>
+    <b>Lecturer:</b>
+    <%= @lecture.lecturer.name %>
+  </li>
+</ul>
 
-<p>
-  <b>Abbreviation:</b>
-  <%= @lecture.abbreviation %>
-</p>
+<br/>
 
-<p>
-  <b>Term:</b>
-  <%= @lecture.term.name %>
-</p>
+<h2>Available documents</h2>
+<table class="listing">
+  <tr>
+    <th>Date</th>
+    <th>Documents</th>
+  </tr>
+  
+  <% @documents_by_date.sort.each do |date, docs| %>
+    <tr>
+      <td><%= date %></td>
+      <td>
+        <ul>
+          <% for doc in docs %>
+            <li><%= doc.doc_type.name %>: <%= doc.description %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+</table>
 
-<p>
-  <b>Lecturer:</b>
-  <%= @lecture.lecturer.name %>
-</p>
 
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -59,35 +59,35 @@ SimpleNavigation::Configuration.run do |navigation|
       #sub_nav.item :key_2_1, 'name', url, options
     #end
     
-    primary.item :terms, 'Semester', '/terms' do |sub_nav|
+    primary.item :terms, 'Semester', '/terms', :highlights_on => Regexp.new('/terms') do |sub_nav|
       sub_nav.item :terms_list, 'Auflisten', '/terms'
       sub_nav.item :terms_new, 'Erstellen', '/terms/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lecturers, 'Vortragende', '/lecturers' do |sub_nav|
+    primary.item :lecturers, 'Vortragende', '/lecturers', :highlights_on => Regexp.new('/lecturers') do |sub_nav|
       sub_nav.item :lecturers_list, 'Auflisten', '/lecturers'
       sub_nav.item :lecturers_new, 'Erstellen', '/lecturers/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lectures, 'Vorlesungen', '/lectures' do |sub_nav|
+    primary.item :lectures, 'Vorlesungen', '/lectures', :highlights_on => Regexp.new('/lectures') do |sub_nav|
       sub_nav.item :lectures_list, 'Auflisten', '/lectures'
       sub_nav.item :lecturers_new, 'Erstellen', '/lectures/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :doc_types, 'Dateitypen', '/doc_types' do |sub_nav|
+    primary.item :doc_types, 'Dateitypen', '/doc_types', :highlights_on => Regexp.new('/doc_types') do |sub_nav|
       sub_nav.item :doc_types_list, 'Auflisten', '/doc_types'
       sub_nav.item :doc_types_new, 'Erstellen', '/doc_types/new'
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :documents, 'Dateien', '/documents' do |sub_nav|
+    primary.item :documents, 'Dateien', '/documents', :highlights_on => Regexp.new('/documents') do |sub_nav|
       sub_nav.item :documents_list, 'Auflisten', '/documents'
       sub_nav.item :documents_new, 'Erstellen', '/documents/new'
       

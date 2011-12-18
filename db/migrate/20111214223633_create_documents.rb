@@ -16,6 +16,6 @@ class CreateDocuments < ActiveRecord::Migration
     
     add_foreign_key :documents, :doc_types, :dependent => :destroy
     add_foreign_key :documents, :lectures, :dependent => :destroy
-    add_foreign_key :documents, :uploaders, :dependent => :destroy
+    #add_foreign_key :documents, :uploaders, :dependent => :destroy
   end
 end

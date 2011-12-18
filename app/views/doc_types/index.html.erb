@@ -3,17 +3,15 @@
 <table class="listing">
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
 
 <% @doc_types.each do |doc_type| %>
   <tr>
-    <td><%= doc_type.name %></td>
-    <td><%= link_to 'Show', doc_type %></td>
+    <td><%= link_to doc_type.name, doc_type %></td>
     <td><%= link_to image_tag("edit.gif", :title => 'Edit'), edit_doc_type_path(doc_type) %></td>
-    <td><%= link_to image_tag("delete.gif", :title => 'Destroy'), doc_type, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to image_tag("delete.gif", :title => 'Destroy'), doc_type, confirm: 'Are you sure?', method: :delete, remote: true, class: 'delete_doc_type' %></td>
   </tr>
 <% end %>
 </table>

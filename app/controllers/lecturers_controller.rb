@@ -6,7 +6,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lecturers }
+      #format.json { render json: @lecturers }
     end
   end
 
@@ -17,7 +17,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @lecturer }
+      #format.json { render json: @lecturer }
     end
   end
 
@@ -28,7 +28,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @lecturer }
+      #format.json { render json: @lecturer }
     end
   end
 
@@ -45,10 +45,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.save
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully created.' }
-        format.json { render json: @lecturer, status: :created, location: @lecturer }
+        #format.json { render json: @lecturer, status: :created, location: @lecturer }
       else
         format.html { render action: "new" }
-        format.json { render json: @lecturer.errors, status: :unprocessable_entity }
+        #format.json { render json: @lecturer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,10 +61,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.update_attributes(params[:lecturer])
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully updated.' }
-        format.json { head :ok }
+        #format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @lecturer.errors, status: :unprocessable_entity }
+        #format.json { render json: @lecturer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +77,8 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to lecturers_url }
-      format.json { head :ok }
+      #format.json { head :ok }
+      format.js   { render :nothing => true }
     end
   end
 end

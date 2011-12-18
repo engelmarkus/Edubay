@@ -6,7 +6,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @terms }
+      #format.json { render json: @terms }
     end
   end
 
@@ -17,7 +17,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @term }
+      #format.json { render json: @term }
     end
   end
 
@@ -28,7 +28,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @term }
+      #format.json { render json: @term }
     end
   end
 
@@ -45,10 +45,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
-        format.json { render json: @term, status: :created, location: @term }
+        #format.json { render json: @term, status: :created, location: @term }
       else
         format.html { render action: "new" }
-        format.json { render json: @term.errors, status: :unprocessable_entity }
+        #format.json { render json: @term.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,10 +61,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.update_attributes(params[:term])
         format.html { redirect_to @term, notice: 'Term was successfully updated.' }
-        format.json { head :ok }
+        #format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @term.errors, status: :unprocessable_entity }
+        #format.json { render json: @term.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +77,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to terms_url }
-      format.json { head :ok }
+      #format.json { head :ok }
     end
   end
 end

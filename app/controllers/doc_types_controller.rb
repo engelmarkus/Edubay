@@ -6,7 +6,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @doc_types }
+      #format.json { render json: @doc_types }
     end
   end
 
@@ -17,7 +17,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @doc_type }
+      #format.json { render json: @doc_type }
     end
   end
 
@@ -28,7 +28,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @doc_type }
+      #format.json { render json: @doc_type }
     end
   end
 
@@ -45,10 +45,10 @@ class DocTypesController < ApplicationController
     respond_to do |format|
       if @doc_type.save
         format.html { redirect_to @doc_type, notice: 'Doc type was successfully created.' }
-        format.json { render json: @doc_type, status: :created, location: @doc_type }
+        #format.json { render json: @doc_type, status: :created, location: @doc_type }
       else
         format.html { render action: "new" }
-        format.json { render json: @doc_type.errors, status: :unprocessable_entity }
+        #format.json { render json: @doc_type.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,10 +61,10 @@ class DocTypesController < ApplicationController
     respond_to do |format|
       if @doc_type.update_attributes(params[:doc_type])
         format.html { redirect_to @doc_type, notice: 'Doc type was successfully updated.' }
-        format.json { head :ok }
+        #format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @doc_type.errors, status: :unprocessable_entity }
+        #format.json { render json: @doc_type.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +77,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to doc_types_url }
-      format.json { head :ok }
+      #format.json { head :ok }
     end
   end
 end

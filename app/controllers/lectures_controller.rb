@@ -6,7 +6,7 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lectures }
+      #format.json { render json: @lectures }
     end
   end
 
@@ -15,9 +15,12 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find(params[:id])
 
+    @documents = @lecture.documents.find(:all)
+    @documents_by_date = @documents.group_by { |doc| doc.lecture_date }
+
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @lecture }
+      #format.json { render json: @lecture }
     end
   end
 
@@ -28,7 +31,7 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @lecture }
+      #format.json { render json: @lecture }
     end
   end
 
@@ -45,10 +48,10 @@ class LecturesController < ApplicationController
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
-        format.json { render json: @lecture, status: :created, location: @lecture }
+        #format.json { render json: @lecture, status: :created, location: @lecture }
       else
         format.html { render action: "new" }
-        format.json { render json: @lecture.errors, status: :unprocessable_entity }
+        #format.json { render json: @lecture.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,10 +64,10 @@ class LecturesController < ApplicationController
     respond_to do |format|
       if @lecture.update_attributes(params[:lecture])
         format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
-        format.json { head :ok }
+        #format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @lecture.errors, status: :unprocessable_entity }
+        #format.json { render json: @lecture.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +80,7 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to lectures_url }
-      format.json { head :ok }
+      #format.json { head :ok }
     end
   end
 end

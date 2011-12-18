@@ -7,3 +7,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//$(document).ajaxComplete(function(event, request) {
+//  var msg = request.getResponseHeader('X-Message');
+//  var type = request.getResponseHeader('X-Message-Type');
+  
+//  if (!msg) {
+//    return;
+//  }
+  
+  //if (type == 'notice') {
+  //  $('notice').html(flash.notice);
+  //}
+  
+  //if (type == 'error') {
+//    alert(msg);
+  //}
+//});

@@ -6,6 +6,7 @@
 		<%= stylesheet_link_tag    "application" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
+		<%= auto_discovery_link_tag(:rss, {controller: "documents", action: "feed"}) %>
 	</head>
 	
 	<body>
@@ -24,7 +25,7 @@
 				Sie sind nicht angemeldet.
 				
 				<a href="">
-					<%= image_tag "login.gif", :height => 16, :border => 0 %>
+					<%= image_tag "login.gif", height: 16, border: 0 %>
 					Login
 				</a>
 				
@@ -34,21 +35,21 @@
 				
 				<div class="actions_submenu inline_block_fix">
 					<span class="actions_submenu_title">
-						<%= image_tag "dropdown.gif", :height => 16, :border => 0 %>
+						<%= image_tag "dropdown.gif", height: 16, border: 0 %>
 						<span>Support</span>
 					</span>
 					
 					<ul>
 						<li>
 							<a id="login" href="">
-								<%= image_tag "help.gif", :height => 16, :border => 0 %>
+								<%= image_tag "help.gif", height: 16, border: 0 %>
 								Hilfe
 							</a>
 						</li>
 						
 						<li>
 							<a id="login" href="">
-								<%= image_tag "documentation.gif", :height => 16, :border => 0 %>
+								<%= image_tag "documentation.gif", height: 16, border: 0 %>
 								Documentation
 							</a>
 						</li>
@@ -67,7 +68,7 @@
 				<div id="language_switch">
 					<div class="actions_submenu inline_block_fix">
 						<span class="actions_submenu_title">
-							<%= image_tag "dropdown.gif", :height => 16, :border => 0 %>
+							<%= image_tag "dropdown.gif", height: 16, border: 0 %>
 							<span>Select Language</span>
 						</span>
 						
@@ -97,23 +98,7 @@
 								
 								<span>
 									<h3 id="navigationheading" class="access_aural">Navigation</h3>
-									
-									<!--<ul id="navigationlist">
-										<li>
-											<a href="http://portal.mytum.de/" target="">Home</a>
-										</li>
-
-										<li>
-											<a class="collapsed" href="http://portal.mytum.de/">Die TU München</a>
-											<a href="http://portal.mytum.de/" target="">Die TU München</a>
-										</li>
-										
-										<li>
-											<a class="collapsed" href="http://portal.mytum.de/">Fakultäten</a>
-											<a href="http://portal.mytum.de/" target="">Fakultäten</a>
-										</li>
-									</ul>-->
-									<%= render_navigation :expand_all => false %>
+									<%= render_navigation %>
 								</span>
 							</div>
 						</span>
@@ -133,16 +118,8 @@
 					<!-- Inhalts-Bereich Start -->
 					<td id="portal-column-content">
 						<div class="contentBox" id="content">
-							<!-- Breadcrumbs aus Unter-Template -->
-							<!--<div id="portal-breadcrumbs">
-								<a href="/navigation_view">Sitemap</a>-->
-								<!--end set group -->
-								<!--<span id="last_breadcrumb_link">TU München</span>
-							</div>-->
 							<!-- Eigentlicher Inhalt: Start -->
 							<div class="document">
-								<!-- portal message -->
-								<!--<a id="hereistthecontent" name="hereistthecontent"></a>-->
 								<!-- THE CONTENT -->
 								<div id="maincontentwrapper">
 									<div class="documentBody">
@@ -152,7 +129,75 @@
 							</div>
 						</div>
 					</td>
-				</tr>
+          <!-- Inhalts-Bereich Ende -->
+
+          <!-- rechter Portlet-Bereich Start -->
+          <td id="portal-column-two">
+            <span>
+              <div class="portlet">
+                <h3>Banner Rechte Seite</h3>
+                <div>
+                  <div style="margin-top: 4px;">
+                    <%= image_tag "facebook_youtube.gif", usemap: "#Map", width: 176, border: 0 %>
+                    <map id="Map" name="Map">
+                      <area shape="RECT" target="_blank" alt="Zum Youtube-Kanal der TUM" coords="122,1,178,27" href="http://www.youtube.com/user/TUMuenchen1">
+                      <area shape="RECT" target="_blank" alt="Zur Facebook-Seite der TUM" coords="1,2,87,26" href="http://www.facebook.com/TU.Muenchen">
+                      <area shape="RECT" target="_blank" alt="Zur Twitter-Seite der TUM" coords="91,1,118,26" href="http://www.twitter.com/TU_Muenchen">
+                    </map>
+                  </div>
+                </div>
+              </div>
+            </span>
+
+            <span>
+              <div class="portlet_no_box">
+                <!-- portlet_personalnews start -->
+                <div class="portlet_personalnews">
+                  <h3>Aktuelles</h3>
+                  <!--<span>
+                    <h4 class="boxDetails">21.12.2011</h4> 
+                    <p class="boxNavHeadline">
+                      <img alt="" width="16" height="16" src="http://portal.mytum.de/newsarticle_icon.gif" />
+                      <a href="/pressestelle/meldungen/NewsArticle_20111220_205717">TUM-Twoinone war ein großer Erfolg</a>
+                    </p>
+                  </span>
+
+                  <span>         
+                    <h4 class="boxDetails">13.12.2011</h4> 
+                      <p class="boxNavHeadline">
+                        <img alt="" width="16" height="16" src="/TUM_Portal/favicon.ico" />
+                        <a href="/pressestelle/pressemitteilungen/NewsArticle_20111213_144615">TU München steht zu Studienbeiträgen</a>
+                      </p>
+                  </span>-->
+
+                  <h3>
+                    <%= link_to image_tag("rssicon.jpeg", align: "top", style: "display: inline;", class: "icon", border: 0) + " RSS", feed_documents_url %>
+                  </h3>
+                </div>
+                <!-- portlet_personalnews end -->
+              </div>
+            </span>
+
+            <!--<span>
+              <div class="portlet">
+                <h3>Termine heute</h3>-->
+                <!-- portlet_todaysnews_new start -->
+                <!--<div class="portlet_personalnews" id="portlet_todaysevents">
+                  <h3>Termine heute</h3>
+                  <h4 class="boxDetails">17:00 - 18:30</h4>
+                  <p class="boxNavHeadline">
+                    <a href="/termine/Event.2011-10-19.3429384449">Small Satellites at Surrey &amp; Future Distributed Satellite Systems</a>
+                    <br />
+                    (Vortrag)
+                  </p>
+                  <a href="/termine/calendar_view">Veranstaltungskalender</a>
+                </div>-->
+                <!-- portlet_todaysnews_new end -->
+              <!--</div>
+            </span>-->
+          </td>
+          <!-- rechter Portlet-Bereich Ende -->
+        </tr>
 			</table>
 			
 			<div id="footer">

@@ -1,30 +1,36 @@
 <p id="notice"><%= notice %></p>
+<h1>Showing document details</h1>
 
-<p>
-  <b>Description:</b>
-  <%= @document.description %>
-</p>
+<ul>
+  <li>
+    <b>Description:</b>
+    <%= @document.description %>
+  </li>
 
-<p>
-  <b>Lecture date:</b>
-  <%= @document.lecture_date %>
-</p>
+  <li>
+    <b>Lecture date:</b>
+    <%= @document.lecture_date %>
+  </li>
 
-<p>
-  <b>Type:</b>
-  <%= @document.doc_type.name %>
-</p>
+  <li>
+    <b>Type:</b>
+    <%= @document.doc_type.name %>
+  </li>
 
-<p>
-  <b>Lecture:</b>
-  <%= @document.lecture.name %>
-</p>
+  <li>
+    <b>Lecture:</b>
+    <%= @document.lecture.name %>
+  </li>
 
-<p>
-  <b>Uploader:</b>
-  <%= @document.uploader_id %>
-</p>
+  <li>
+    <b>Uploader:</b>
+    <%= @document.uploader_id %>
+  </li>
+</ul>
 
+<br/>
+<%= button_to "Download", download_document_path(@document), method: :get %>
+<br/>
 
-<%#link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+<%# link_to 'Edit', edit_document_path(@document) %><!-- |-->
+<%# link_to 'Back', documents_path %>

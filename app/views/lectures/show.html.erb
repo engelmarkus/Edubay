@@ -38,7 +38,7 @@
       <td>
         <ul>
           <% for doc in docs %>
-            <li><%= doc.doc_type.name %>: <%= doc.description %></li>
+            <li><%= link_to doc.doc_type.name + ": " + doc.description, doc %></li>
           <% end %>
         </ul>
       </td>
@@ -46,24 +46,8 @@
   <% end %>
 </table>
 
+<br/>
 
-
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<%= link_to 'Back', lectures_path %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%= link_to 'Edit', edit_lecture_path(@lecture) %><!-- |-->
+<%# link_to 'Back', lectures_path %>
 

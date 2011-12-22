@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 lecture1:
-  name: Lecture1
-  abbreviation: abbrL1
+  name: Einführung in die Informatik 1
+  abbreviation: IN0001
+  term: term1
+  lecturer: lecturer3
+
+lecture2:
+  name: Diskrete Strukturen
+  abbreviation: IN0015
   term: term1
   lecturer: lecturer1
 
-lecture2:
-  name: Lecture2
-  abbreviation: abbrL2
-  term: term2
+lecture3:
+  name: Einführung in die Technische Informatik
+  abbreviation: IN0004
+  term: term1
   lecturer: lecturer2

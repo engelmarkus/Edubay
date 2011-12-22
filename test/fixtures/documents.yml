@@ -1,14 +1,42 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  description: Document1
+document1:
+  description: Info1 - Mitschrift
   lecture_date: 2011-12-14
   doc_type: doc_type1
   lecture: lecture1
   uploader: 0
 
-two:
-  description: Document2
+document2:
+  description: Info1 - Pencast
+  lecture_date: 2011-12-14
+  doc_type: doc_type2
+  lecture: lecture1
+  uploader: 0
+
+document3:
+  description: Meine Mitschrift Info1
+  lecture_date: 2011-12-14
+  doc_type: doc_type1
+  lecture: lecture1
+  uploader: 1
+
+document4:
+  description: Slides von Info1
+  lecture_date: 2011-12-16
+  doc_type: doc_type2
+  lecture: lecture1
+  uploader: 2
+
+document5:
+  description: Mitschrift ETI
+  lecture_date: 2011-12-15
+  doc_type: doc_type1
+  lecture: lecture3
+  uploader: 1
+
+document6:
+  description: DS-Folien
   lecture_date: 2011-12-14
   doc_type: doc_type2
   lecture: lecture2

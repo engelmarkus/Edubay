@@ -10,12 +10,12 @@
 <% @lecturers.each do |lecturer| %>
   <tr>
     <td><%= link_to lecturer.name, lecturer %></td>
-    <td><%= link_to image_tag("edit.gif", :title => 'Edit'), edit_lecturer_path(lecturer) %></td>
-    <td><%= link_to image_tag("delete.gif", :title => 'Destroy'), lecturer, confirm: 'Are you sure?', method: :delete, remote: true, class: 'delete_lecturer' %></td>
+    <td><%= link_to image_tag("edit.gif", title: 'Edit'), edit_lecturer_path(lecturer) %></td>
+    <td><%= link_to image_tag("delete.gif", title: 'Destroy'), lecturer, confirm: 'Are you sure?', method: :delete, remote: true, class: 'delete_lecturer' %></td>
   </tr>
 <% end %>
 </table>
 
 <br/>
 
-<%= link_to 'New Lecturer', new_lecturer_path %>
+<%= link_to 'Create New Lecturer', new_lecturer_path %>

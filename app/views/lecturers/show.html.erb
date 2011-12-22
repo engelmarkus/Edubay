@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Showing lecturer details</h1>
-<p>
-  <b>Name:</b>
-  <%= @lecturer.name %>
-</p>
+<ul>
+  <li>
+    <b>Name:</b>
+    <%= @lecturer.name %>
+  </li>
+</ul>
+
+<br/>
 
 <h2>Lectures</h2>
 <table class="listing">
@@ -23,5 +27,5 @@
 
 <br/>
 
-<%= link_to 'Edit', edit_lecturer_path(@lecturer) %> |
-<%= link_to 'Back', lecturers_path %>
+<%= link_to 'Edit', edit_lecturer_path(@lecturer) %><!-- |-->
+<%# link_to 'Back', lecturers_path %>

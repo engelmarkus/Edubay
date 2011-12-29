@@ -59,37 +59,37 @@ SimpleNavigation::Configuration.run do |navigation|
       #sub_nav.item :key_2_1, 'name', url, options
     #end
     
-    primary.item :terms, 'Semester', url_for(action: 'index', controller: 'terms'), :highlights_on => Regexp.new('/terms') do |sub_nav|
-      sub_nav.item :terms_list, 'Auflisten', url_for(action: 'index', controller: 'terms')
-      sub_nav.item :terms_new, 'Erstellen', url_for(action: 'new', controller: 'terms')
+    primary.item :terms, t('navigation.terms'), url_for(action: 'index', controller: 'terms'), :highlights_on => Regexp.new('/terms') do |sub_nav|
+      sub_nav.item :terms_list, t('navigation.list'), url_for(action: 'index', controller: 'terms')
+      sub_nav.item :terms_new, t('navigation.new'), url_for(action: 'new', controller: 'terms')
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lecturers, 'Vortragende', url_for(action: 'index', controller: 'lecturers'), :highlights_on => Regexp.new('/lecturers') do |sub_nav|
-      sub_nav.item :lecturers_list, 'Auflisten', url_for(action: 'index', controller: 'lecturers')
-      sub_nav.item :lecturers_new, 'Erstellen', url_for(action: 'new', controller: 'lecturers')
+    primary.item :lecturers, t('navigation.lecturers'), url_for(action: 'index', controller: 'lecturers'), :highlights_on => Regexp.new('/lecturers') do |sub_nav|
+      sub_nav.item :lecturers_list, t('navigation.list'), url_for(action: 'index', controller: 'lecturers')
+      sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lecturers')
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lectures, 'Vorlesungen', url_for(action: 'index', controller: 'lectures'), :highlights_on => Regexp.new('/lectures') do |sub_nav|
-      sub_nav.item :lectures_list, 'Auflisten', url_for(action: 'index', controller: 'lectures')
-      sub_nav.item :lecturers_new, 'Erstellen', url_for(action: 'new', controller: 'lectures')
+    primary.item :lectures, t('navigation.lectures'), url_for(action: 'index', controller: 'lectures'), :highlights_on => Regexp.new('/lectures') do |sub_nav|
+      sub_nav.item :lectures_list, t('navigation.list'), url_for(action: 'index', controller: 'lectures')
+      sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lectures')
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :doc_types, 'Dateitypen', url_for(action: 'index', controller: 'doc_types'), :highlights_on => Regexp.new('/doc_types') do |sub_nav|
-      sub_nav.item :doc_types_list, 'Auflisten', url_for(action: 'index', controller: 'doc_types')
-      sub_nav.item :doc_types_new, 'Erstellen', url_for(action: 'new', controller: 'doc_types')
+    primary.item :doc_types, t('navigation.doc_types'), url_for(action: 'index', controller: 'doc_types'), :highlights_on => Regexp.new('/doc_types') do |sub_nav|
+      sub_nav.item :doc_types_list, t('navigation.list'), url_for(action: 'index', controller: 'doc_types')
+      sub_nav.item :doc_types_new, t('navigation.new'), url_for(action: 'new', controller: 'doc_types')
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :documents, 'Dateien', url_for(action: 'index', controller: 'documents'), :highlights_on => Regexp.new('/documents') do |sub_nav|
-      sub_nav.item :documents_list, 'Auflisten', url_for(action: 'index', controller: 'documents')
-      sub_nav.item :documents_new, 'Erstellen', url_for(action: 'new', controller: 'documents')
+    primary.item :documents, t('navigation.documents'), url_for(action: 'index', controller: 'documents'), :highlights_on => Regexp.new('/documents') do |sub_nav|
+      sub_nav.item :documents_list, t('navigation.list'), url_for(action: 'index', controller: 'documents')
+      sub_nav.item :documents_new, t('navigation.new'), url_for(action: 'new', controller: 'documents')
       
       sub_nav.dom_class = 'nav_depth02'
     end

@@ -1,18 +1,17 @@
 <h1>Edubay</h1>
-<h2>Recently uploaded files</h2>
+<h2><%= t '.recently_uploaded_files' %></h2>
 <table class="listing">
   <tr>
-    <th>Lecture date</th>
-    <th>Lecture</th>
-    <th>Description</th>
+    <th><%= Document.human_attribute_name(:lecture_date) %></th>
+    <th><%= Document.human_attribute_name(:lecture_id) %></th>
+    <th><%= Document.human_attribute_name(:description) %></th>
   </tr>
   
   <% @recently_uploaded_files.each do |doc| %>
     <tr>
-      <td><%= doc.lecture_date %></td>
+      <td><%= l(doc.lecture_date) %></td>
       <td><%= link_to doc.lecture.name + " (" + doc.lecture.abbreviation + ")", doc.lecture %></td>
       <td><%= link_to doc.doc_type.name + ": " + doc.description, doc %></td>
-      
     </tr>
   <% end %>
 </table>

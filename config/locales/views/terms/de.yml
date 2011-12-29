@@ -1,0 +1,25 @@
+de:
+  terms:
+    index:
+      page_title: "Liste der Semester"
+      edit: "Bearbeiten"
+      destroy: "Löschen"
+      destroy_confirm: "Sind Sie sicher?"
+      create_new_term: "Neues Semester erstellen"
+    
+    edit:
+      page_title: "Semester bearbeiten"
+      show_details: "Details anzeigen"
+    
+    new:
+      page_title: "Neues Semester erstellen"
+    
+    show:
+      page_title: "Details zum Semester"
+
+  activerecord:
+    models:
+      term: "Semester"
+    attributes:
+      term:
+        name: "Name"

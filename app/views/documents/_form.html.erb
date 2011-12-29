@@ -20,15 +20,15 @@
     <%= f.date_select :lecture_date %>
   </div>
   <div class="field">
-    <%= f.label :doc_type %><br />
+    <%= f.label :doc_type_id %><br />
     <%= f.collection_select :doc_type_id, DocType.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :lecture %><br />
+    <%= f.label :lecture_id %><br />
     <%= f.collection_select :lecture_id, Lecture.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :uploader %><br />
+    <%= f.label :uploader_id %><br />
     <%= f.text_field :uploader_id %>
   </div>
   <div class="actions">

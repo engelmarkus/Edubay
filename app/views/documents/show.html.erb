@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
-<h1>Showing document details</h1>
+<h1><%= t '.page_title' %></h1>
 
 <ul>
   <li>
-    <b>Description:</b>
+    <b><%= Document.human_attribute_name(:description) %>:</b>
     <%= @document.description %>
   </li>
 
   <li>
-    <b>Lecture date:</b>
-    <%= @document.lecture_date %>
+    <b><%= Document.human_attribute_name(:lecture_date) %>:</b>
+    <%= l(@document.lecture_date) %>
   </li>
 
   <li>
-    <b>Type:</b>
+    <b><%= Document.human_attribute_name(:doc_type_id) %>:</b>
     <%= @document.doc_type.name %>
   </li>
 
   <li>
-    <b>Lecture:</b>
+    <b><%= Document.human_attribute_name(:lecture_id) %>:</b>
     <%= @document.lecture.name %>
   </li>
 
   <li>
-    <b>Uploader:</b>
+    <b><%= Document.human_attribute_name(:uploader_id) %>:</b>
     <%= @document.uploader_id %>
   </li>
 </ul>

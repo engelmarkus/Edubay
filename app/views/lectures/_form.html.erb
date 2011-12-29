@@ -20,11 +20,11 @@
     <%= f.text_field :abbreviation %>
   </div>
   <div class="field">
-    <%= f.label :term %><br />
+    <%= f.label :term_id %><br />
     <%= f.collection_select :term_id, Term.all, :id, :name, :selected => Term.all.map(&:id).max %>
   </div>
   <div class="field">
-    <%= f.label :lecturer %><br />
+    <%= f.label :lecturer_id %><br />
     <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name, :prompt => true %>
   </div>
   <div class="actions">

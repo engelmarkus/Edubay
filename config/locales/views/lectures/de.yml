@@ -1,0 +1,30 @@
+de:
+  lectures:
+    index:
+      page_title: "Liste der Vorlesungen"
+      edit: "Bearbeiten"
+      destroy: "Löschen"
+      destroy_confirm: "Sind Sie sicher?"
+      create_new_lecture: "Neue Vorlesung erstellen"
+    
+    edit:
+      page_title: "Vorlesung bearbeiten"
+      show_details: "Details anzeigen"
+    
+    new:
+      page_title: "Neue Vorlesung erstellen"
+    
+    show:
+      page_title: "Details zur Vorlesung"
+      available_documents: "Verfügbare Dokumente"
+      documents: "Dokumente"
+
+  activerecord:
+    models:
+      lecture: "Vorlesung"
+    attributes:
+      lecture:
+        name: "Name"
+        abbreviation: "Abkürzung"
+        term_id: "Semester"
+        lecturer_id: "Vortragender"

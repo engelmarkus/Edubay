@@ -1,0 +1,30 @@
+en:
+  lectures:
+    index:
+      page_title: "Listing lectures"
+      edit: "Edit"
+      destroy: "Delete"
+      destroy_confirm: "Are you sure?"
+      create_new_lecture: "Crete new lecture"
+    
+    edit:
+      page_title: "Editing lecture"
+      show_details: "Show details"
+    
+    new:
+      page_title: "Creating new lecture"
+    
+    show:
+      page_title: "Lecture details"
+      available_documents: "Available Documents"
+      documents: "Documents"
+
+  activerecord:
+    models:
+      lecture: "Lecture"
+    attributes:
+      lecture:
+        name: "Name"
+        abbreviation: "Abbreviation"
+        term_id: "Term"
+        lecturer_id: "Lecturer"

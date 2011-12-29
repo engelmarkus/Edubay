@@ -1,0 +1,25 @@
+en:
+  terms:
+    index:
+      page_title: "Listing terms"
+      edit: "Edit"
+      destroy: "Delete"
+      destroy_confirm: "Are you sure?"
+      create_new_term: "Create new term"
+    
+    edit:
+      page_title: "Editing term"
+      show_details: "Show details"
+    
+    new:
+      page_title: "Creating new term"
+    
+    show:
+      page_title: "Term details"
+
+  activerecord:
+    models:
+      term: "Term"
+    attributes:
+      term:
+        name: "Name"

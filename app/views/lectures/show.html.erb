@@ -1,40 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Showing lecture details</h1>
+<h1><%= t '.page_title' %></h1>
 <ul>
   <li>
-    <b>Name:</b>
+    <b><%= Lecture.human_attribute_name(:name) %>:</b>
     <%= @lecture.name %>
   </li>
   
   <li>
-    <b>Abbreviation:</b>
+    <b><%= Lecture.human_attribute_name(:abbreviation) %>:</b>
     <%= @lecture.abbreviation %>
   </li>
   
   <li>
-    <b>Term:</b>
+    <b><%= Lecture.human_attribute_name(:term_id) %>:</b>
     <%= @lecture.term.name %>
   </li>
   
   <li>
-    <b>Lecturer:</b>
+    <b><%= Lecture.human_attribute_name(:lecturer_id) %>:</b>
     <%= @lecture.lecturer.name %>
   </li>
 </ul>
 
 <br/>
 
-<h2>Available documents</h2>
+<h2><%= t '.available_documents' %></h2>
 <table class="listing">
   <tr>
-    <th>Date</th>
-    <th>Documents</th>
+    <th><%= Document.human_attribute_name(:lecture_date) %></th>
+    <th><%= t '.documents' %></th>
   </tr>
   
   <% @documents_by_date.sort.each do |date, docs| %>
     <tr>
-      <td><%= date %></td>
+      <td><%= l(date) %></td>
       <td>
         <ul>
           <% for doc in docs %>
@@ -48,6 +48,6 @@
 
 <br/>
 
-<%= link_to 'Edit', edit_lecture_path(@lecture) %><!-- |-->
+<%# link_to t('.edit'), edit_lecture_path(@lecture) %><!-- |-->
 <%# link_to 'Back', lectures_path %>
 

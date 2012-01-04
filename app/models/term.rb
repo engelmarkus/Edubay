@@ -11,11 +11,17 @@ class Term < ActiveRecord::Base
     return File.join("uploaded_files", Utils.sanitize_filename(name))
   end
   
+  def has_referenced_lectures?
+    return if lectures.empty?
+    
+    false
+  end
+  
   private
   
   def create_uploaded_files_folder
     begin
-      Dir.mkdir(File.join("uploaded_files", Utils.sanitize_filename(name)))
+      Dir.mkdir(get_folder())
     rescue Errno::EEXIST => e
       logger.warn '#{e}'
     end
@@ -23,13 +29,7 @@ class Term < ActiveRecord::Base
   
   def rename_uploaded_files_folder
     if name_changed? then
-      File.rename(File.join("uploaded_files", Utils.sanitize_filename(name_was)), File.join("uploaded_files", Utils.sanitize_filename(name)))
+      File.rename(File.join("uploaded_files", Utils.sanitize_filename(name_was)), get_folder())
     end
-  end
-  
-  def has_referenced_lectures?
-    return if lectures.empty?
-    
-    false
   end
 end

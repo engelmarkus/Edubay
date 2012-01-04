@@ -11,11 +11,17 @@ class Lecture < ActiveRecord::Base
     return File.join(term.get_folder(), Utils.sanitize_filename(abbreviation))
   end
   
+  def has_referenced_documents?
+    return if documents.empty?
+    
+    false
+  end
+  
   private
   
   def create_uploaded_files_folder
     begin
-      Dir.mkdir(File.join(term.get_folder(), Utils.sanitize_filename(abbreviation)))
+      Dir.mkdir(get_folder())
     rescue Errno::EEXIST => e
       logger.warn '#{e}'
     end
@@ -23,13 +29,7 @@ class Lecture < ActiveRecord::Base
   
   def rename_uploaded_files_folder
     if abbreviation_changed? then
-      File.rename(File.join(term.get_folder(), Utils.sanitize_filename(abbreviation_was)), File.join(term.get_folder(), Utils.sanitize_filename(abbreviation)))
+      File.rename(File.join(term.get_folder(), Utils.sanitize_filename(abbreviation_was)), get_folder())
     end
-  end
-   
-  def has_referenced_documents?
-    return if documents.empty?
-    
-    false
   end
 end

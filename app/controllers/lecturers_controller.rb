@@ -71,7 +71,6 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to lecturers_url }
-      format.js   { render :nothing => true }
       format.xml { head :ok }
     end
   end

@@ -3,6 +3,7 @@ class CreateDocuments < ActiveRecord::Migration
     create_table :documents do |t|
       t.string :description, :null => false
       t.date :lecture_date, :null => false
+      t.string :file_extension
       t.references :doc_type, :null => false
       t.references :lecture, :null => false
       t.references :uploader, :null => false

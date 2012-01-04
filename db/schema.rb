@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214223732) do
+ActiveRecord::Schema.define(:version => 20111214223733) do
 
   create_table "doc_types", :force => true do |t|
     t.string   "name",       :null => false
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(:version => 20111214223732) do
   end
 
   create_table "documents", :force => true do |t|
-    t.string   "description",  :null => false
-    t.date     "lecture_date", :null => false
-    t.integer  "doc_type_id",  :null => false
-    t.integer  "lecture_id",   :null => false
-    t.integer  "uploader_id",  :null => false
+    t.string   "description",    :null => false
+    t.date     "lecture_date",   :null => false
+    t.string   "file_extension"
+    t.integer  "doc_type_id",    :null => false
+    t.integer  "lecture_id",     :null => false
+    t.integer  "uploader_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

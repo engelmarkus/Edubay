@@ -5,6 +5,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml { render xml: @documents }
     end
   end
 
@@ -14,6 +15,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.xml { render xml: @document }
     end
   end
 
@@ -23,6 +25,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
     end
   end
 
@@ -38,8 +41,10 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.xml { head :created, :location => term_path(@document) }
       else
         format.html { render action: "new" }
+        format.xml { render status: :not_acceptable, xml: @document.errors.full_messages }
       end
     end
   end
@@ -51,8 +56,10 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.xml { head :created, :location => term_path(@document) }
       else
         format.html { render action: "edit" }
+        format.xml { render status: :not_acceptable, xml: @document.errors.full_messages }
       end
     end
   end
@@ -64,6 +71,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to documents_url }
+      format.xml { head :ok }
     end
   end
   

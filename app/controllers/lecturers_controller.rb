@@ -5,6 +5,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml { render xml: @lecturers }
     end
   end
 
@@ -14,6 +15,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.xml { render xml: @lecturer }
     end
   end
 
@@ -23,6 +25,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
     end
   end
 
@@ -38,8 +41,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.save
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully created.' }
+        format.xml { head :created, :location => term_path(@lecturer) }
       else
         format.html { render action: "new" }
+        format.xml { render status: :not_acceptable, xml: @lecturer.errors.full_messages }
       end
     end
   end
@@ -51,8 +56,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.update_attributes(params[:lecturer])
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully updated.' }
+        format.xml { head :created, :location => term_path(@lecturer) }
       else
         format.html { render action: "edit" }
+        format.xml { render status: :not_acceptable, xml: @lecturer.errors.full_messages }
       end
     end
   end
@@ -65,6 +72,7 @@ class LecturersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to lecturers_url }
       format.js   { render :nothing => true }
+      format.xml { head :ok }
     end
   end
 end

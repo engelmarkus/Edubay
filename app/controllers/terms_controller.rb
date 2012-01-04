@@ -5,6 +5,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml { render xml: @terms }
     end
   end
 
@@ -14,6 +15,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.xml { render xml: @term }
     end
   end
 
@@ -23,6 +25,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
     end
   end
 
@@ -38,8 +41,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
+        format.xml { head :created, :location => term_path(@term) }
       else
         format.html { render action: "new" }
+        format.xml { render status: :not_acceptable, xml: @term.errors.full_messages }
       end
     end
   end
@@ -51,8 +56,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.update_attributes(params[:term])
         format.html { redirect_to @term, notice: 'Term was successfully updated.' }
+        format.xml { head :created, :location => term_path(@term) }
       else
         format.html { render action: "edit" }
+        format.xml { render status: :not_acceptable, xml: @term.errors.full_messages }
       end
     end
   end
@@ -64,6 +71,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to terms_url }
+      format.xml { head :ok }
     end
   end
 end

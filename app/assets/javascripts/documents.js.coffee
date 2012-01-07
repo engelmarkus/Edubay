@@ -11,10 +11,10 @@ $(document).ready( ->
 );
 
 $(window).load( ->
-  if $.getUrlVar('locale') == 'de'
-    $.datepicker.setDefaults($.datepicker.regional['de']);
-  else
+  if $.getUrlVar('locale') == 'en'
     $.datepicker.setDefaults($.datepicker.regional['en']);
+  else
+    $.datepicker.setDefaults($.datepicker.regional['de']);
 );
 
 
@@ -58,26 +58,43 @@ $(document).ready( ->
     xhr.open("POST", "/documents.js");
     xhr.send(fd);
     
-    $('#commit').attr("disabled", true);
+    #$('#commit').attr("disabled", true);
+    #$('#dialog').dialog("open");
+    
+    $('#dialog').dialog({
+      autoOpen: true,
+      draggable: false,
+      modal: true,
+      resizable: false,
+      buttons: [{
+        text: "Abbrechen",
+        click: -> $(this).dialog("close");
+      }],
+      close: -> xhr.abort(); #uploadCanceled2(xhr);
+    });
     
     # Das Formular nicht normal posten.
     return false;
   );
 
+  #uploadCanceled2 = (xhr) ->
+  #  xhr.abort();
+
   uploadProgress = (event) ->
     if event.lengthComputable
       percent = Math.round(event.loaded * 100 / event.total);
-      $('#percentCompleted').html("Percent completed: #{percent} %");
+      $('#percentCompleted').html("#{percent} %");
+      $('#progressbar').progressbar({ value: percent });
     else
-      $('#percentCompleted').html("Percent completed: unable to compute");
+      $('#percentCompleted').html("unable to compute");
 
   uploadFailed = (event) ->
     window.alert("There was an error attempting to upload the file.");
-    $('#commit').attr("disabled", false);
+    #$('#commit').attr("disabled", false);
 
   uploadCanceled = (event) ->
     window.alert("The upload has been canceled by the user or the browser dropped the connection.");
-    $('#commit').attr("disabled", false);
+    #$('#commit').attr("disabled", false);
 
   uploadComplete = (event) ->
     $('#percentCompleted').html("Upload complete...");

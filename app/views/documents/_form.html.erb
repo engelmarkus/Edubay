@@ -11,9 +11,13 @@
     </div>
   <% end %>
 
+  <div id="dialog" title="Uploading file..." style="display: none;">
+      <div id="progressbar"></div>
+      <div style="position: relative; width: 100%; text-align: center;"><span id="percentCompleted"></span></div>
+  </div>
+
   <div class="field">
     <%= file_field_tag "fileToUpload", required: true %>
-    <p><span id="percentCompleted"></span></p>
     <p><span id="fileSize"></span></p>
   </div>
   <div class="field">

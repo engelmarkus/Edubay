@@ -93,6 +93,20 @@ SimpleNavigation::Configuration.run do |navigation|
       
       sub_nav.dom_class = 'nav_depth02'
     end
+
+    primary.item :devices, t('navigation.devices'), url_for(action: 'index', controller: 'devices'), :highlights_on => Regexp.new('/devices') do |sub_nav|
+      sub_nav.item :devices_list, t('navigation.list'), url_for(action: 'index', controller: 'devices')
+      sub_nav.item :devices_new, t('navigation.new'), url_for(action: 'new', controller: 'devices')
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
+    primary.item :reservations, t('navigation.reservations'), url_for(action: 'index', controller: 'reservations'), :highlights_on => Regexp.new('/reservations') do |sub_nav|
+      sub_nav.item :reservations_list, t('navigation.list'), url_for(action: 'index', controller: 'reservations')
+      sub_nav.item :reservations_new, t('navigation.new'), url_for(action: 'new', controller: 'reservations')
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
     
     #primary.item :stud, 'Studium', 'stud' do |sub_nav|
     #  sub_nav.item :st2011, 'Studienbeginn 2011', '' do |sub_sub_nav|

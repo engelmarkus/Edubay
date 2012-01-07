@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214223733) do
+ActiveRecord::Schema.define(:version => 20120106223325) do
+
+  create_table "devices", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "doc_types", :force => true do |t|
     t.string   "name",       :null => false
@@ -51,6 +57,18 @@ ActiveRecord::Schema.define(:version => 20111214223733) do
 
   add_index "lectures", ["lecturer_id"], :name => "index_lectures_on_lecturer_id"
   add_index "lectures", ["term_id"], :name => "index_lectures_on_term_id"
+
+  create_table "reservations", :force => true do |t|
+    t.datetime "time_from",  :null => false
+    t.datetime "time_to",    :null => false
+    t.integer  "device_id",  :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reservations", ["device_id"], :name => "index_reservations_on_device_id"
+  add_index "reservations", ["user_id"], :name => "index_reservations_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

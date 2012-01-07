@@ -1,0 +1,28 @@
+en:
+  reservations:
+    index:
+      page_title: "Listing Reservations"
+      edit: "Edit"
+      destroy: "Delete"
+      destroy_confirm: "Are you sure?"
+      create_new_reservation: "Create new reservation"
+    
+    edit:
+      page_title: "Editing reservation"
+      show_details: "Show details"
+    
+    new:
+      page_title: "Creating new reservation"
+    
+    show:
+      page_title: "Reservation details"
+
+  activerecord:
+    models:
+      reservation: "Reservation"
+    attributes:
+      reservation:
+        time_from: "From"
+        time_to: "To"
+        device: "Device"
+        user: "User"

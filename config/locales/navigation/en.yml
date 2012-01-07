@@ -5,5 +5,7 @@ en:
     lectures: "Lectures"
     doc_types: "Document types"
     documents: "Documents"
+    devices: "Devices"
+    reservations: "Reservations"
     list: "List"
     new: "Create"

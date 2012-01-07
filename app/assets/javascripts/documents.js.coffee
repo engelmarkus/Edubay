@@ -6,6 +6,15 @@ $(document).ready( ->
   $('.delete_document').live('ajax:success', ->
     $(this).closest('tr').fadeOut();
   );
+  
+  $('#document_lecture_date').datepicker();
+);
+
+$(window).load( ->
+  if $.getUrlVar('locale') == 'de'
+    $.datepicker.setDefaults($.datepicker.regional['de']);
+  else
+    $.datepicker.setDefaults($.datepicker.regional['en']);
 );
 
 

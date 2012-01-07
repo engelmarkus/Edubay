@@ -1,0 +1,27 @@
+<h1><%= t '.page_title' %></h1>
+
+<table class="listing">
+  <tr>
+    <th><%= Reservation.human_attribute_name(:time_from) %></th>
+    <th><%= Reservation.human_attribute_name(:time_to) %></th>
+    <th><%= Reservation.human_attribute_name(:device) %></th>
+    <th><%= Reservation.human_attribute_name(:user) %></th>
+    <th><%= t '.edit' %></th>
+    <th><%= t '.destroy' %></th>
+  </tr>
+
+<% @reservations.each do |reservation| %>
+  <tr>
+    <td><%= reservation.time_from %></td>
+    <td><%= reservation.time_to %></td>
+    <td><%= reservation.device %></td>
+    <td><%= reservation.user %></td>
+    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_reservation_path(reservation) %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), reservation, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_reservation' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+<%= link_to t('.create_new_reservation'), new_reservation_path %>

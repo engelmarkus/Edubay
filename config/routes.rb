@@ -1,4 +1,8 @@
 Edubay::Application.routes.draw do
+  resources :reservations
+
+  resources :devices
+
   resources :lectures
   
   resources :documents do

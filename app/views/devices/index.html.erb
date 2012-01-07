@@ -1,0 +1,21 @@
+<h1><%= t '.page_title' %></h1>
+
+<table class="listing">
+  <tr>
+    <th><%= DocType.human_attribute_name(:name) %></th>
+    <th><%= t '.edit' %></th>
+    <th><%= t '.destroy' %></th>
+  </tr>
+
+<% @devices.each do |device| %>
+  <tr>
+    <td><%= device.name %></td>
+    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_device_path(device) %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), device, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_device' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+<%= link_to t('.create_new_device'), new_device_path %>

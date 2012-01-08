@@ -6,7 +6,7 @@
 		<%= stylesheet_link_tag    "application" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
-		<%= auto_discovery_link_tag(:rss, {controller: "documents", action: "feed"}) %>
+		<%= yield :head %>
 	</head>
 	
 	<body>
@@ -171,7 +171,7 @@
                   </span>-->
 
                   <h3>
-                    <%= link_to image_tag("rssicon.jpeg", align: "top", style: "display: inline;", class: "icon", border: 0) + " RSS", feed_documents_url %>
+                    <%# link_to image_tag("rssicon.jpeg", align: "top", style: "display: inline;", class: "icon", border: 0) + " RSS", feed_documents_url %>
                   </h3>
                 </div>
                 <!-- portlet_personalnews end -->

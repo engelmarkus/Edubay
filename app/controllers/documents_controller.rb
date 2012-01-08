@@ -92,13 +92,4 @@ class DocumentsController < ApplicationController
     #path = File.join(@document.lecture.get_folder(), Utils.sanitize_filename(@document.lecture_date.to_s), Utils.sanitize_filename(@document.doc_type.name + '_' + @document.id.to_s + ".pdf"))
     send_file path
   end
-  
-  # GET /documents/feed
-  def feed
-    @recently_uploaded_files = Document.find(:all, :order => 'created_at DESC', :limit => 10)
-    
-    respond_to do |format|
-      format.rss { render layout: false } # feed.rss.builder
-    end
-  end
 end

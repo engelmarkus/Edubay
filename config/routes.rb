@@ -3,15 +3,15 @@ Edubay::Application.routes.draw do
 
   resources :devices
 
-  resources :lectures
+  resources :lectures do
+    member do
+      get 'feed', as: :feed, defaults: {format: 'rss'}
+    end
+  end
   
   resources :documents do
     member do
       get 'download'
-    end
-    
-    collection do
-      get 'feed', as: :feed, defaults: {format: 'rss'}
     end
   end
   

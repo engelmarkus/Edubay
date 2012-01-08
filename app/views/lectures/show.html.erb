@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss, {controller: "lectures", id: @lecture.id, action: "feed"}) %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= t '.page_title' %></h1>
@@ -47,6 +51,8 @@
 </table>
 
 <br/>
+
+<%= link_to "RSS News Feed", feed_lecture_path(@lecture) %>
 
 <%# link_to t('.edit'), edit_lecture_path(@lecture) %><!-- |-->
 <%# link_to 'Back', lectures_path %>

@@ -77,4 +77,14 @@ class LecturesController < ApplicationController
       format.xml { head :ok }
     end
   end
+
+  # GET /lectures/1/feed
+  def feed
+    @lecture = Lecture.find(params[:id])
+    @recently_uploaded_files = Document.find_all_by_lecture_id(@lecture.id, order: 'created_at DESC', limit: 5)
+    
+    respond_to do |format|
+      format.rss { render layout: false } # feed.rss.builder
+    end
+  end
 end

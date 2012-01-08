@@ -6,7 +6,7 @@ $(document).ready( ->
   $('.delete_document').live('ajax:success', ->
     $(this).closest('tr').fadeOut();
   );
-  
+
   $('#document_lecture_date').datepicker();
 );
 
@@ -58,11 +58,7 @@ $(document).ready( ->
     xhr.open("POST", "/documents.js");
     xhr.send(fd);
     
-    #$('#commit').attr("disabled", true);
-    #$('#dialog').dialog("open");
-    
     $('#dialog').dialog({
-      autoOpen: true,
       draggable: false,
       modal: true,
       resizable: false,
@@ -70,15 +66,12 @@ $(document).ready( ->
         text: "Abbrechen",
         click: -> $(this).dialog("close");
       }],
-      close: -> xhr.abort(); #uploadCanceled2(xhr);
+      close: -> xhr.abort();
     });
     
     # Das Formular nicht normal posten.
     return false;
   );
-
-  #uploadCanceled2 = (xhr) ->
-  #  xhr.abort();
 
   uploadProgress = (event) ->
     if event.lengthComputable
@@ -90,11 +83,9 @@ $(document).ready( ->
 
   uploadFailed = (event) ->
     window.alert("There was an error attempting to upload the file.");
-    #$('#commit').attr("disabled", false);
 
   uploadCanceled = (event) ->
     window.alert("The upload has been canceled by the user or the browser dropped the connection.");
-    #$('#commit').attr("disabled", false);
 
   uploadComplete = (event) ->
     $('#percentCompleted').html("Upload complete...");

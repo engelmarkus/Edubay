@@ -17,6 +17,7 @@ class Document < ActiveRecord::Base
 
   def store_file_on_create(file)
     FileUtils.mv(file.tempfile.path, filename)
+    FileUtils.chmod(0644, filename)
   end
   
   private

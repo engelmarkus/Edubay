@@ -25,23 +25,23 @@ class DevicesControllerTest < ActionController::TestCase
   end
 
   test "should show device" do
-    get :show, id: @device.to_param
+    get :show, id: @device
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @device.to_param
+    get :edit, id: @device
     assert_response :success
   end
 
   test "should update device" do
-    put :update, id: @device.to_param, device: @device.attributes
+    put :update, id: @device, device: @device.attributes
     assert_redirected_to device_path(assigns(:device))
   end
 
   test "should destroy device" do
     assert_difference('Device.count', -1) do
-      delete :destroy, id: @device.to_param
+      delete :destroy, id: @device
     end
 
     assert_redirected_to devices_path

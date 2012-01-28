@@ -1,9 +1,9 @@
 class Document < ActiveRecord::Base
   belongs_to :doc_type
-  belongs_to :lecture
-  belongs_to :uploader
-  validates_presence_of :description, :lecture_date, :doc_type_id, :lecture_id, :uploader_id
-  after_create :create_uploaded_files_folder  
+  belongs_to :course
+  
+  validates_presence_of :description, :course_date, :doc_type_id, :course_id #, :uploader_id
+  after_create :create_uploaded_files_folder
   before_update :rename_uploaded_files_folder
   
   attr_reader :filename
@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
   end  
   
   def get_folder
-    return File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date.to_s))
+    return File.join(course.get_folder(), Utils.sanitize_filename(course_date.to_s))
   end
 
   def store_file_on_create(file)
@@ -38,21 +38,21 @@ class Document < ActiveRecord::Base
   # das datum, der dateityp, nicht die id oder extension!
   # 
   
-    if lecture_date_changed? || doc_type_id_changed? then
+    if course_date_changed? || doc_type_id_changed? then
       #File.rename(File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date_was.to_s)), File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date.to_s)))
       # nicht den ordner umbenennen, sondern viel mehr die datei verschieben !
       begin
-        Dir.mkdir(File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date.to_s)))
+        Dir.mkdir(File.join(course.get_folder(), Utils.sanitize_filename(course_date.to_s)))
       rescue Errno::EEXIST => e
       end
       
       doc_type = DocType.find_by_id(doc_type_id)
       doc_type_was = DocType.find_by_id(doc_type_id_was)
       
-      FileUtils.mv(File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date_was.to_s), Utils.sanitize_filename(doc_type_was.name + '_' +  id.to_s)), File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date.to_s), Utils.sanitize_filename(doc_type.name + '_' + id.to_s)))
+      FileUtils.mv(File.join(course.get_folder(), Utils.sanitize_filename(course_date_was.to_s), Utils.sanitize_filename(doc_type_was.name + '_' +  id.to_s)), File.join(course.get_folder(), Utils.sanitize_filename(course_date.to_s), Utils.sanitize_filename(doc_type.name + '_' + id.to_s)))
       
-      logger.info File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date_was.to_s), Utils.sanitize_filename(doc_type_was.name + '_' +  id.to_s))
-      logger.info File.join(lecture.get_folder(), Utils.sanitize_filename(lecture_date.to_s), Utils.sanitize_filename(doc_type.name + '_' + id.to_s))
+      logger.info File.join(course.get_folder(), Utils.sanitize_filename(course_date_was.to_s), Utils.sanitize_filename(doc_type_was.name + '_' +  id.to_s))
+      logger.info File.join(course.get_folder(), Utils.sanitize_filename(course_date.to_s), Utils.sanitize_filename(doc_type.name + '_' + id.to_s))
       
       # das kümmert sich auch noch drum, wenn sich der doc_type ändert!
     end

@@ -13,7 +13,7 @@
     <td><%= term.name %></td>
     <!--<td><%# link_to 'Show', term %></td>-->
     <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_term_path(term) %></td>
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), term, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_term' %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), term, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
   </tr>
 <% end %>
 </table>

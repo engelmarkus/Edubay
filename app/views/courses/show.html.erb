@@ -1,0 +1,58 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss, {controller: "courses", id: @course.id, action: "feed"}) %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1><%= t '.page_title' %></h1>
+<ul>
+  <li>
+    <b><%= Course.human_attribute_name(:name) %>:</b>
+    <%= @course.name %>
+  </li>
+  
+  <li>
+    <b><%= Course.human_attribute_name(:abbreviation) %>:</b>
+    <%= @course.abbreviation %>
+  </li>
+  
+  <li>
+    <b><%= Course.human_attribute_name(:term_id) %>:</b>
+    <%= @course.term.name %>
+  </li>
+  
+  <li>
+    <b><%= Course.human_attribute_name(:lecturer_id) %>:</b>
+    <%= @course.lecturer.name %>
+  </li>
+</ul>
+
+<br/>
+
+<h2><%= t '.available_documents' %></h2>
+<table class="listing">
+  <tr>
+    <th><%= Document.human_attribute_name(:course_date) %></th>
+    <th><%= t '.documents' %></th>
+  </tr>
+  
+  <% @documents_by_date.sort.each do |date, docs| %>
+    <tr>
+      <td><%= l(date) %></td>
+      <td>
+        <ul>
+          <% for doc in docs %>
+            <li><%= link_to doc.doc_type.name + ": " + doc.description, doc %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to "RSS News Feed", feed_course_path(@course) %>
+
+<%# link_to t('.edit'), edit_lecture_path(@lecture) %><!-- |-->
+<%# link_to 'Back', lectures_path %>

@@ -1,26 +1,24 @@
 Edubay::Application.routes.draw do
-  resources :reservations
-
-  resources :devices
-
-  resources :lectures do
-    member do
-      get 'feed', as: :feed, defaults: {format: 'rss'}
-    end
-  end
-  
   resources :documents do
     member do
       get 'download'
     end
   end
   
+  resources :courses do
+    member do
+      get 'feed', as: :feed, defaults: {format: 'rss'}
+    end
+  end
+  
+  resources :lecturers
+  resources :devices
+  resources :dev_types
   resources :doc_types
   resources :terms
-  resources :lecturers
-
+  
   get "home/index"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -70,12 +68,12 @@ Edubay::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  #root :to => 'home#index'
+  # root :to => 'welcome#index'
   root to: 'home#index'
-
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id))(.:format)'
 end

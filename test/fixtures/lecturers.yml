@@ -1,10 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-lecturer1:
-  name: Prof. Dr. Ernst W. Mayr
+one:
+  name: MyString
+  lock_version: 1
 
-lecturer2:
-  name: Prof. Dr. Arndt Bode
-
-lecturer3:
-  name: Prof. Dr. R. Westermann
+two:
+  name: MyString
+  lock_version: 1

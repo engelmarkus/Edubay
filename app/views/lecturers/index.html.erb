@@ -11,7 +11,7 @@
   <tr>
     <td><%= link_to lecturer.name, lecturer %></td>
     <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_lecturer_path(lecturer) %></td>
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), lecturer, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_lecturer' %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), lecturer, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
   </tr>
 <% end %>
 </table>

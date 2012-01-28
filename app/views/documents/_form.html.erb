@@ -25,21 +25,21 @@
     <%= f.text_field :description, required: true %>
   </div>
   <div class="field">
-    <%= f.label :lecture_date %><br />
+    <%= f.label :course_date %><br />
     <%# f.date_select :lecture_date %>
-    <%= f.text_field :lecture_date %>
+    <%= f.text_field :course_date %>
   </div>
   <div class="field">
     <%= f.label :doc_type_id %><br />
     <%= f.collection_select :doc_type_id, DocType.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :lecture_id %><br />
-    <%= f.collection_select :lecture_id, Lecture.all, :id, :name, :prompt => true %>
+    <%= f.label :course_id %><br />
+    <%= f.collection_select :course_id, Course.all, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :uploader_id %><br />
-    <%= f.text_field :uploader_id %>
+    <%# f.label :uploader_id %><br />
+    <%# f.text_field :uploader_id %>
   </div>
   <div class="actions">
     <%= f.submit id: "commit" %>

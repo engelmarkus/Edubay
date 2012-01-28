@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b><%= Device.human_attribute_name(:name) %>:</b>
+  <b>Name:</b>
   <%= @device.name %>
 </p>
 
+<p>
+  <b>Dev type:</b>
+  <%= @device.dev_type %>
+</p>
 
-<%# link_to 'Edit', edit_device_path(@device) %><!-- |-->
-<%# link_to 'Back', devices_path %>
+<p>
+  <b>Lock version:</b>
+  <%= @device.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>

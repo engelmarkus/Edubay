@@ -1,0 +1,27 @@
+<h1><%= t '.page_title' %></h1>
+
+<table class="listing">
+  <tr>
+    <th><%= Course.human_attribute_name(:name) %></th>
+    <th><%= Course.human_attribute_name(:abbreviation) %></th>
+    <th><%= Course.human_attribute_name(:term_id) %></th>
+    <th><%= Course.human_attribute_name(:lecturer_id) %></th>
+    <th><%= t '.edit' %></th>
+    <th><%= t '.destroy' %></th>
+  </tr>
+
+<% @courses.each do |course| %>
+  <tr>
+    <td><%= link_to course.name, course %></td>
+    <td><%= course.abbreviation %></td>
+    <td><%= course.term.name %></td>
+    <td><%= course.lecturer.name %></td>
+    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_course_path(course) %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), course, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t('.create_new_course'), new_course_path %>

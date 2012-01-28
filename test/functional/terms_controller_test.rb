@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TermsControllerTest < ActionController::TestCase
   setup do
-    @term = terms(:term1)
+    @term = terms(:one)
   end
 
   test "should get index" do
@@ -25,23 +25,23 @@ class TermsControllerTest < ActionController::TestCase
   end
 
   test "should show term" do
-    get :show, id: @term.to_param
+    get :show, id: @term
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @term.to_param
+    get :edit, id: @term
     assert_response :success
   end
 
   test "should update term" do
-    put :update, id: @term.to_param, term: @term.attributes
+    put :update, id: @term, term: @term.attributes
     assert_redirected_to term_path(assigns(:term))
   end
 
   test "should destroy term" do
     assert_difference('Term.count', -1) do
-      delete :destroy, id: @term.to_param
+      delete :destroy, id: @term
     end
 
     assert_redirected_to terms_path

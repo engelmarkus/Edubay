@@ -1,0 +1,25 @@
+<%= form_for(@dev_type) do |f| %>
+  <% if @dev_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dev_type.errors.count, "error") %> prohibited this dev_type from being saved:</h2>
+
+      <ul>
+      <% @dev_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :lock_version %><br />
+    <%= f.number_field :lock_version %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

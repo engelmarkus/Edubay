@@ -8,12 +8,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Specify the class that will be applied to active navigation items. Defaults to 'selected'
   # navigation.selected_class = 'your_selected_class'
-  #navigation.selected_class = 'expanded'
 
   # Specify the class that will be applied to the current leaf of
   # active navigation items. Defaults to 'simple-navigation-active-leaf'
   # navigation.active_leaf_class = 'your_active_leaf_class'
-  
+
   # Item keys are normally added to list items as id.
   # This setting turns that off
   # navigation.autogenerate_item_ids = false
@@ -52,7 +51,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     #primary.item :key_1, 'name', url, options
     primary.item :home, 'Home', url_for(action: 'index', controller: 'home')
-
+    
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|
       # Add an item to the sub navigation (same params again)
@@ -73,9 +72,9 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lectures, t('navigation.lectures'), url_for(action: 'index', controller: 'lectures'), :highlights_on => Regexp.new('/lectures') do |sub_nav|
-      sub_nav.item :lectures_list, t('navigation.list'), url_for(action: 'index', controller: 'lectures')
-      sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lectures')
+    primary.item :courses, t('navigation.courses'), url_for(action: 'index', controller: 'courses'), :highlights_on => Regexp.new('/courses') do |sub_nav|
+      sub_nav.item :courses_list, t('navigation.list'), url_for(action: 'index', controller: 'courses')
+      sub_nav.item :courses_new, t('navigation.new'), url_for(action: 'new', controller: 'courses')
       
       sub_nav.dom_class = 'nav_depth02'
     end
@@ -100,29 +99,7 @@ SimpleNavigation::Configuration.run do |navigation|
       
       sub_nav.dom_class = 'nav_depth02'
     end
-    
-    primary.item :reservations, t('navigation.reservations'), url_for(action: 'index', controller: 'reservations'), :highlights_on => Regexp.new('/reservations') do |sub_nav|
-      sub_nav.item :reservations_list, t('navigation.list'), url_for(action: 'index', controller: 'reservations')
-      sub_nav.item :reservations_new, t('navigation.new'), url_for(action: 'new', controller: 'reservations')
-      
-      sub_nav.dom_class = 'nav_depth02'
-    end
-    
-    #primary.item :stud, 'Studium', 'stud' do |sub_nav|
-    #  sub_nav.item :st2011, 'Studienbeginn 2011', '' do |sub_sub_nav|
-    #    sub_sub_nav.item :two, 'Twoinone', ''
-    #    sub_sub_nav.item :bew, 'Bewerbung', ''#, :highlights_on => Proc.new { true }
-    #    
-    #    sub_sub_nav.dom_class = 'nav_depth03'
-    #  end
-    #  
-    #  sub_nav.item :lehr, 'Lehrangebote', ''
-    #  sub_nav.item :ber, 'Beratung', ''
-    #  
-    #  sub_nav.dom_class = 'nav_depth02'
-    #end
-    
-    
+
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
@@ -134,12 +111,9 @@ SimpleNavigation::Configuration.run do |navigation|
     # primary.dom_id = 'menu-id'
     # primary.dom_class = 'menu-class'
     primary.dom_id = 'navigationlist'
-    
-
 
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false
 
   end
-
 end

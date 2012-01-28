@@ -1,0 +1,30 @@
+en:
+  courses:
+    index:
+      page_title: "Listing courses"
+      edit: "Edit"
+      destroy: "Delete"
+      destroy_confirm: "Are you sure?"
+      create_new_course: "Crete new course"
+    
+    edit:
+      page_title: "Editing course"
+      show_details: "Show details"
+    
+    new:
+      page_title: "Creating new course"
+    
+    show:
+      page_title: "Course details"
+      available_documents: "Available Documents"
+      documents: "Documents"
+
+  activerecord:
+    models:
+      course: "Course"
+    attributes:
+      course:
+        name: "Name"
+        abbreviation: "Abbreviation"
+        term_id: "Term"
+        lecturer_id: "Lecturer"

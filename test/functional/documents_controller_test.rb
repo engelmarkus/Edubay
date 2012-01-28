@@ -25,23 +25,23 @@ class DocumentsControllerTest < ActionController::TestCase
   end
 
   test "should show document" do
-    get :show, id: @document.to_param
+    get :show, id: @document
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @document.to_param
+    get :edit, id: @document
     assert_response :success
   end
 
   test "should update document" do
-    put :update, id: @document.to_param, document: @document.attributes
+    put :update, id: @document, document: @document.attributes
     assert_redirected_to document_path(assigns(:document))
   end
 
   test "should destroy document" do
     assert_difference('Document.count', -1) do
-      delete :destroy, id: @document.to_param
+      delete :destroy, id: @document
     end
 
     assert_redirected_to documents_path

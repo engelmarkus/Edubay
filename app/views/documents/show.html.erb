@@ -8,8 +8,8 @@
   </li>
 
   <li>
-    <b><%= Document.human_attribute_name(:lecture_date) %>:</b>
-    <%= l(@document.lecture_date) %>
+    <b><%= Document.human_attribute_name(:course_date) %>:</b>
+    <%= l(@document.course_date) %>
   </li>
 
   <li>
@@ -18,13 +18,13 @@
   </li>
 
   <li>
-    <b><%= Document.human_attribute_name(:lecture_id) %>:</b>
-    <%= @document.lecture.name %>
+    <b><%= Document.human_attribute_name(:course_id) %>:</b>
+    <%= @document.course.name %>
   </li>
 
   <li>
-    <b><%= Document.human_attribute_name(:uploader_id) %>:</b>
-    <%= @document.uploader_id %>
+    <b><%# Document.human_attribute_name(:uploader_id) %>:</b>
+    <%# @document.uploader_id %>
   </li>
 </ul>
 

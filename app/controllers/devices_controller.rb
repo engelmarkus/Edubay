@@ -61,7 +61,7 @@ class DevicesController < ApplicationController
     respond_to do |format|
       if @device.update_attributes(params[:device])
         format.html { redirect_to @device, notice: 'Device was successfully updated.' }
-        format.json { head :ok }
+        format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @device.errors, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to devices_url }
-      format.json { head :ok }
+      format.json { head :no_content }
     end
   end
 end

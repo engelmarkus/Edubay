@@ -1,0 +1,30 @@
+de:
+  courses:
+    index:
+      page_title: "Liste der Lehrveranstaltungen"
+      edit: "Bearbeiten"
+      destroy: "Löschen"
+      destroy_confirm: "Sind Sie sicher?"
+      create_new_course: "Neue Lehrveranstaltung erstellen"
+    
+    edit:
+      page_title: "Lehrveranstaltung bearbeiten"
+      show_details: "Details anzeigen"
+    
+    new:
+      page_title: "Neue Lehrveranstaltung erstellen"
+    
+    show:
+      page_title: "Details zur Lehrveranstaltung"
+      available_documents: "Verfügbare Dokumente"
+      documents: "Dokumente"
+
+  activerecord:
+    models:
+      course: "Lehrveranstaltung"
+    attributes:
+      course:
+        name: "Name"
+        abbreviation: "Abkürzung"
+        term_id: "Semester"
+        lecturer_id: "Vortragender"

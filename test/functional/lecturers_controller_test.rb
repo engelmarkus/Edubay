@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LecturersControllerTest < ActionController::TestCase
   setup do
-    @lecturer = lecturers(:lecturer1)
+    @lecturer = lecturers(:one)
   end
 
   test "should get index" do
@@ -25,23 +25,23 @@ class LecturersControllerTest < ActionController::TestCase
   end
 
   test "should show lecturer" do
-    get :show, id: @lecturer.to_param
+    get :show, id: @lecturer
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @lecturer.to_param
+    get :edit, id: @lecturer
     assert_response :success
   end
 
   test "should update lecturer" do
-    put :update, id: @lecturer.to_param, lecturer: @lecturer.attributes
+    put :update, id: @lecturer, lecturer: @lecturer.attributes
     assert_redirected_to lecturer_path(assigns(:lecturer))
   end
 
   test "should destroy lecturer" do
     assert_difference('Lecturer.count', -1) do
-      delete :destroy, id: @lecturer.to_param
+      delete :destroy, id: @lecturer
     end
 
     assert_redirected_to lecturers_path

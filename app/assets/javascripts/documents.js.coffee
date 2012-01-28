@@ -2,14 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+# Fügt einen DatePicker zum entsprechenden Textfeld hinzu.
 $(document).ready( ->
-  $('.delete_document').live('ajax:success', ->
-    $(this).closest('tr').fadeOut();
-  );
-
-  $('#document_lecture_date').datepicker();
+  $('#document_course_date').datepicker();
 );
 
+# Setzt je nach locale der Seite die Sprache des DatePickers.
 $(window).load( ->
   if $.getUrlVar('locale') == 'en'
     $.datepicker.setDefaults($.datepicker.regional['en']);
@@ -106,4 +104,3 @@ $(document).ready( ->
       $('#fileSize').html("Size: #{fileSize}");
   );
 );
-

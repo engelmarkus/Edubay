@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120127233015) do
+ActiveRecord::Schema.define(:version => 20120129193301) do
 
   create_table "courses", :force => true do |t|
     t.string   "name",         :null => false
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(:version => 20120127233015) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "reservations", :force => true do |t|
+    t.datetime "time_from",    :null => false
+    t.datetime "time_to",      :null => false
+    t.integer  "device_id",    :null => false
+    t.integer  "lock_version"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "reservations", ["device_id"], :name => "index_reservations_on_device_id"
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -95,5 +106,7 @@ ActiveRecord::Schema.define(:version => 20120127233015) do
 
   add_foreign_key "documents", "courses", :name => "documents_course_id_fk"
   add_foreign_key "documents", "doc_types", :name => "documents_doc_type_id_fk"
+
+  add_foreign_key "reservations", "devices", :name => "reservations_device_id_fk"
 
 end

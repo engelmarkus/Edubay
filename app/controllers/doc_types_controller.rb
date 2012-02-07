@@ -25,7 +25,7 @@ class DocTypesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
+      format.xml { render xml: @doc_type }
     end
   end
 
@@ -41,10 +41,10 @@ class DocTypesController < ApplicationController
     respond_to do |format|
       if @doc_type.save
         format.html { redirect_to @doc_type, notice: 'Doc type was successfully created.' }
-        format.xml { head :created, :location => term_path(@doc_type) }
+        format.xml { head :created, location: doc_type_path(@doc_type) }
       else
         format.html { render action: "new" }
-        format.xml { render status: :not_acceptable, xml: @doc_type.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @doc_type.errors.full_messages }
       end
     end
   end
@@ -56,10 +56,10 @@ class DocTypesController < ApplicationController
     respond_to do |format|
       if @doc_type.update_attributes(params[:doc_type])
         format.html { redirect_to @doc_type, notice: 'Doc type was successfully updated.' }
-        format.xml { head :created, :location => term_path(@doc_type) }
+        format.xml { head :created, location: doc_type_path(@doc_type) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :not_acceptable, xml: @doc_type.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @doc_type.errors.full_messages }
       end
     end
   end
@@ -70,8 +70,14 @@ class DocTypesController < ApplicationController
     @doc_type.destroy
 
     respond_to do |format|
-      format.html { redirect_to doc_types_url }
-      format.xml { head :ok }
+      if @doc_type.destroy
+        format.html { redirect_to doc_types_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to doc_types_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There are documents referencing this document type." }
+      end
     end
   end
 end

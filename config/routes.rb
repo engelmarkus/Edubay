@@ -1,4 +1,6 @@
 Edubay::Application.routes.draw do
+  resources :reservations
+
   resources :documents do
     member do
       get 'download'

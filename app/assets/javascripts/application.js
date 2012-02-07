@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require_tree .
 
-// Liest die in der URL übergebenen Variablen aus und packt sie in ein Array.
+// Liest alle/eine der in der URL übergebenen Variablen aus und packt sie in ein(e) Array/Variable.
 // z. B.: var alle = $.getUrlVars();
 // z. B.: var name = $.getUrlVar('name');
 $.extend({
@@ -38,8 +38,13 @@ $.extend({
 });
 
 // Blendet beim Klick auf den Löschen-Button neben einem Datensatz die jeweilige Zeile aus.
+// Falls der Server einen Fehler meldet, wird stattdessen dieser angezeigt.
 $(document).ready(function() {
-  $('.delete_button').live('ajax:success', function() {
+  $(document).on("ajax:success", ".delete_button", function() {
     $(this).closest('tr').fadeOut();
+  });
+  
+  $(document).on("ajax:error", ".delete_button", function(e0, e1) {
+    alert(e1.responseText);
   });
 });

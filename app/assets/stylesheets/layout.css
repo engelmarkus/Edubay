@@ -647,7 +647,7 @@ ul#navigationlist li ul.nav_depth03 a {background-color:#fff;}
 
 /*5sep06*/
 
-.documentBody {min-width:33em; max-width:55em;}
+.documentBody {min-width:33em; max-width:155em;}
 
 * html .documentBody {width:auto;}
 
@@ -1382,9 +1382,13 @@ margin: 0;
 
 width: 68% !important;
 
+display: block;
 }
 
-
+label.validation_error {
+  color: #FF6600;
+  line-height: 1.4em;
+}
 
 .inlinemessage {
 

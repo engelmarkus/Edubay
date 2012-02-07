@@ -1,34 +1,31 @@
 class DevicesController < ApplicationController
   # GET /devices
-  # GET /devices.json
   def index
     @devices = Device.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @devices }
+      format.xml { render xml: @devices }
     end
   end
 
   # GET /devices/1
-  # GET /devices/1.json
   def show
     @device = Device.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @device }
+      format.xml { render xml: @device }
     end
   end
 
   # GET /devices/new
-  # GET /devices/new.json
   def new
     @device = Device.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @device }
+      format.xml { render xml: @device }
     end
   end
 
@@ -38,46 +35,49 @@ class DevicesController < ApplicationController
   end
 
   # POST /devices
-  # POST /devices.json
   def create
     @device = Device.new(params[:device])
 
     respond_to do |format|
       if @device.save
         format.html { redirect_to @device, notice: 'Device was successfully created.' }
-        format.json { render json: @device, status: :created, location: @device }
+        format.xml { head :created, location: device_path(@device) }
       else
         format.html { render action: "new" }
-        format.json { render json: @device.errors, status: :unprocessable_entity }
+        format.xml { render status: :unprocessable_entity, xml: @device.errors.full_messages }
       end
     end
   end
 
   # PUT /devices/1
-  # PUT /devices/1.json
   def update
     @device = Device.find(params[:id])
 
     respond_to do |format|
       if @device.update_attributes(params[:device])
         format.html { redirect_to @device, notice: 'Device was successfully updated.' }
-        format.json { head :no_content }
+        format.xml { head :created, location: device_path(@device) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @device.errors, status: :unprocessable_entity }
+        format.xml { render status: :unprocessable_entity, xml: @device.errors.full_messages }
       end
     end
   end
 
   # DELETE /devices/1
-  # DELETE /devices/1.json
   def destroy
     @device = Device.find(params[:id])
     @device.destroy
 
     respond_to do |format|
-      format.html { redirect_to devices_url }
-      format.json { head :no_content }
+      if @device.destroy
+        format.html { redirect_to devices_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to devices_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There are reservations referencing this device." }
+      end
     end
   end
 end

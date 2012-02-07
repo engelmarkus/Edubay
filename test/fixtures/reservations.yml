@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  time_from: 2012-01-29 20:33:01
+  time_to: 2012-01-29 20:33:01
+  device: 
+  lock_version: 1
+
+two:
+  time_from: 2012-01-29 20:33:01
+  time_to: 2012-01-29 20:33:01
+  device: 
+  lock_version: 1

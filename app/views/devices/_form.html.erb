@@ -17,11 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :dev_type %><br />
-    <%= f.text_field :dev_type %>
-  </div>
-  <div class="field">
-    <%= f.label :lock_version %><br />
-    <%= f.number_field :lock_version %>
+    <%= f.collection_select :dev_type_id, DevType.all, :id, :name, :prompt => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

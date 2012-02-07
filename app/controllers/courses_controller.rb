@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   # GET /courses
   def index
     @courses = Course.all
-
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render xml: @courses }
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     @documents = @course.documents.find(:all)
-    @documents_by_date = @documents.group_by { |doc| doc.lecture_date }
+    @documents_by_date = @documents.group_by { |doc| doc.course_date }
     
     respond_to do |format|
       format.html # show.html.erb
@@ -25,10 +25,10 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
+      format.xml { render xml: @course }
     end
   end
 
@@ -40,14 +40,14 @@ class CoursesController < ApplicationController
   # POST /courses
   def create
     @course = Course.new(params[:course])
-
+  
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.xml { head :created, :location => term_path(@course) }
+        format.xml { head :created, location: course_path(@course) }
       else
         format.html { render action: "new" }
-        format.xml { render status: :not_acceptable, xml: @course.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @course.errors.full_messages }
       end
     end
   end
@@ -55,14 +55,14 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   def update
     @course = Course.find(params[:id])
-
+    
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.xml { head :created, :location => term_path(@course) }
+        format.xml { head :created, location: course_path(@course) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :not_acceptable, xml: @course.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @course.errors.full_messages }
       end
     end
   end
@@ -70,11 +70,16 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   def destroy
     @course = Course.find(params[:id])
-    @course.destroy
-
+    
     respond_to do |format|
-      format.html { redirect_to courses_url }
-      format.xml { head :ok }
+      if @course.destroy
+        format.html { redirect_to courses_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to courses_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There are documents referencing this course." }
+      end
     end
   end
   
@@ -84,7 +89,7 @@ class CoursesController < ApplicationController
     @recently_uploaded_files = Document.find_all_by_course_id(@course.id, order: 'created_at DESC', limit: 5)
     
     respond_to do |format|
-      format.rss { render layout: false } # feed.rss.builder
+      format.rss # feed.rss.builder
     end
   end
 end

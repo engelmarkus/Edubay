@@ -1,3 +1,4 @@
+# A lecturer who has many courses per term.
 class Lecturer < ActiveRecord::Base
   has_many :courses
   validates_presence_of :name
@@ -5,6 +6,7 @@ class Lecturer < ActiveRecord::Base
   
   private
   
+  # Check whether this lecturer has got any courses.
   def has_referenced_courses?
     return if courses.empty?
     

@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
+      format.xml { render xml: @document }
     end
   end
 
@@ -47,11 +47,11 @@ class DocumentsController < ApplicationController
         @document.store_file_on_create(file)
       
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.xml { head :created, :location => term_path(@document) }
+        format.xml { head :created, location: document_path(@document) }
         format.js
       else
         format.html { render action: "new" }
-        format.xml { render status: :not_acceptable, xml: @document.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @document.errors.full_messages }
         format.js
       end
     end
@@ -64,10 +64,10 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.xml { head :created, :location => term_path(@document) }
+        format.xml { head :created, location: document_path(@document) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :not_acceptable, xml: @document.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @document.errors.full_messages }
       end
     end
   end
@@ -78,8 +78,14 @@ class DocumentsController < ApplicationController
     @document.destroy
 
     respond_to do |format|
-      format.html { redirect_to documents_url }
-      format.xml { head :ok }
+      if @document.destroy
+        format.html { redirect_to documents_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to documents_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There was an error deleting this document." }
+      end
     end
   end
   

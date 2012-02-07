@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<h1><%= t '.page_title' %></h1>
+
+<ul>
+  <li>
+    <b><%= Reservation.human_attribute_name(:time_from) %>:</b>
+    <%= l @reservation.time_from %>
+  </li>
+
+  <li>
+    <b><%= Reservation.human_attribute_name(:time_to) %>:</b>
+    <%= l @reservation.time_to %>
+  </li>
+  
+  <li>
+    <b><%= Reservation.human_attribute_name(:device_id) %>:</b>
+    <%= @reservation.device.name %>
+  </li>
+</ul>
+
+<%# link_to 'Edit', edit_reservation_path(@reservation) %><!-- |-->
+<%# link_to 'Back', reservations_path %>

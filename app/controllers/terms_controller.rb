@@ -25,7 +25,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
+      format.xml { render xml: @term }
     end
   end
 
@@ -41,10 +41,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
-        format.xml { head :created, :location => term_path(@term) }
+        format.xml { head :created, location: term_path(@term) }
       else
         format.html { render action: "new" }
-        format.xml { render status: :not_acceptable, xml: @term.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @term.errors.full_messages }
       end
     end
   end
@@ -56,10 +56,10 @@ class TermsController < ApplicationController
     respond_to do |format|
       if @term.update_attributes(params[:term])
         format.html { redirect_to @term, notice: 'Term was successfully updated.' }
-        format.xml { head :created, :location => term_path(@term) }
+        format.xml { head :created, location: term_path(@term) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :not_acceptable, xml: @term.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @term.errors.full_messages }
       end
     end
   end
@@ -70,8 +70,14 @@ class TermsController < ApplicationController
     @term.destroy
 
     respond_to do |format|
-      format.html { redirect_to terms_url }
-      format.xml { head :ok }
+      if @term.destroy
+        format.html { redirect_to terms_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to terms_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There are courses referencing this term." }
+      end
     end
   end
 end

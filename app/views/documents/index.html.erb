@@ -6,7 +6,7 @@
     <th><%= Document.human_attribute_name(:course_date) %></th>
     <th><%= Document.human_attribute_name(:doc_type_id) %></th>
     <th><%= Document.human_attribute_name(:course_id) %></th>
-    <th><%# Document.human_attribute_name(:uploader_id) %></th>
+    <th><%= Document.human_attribute_name(:uploader_id) %></th>
     <!--<th></th>-->
     <!--<th>Edit</th>-->
     <th><%= t '.destroy' %></th>
@@ -18,7 +18,7 @@
     <td><%= l(document.course_date) %></td>
     <td><%= document.doc_type.name %></td>
     <td><%= document.course.name %></td>
-    <td><%# document.uploader_id %></td>
+    <td><%= document.uploader_id %></td>
     <!--<td><%# link_to 'Show', document %></td>-->
     <!--<td><%#link_to image_tag("edit.gif", :title => 'Edit'), edit_document_path(document) %></td>-->
     <td><%= link_to image_tag("delete.gif", title: t('.destroy')), document, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>

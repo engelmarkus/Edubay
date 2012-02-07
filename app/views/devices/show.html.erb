@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= Device.human_attribute_name(:name) %>:</b>
   <%= @device.name %>
 </p>
 
@@ -10,11 +10,5 @@
   <%= @device.dev_type %>
 </p>
 
-<p>
-  <b>Lock version:</b>
-  <%= @device.lock_version %>
-</p>
-
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>
+<%# link_to 'Edit', edit_device_path(@device) %><!-- |-->
+<%# link_to 'Back', devices_path %>

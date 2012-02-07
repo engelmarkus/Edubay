@@ -5,6 +5,7 @@ de:
     courses: "Lehrveranstaltungen"
     doc_types: "Dateitypen"
     documents: "Dateien"
+    dev_types: "Gerätetypen"
     devices: "Geräte"
     reservations: "Reservierungen"
     list: "Auflisten"

@@ -7,12 +7,22 @@ $(document).ready( ->
   $('#document_course_date').datepicker();
 );
 
-# Setzt je nach locale der Seite die Sprache des DatePickers.
-$(window).load( ->
-  if $.getUrlVar('locale') == 'en'
-    $.datepicker.setDefaults($.datepicker.regional['en']);
-  else
-    $.datepicker.setDefaults($.datepicker.regional['de']);
+# Validation rules for submit form
+$(document).ready( ->
+  $("#new_document").validate(
+    rules:
+      "fileToUpload":
+        required: true
+      "document[description]":
+        required: true
+      "document[course_date]":
+        required: true
+        date: true
+      "document[doc_type_id]":
+        required: true
+      "document[course_id]":
+        required: true
+  );
 );
 
 

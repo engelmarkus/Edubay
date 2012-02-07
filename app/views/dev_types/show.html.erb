@@ -1,15 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= DevType.human_attribute_name(:name) %>:</b>
   <%= @dev_type.name %>
 </p>
 
-<p>
-  <b>Lock version:</b>
-  <%= @dev_type.lock_version %>
-</p>
-
-
-<%= link_to 'Edit', edit_dev_type_path(@dev_type) %> |
-<%= link_to 'Back', dev_types_path %>
+<%#= link_to 'Edit', edit_dev_type_path(@dev_type) %><!-- |-->
+<%#= link_to 'Back', dev_types_path %>

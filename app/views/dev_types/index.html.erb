@@ -1,21 +1,17 @@
-<h1>Listing dev_types</h1>
+<h1><%= t '.page_title' %></h1>
 
-<table>
+<table class="listing">
   <tr>
-    <th>Name</th>
-    <th>Lock version</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= DevType.human_attribute_name(:name) %></th>
+    <th><%= t '.edit' %></th>
+    <th><%= t '.destroy' %></th>
   </tr>
 
 <% @dev_types.each do |dev_type| %>
   <tr>
     <td><%= dev_type.name %></td>
-    <td><%= dev_type.lock_version %></td>
-    <td><%= link_to 'Show', dev_type %></td>
-    <td><%= link_to 'Edit', edit_dev_type_path(dev_type) %></td>
-    <td><%= link_to 'Destroy', dev_type, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_dev_type_path(dev_type) %></td>
+    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), dev_type, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
   </tr>
 <% end %>
 </table>

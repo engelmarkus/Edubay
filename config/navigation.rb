@@ -93,6 +93,13 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.dom_class = 'nav_depth02'
     end
 
+    primary.item :dev_types, t('navigation.dev_types'), url_for(action: 'index', controller: 'dev_types'), :highlights_on => Regexp.new('/dev_types') do |sub_nav|
+      sub_nav.item :dev_types_list, t('navigation.list'), url_for(action: 'index', controller: 'dev_types')
+      sub_nav.item :dev_types_new, t('navigation.new'), url_for(action: 'new', controller: 'dev_types')
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
     primary.item :devices, t('navigation.devices'), url_for(action: 'index', controller: 'devices'), :highlights_on => Regexp.new('/devices') do |sub_nav|
       sub_nav.item :devices_list, t('navigation.list'), url_for(action: 'index', controller: 'devices')
       sub_nav.item :devices_new, t('navigation.new'), url_for(action: 'new', controller: 'devices')
@@ -100,6 +107,13 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.dom_class = 'nav_depth02'
     end
 
+    primary.item :reservations, t('navigation.reservations'), url_for(action: 'index', controller: 'reservations'), :highlights_on => Regexp.new('/reservations') do |sub_nav|
+      sub_nav.item :reservations_list, t('navigation.list'), url_for(action: 'index', controller: 'reservations')
+      sub_nav.item :reservations_new, t('navigation.new'), url_for(action: 'new', controller: 'reservations')
+      
+      sub_nav.dom_class = 'nav_depth02'
+    end
+    
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

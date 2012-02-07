@@ -25,7 +25,7 @@ class LecturersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render status: :bad_request, content_type: "text/plain", text: "400 Bad request" }
+      format.xml { render xml: @lecturer }
     end
   end
 
@@ -41,10 +41,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.save
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully created.' }
-        format.xml { head :created, :location => term_path(@lecturer) }
+        format.xml { head :created, location: lecturer_path(@lecturer) }
       else
         format.html { render action: "new" }
-        format.xml { render status: :not_acceptable, xml: @lecturer.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @lecturer.errors.full_messages }
       end
     end
   end
@@ -56,10 +56,10 @@ class LecturersController < ApplicationController
     respond_to do |format|
       if @lecturer.update_attributes(params[:lecturer])
         format.html { redirect_to @lecturer, notice: 'Lecturer was successfully updated.' }
-        format.xml { head :created, :location => term_path(@lecturer) }
+        format.xml { head :created, location: lecturer_path(@lecturer) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :not_acceptable, xml: @lecturer.errors.full_messages }
+        format.xml { render status: :unprocessable_entity, xml: @lecturer.errors.full_messages }
       end
     end
   end
@@ -70,8 +70,14 @@ class LecturersController < ApplicationController
     @lecturer.destroy
 
     respond_to do |format|
-      format.html { redirect_to lecturers_url }
-      format.xml { head :ok }
+      if @lecturer.destroy
+        format.html { redirect_to lecturers_url }
+        format.any(:xml, :js) { head :ok }
+      else
+        format.html { redirect_to lecturers_url }
+        format.xml { render status: :conflict }
+        format.js { render status: :conflict, text: "There are courses referencing this lecturer." }
+      end
     end
   end
 end

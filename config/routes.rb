@@ -1,6 +1,4 @@
 Edubay::Application.routes.draw do
-  resources :reservations
-
   resources :documents do
     member do
       get 'download'
@@ -14,13 +12,14 @@ Edubay::Application.routes.draw do
   end
   
   resources :lecturers
-  resources :devices
-  resources :dev_types
   resources :doc_types
   resources :terms
   
   get "home/index"
+  get "home/intro"
   
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", as: :signout
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -26,5 +26,12 @@ gem 'capistrano'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+# For menu on the left
 gem "simple-navigation"
+
+# Allows foreign keys in database
 gem "foreigner"
+
+# Authentication via Shibboleth
+gem "omniauth"
+gem "omniauth-shibboleth"

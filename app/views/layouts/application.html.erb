@@ -22,13 +22,28 @@
 			
 			<div id="portal-personaltools">
 				<!-- user_actions (category: user)-->
-				Sie sind nicht angemeldet.
+				<!--Sie sind nicht angemeldet.
 				
 				<a href="">
-					<%= image_tag "login.gif", height: 16, border: 0 %>
+					<%# image_tag "login.gif", height: 16, border: 0 %>
 					Login
 				</a>
-				
+      -->
+      
+        <% if current_user %>
+          <%= current_user.name %>
+          <%= link_to signout_path do %>
+            <%= image_tag "login.gif", height: 16, border: 0 %>
+            Abmelden
+          <% end %>
+        <% else %>
+          Sie sind nicht angemeldet.
+          <%= link_to "/auth/shibboleth" do %>
+            <%= image_tag "login.gif", height: 16, border: 0 %>
+            Login
+          <% end %>
+        <% end %>
+      
 				<!-- user_links (category: user_links) -->
 				<!-- new style dropdown for subgrouped actions-->
 				&nbsp;&nbsp;&nbsp;|

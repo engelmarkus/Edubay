@@ -24,7 +24,7 @@ set :scm_verbose, true
 
 role :web, production_server
 role :app, production_server
-role :wdb, production_server, primary: true
+role :db, production_server, primary: true
 
 namespace :deploy do
   task :start do ; end

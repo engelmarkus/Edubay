@@ -52,7 +52,7 @@ Wir freuen uns auf deine Mithilfe!
     <tr>
       <td><%= l(doc.course_date) %></td>
       <td><%= link_to doc.course.name + " (" + doc.course.abbreviation + ")", doc.course %></td>
-      <td><%= link_to doc.doc_type.name + ": " + doc.description, doc %></td>
+      <td><%= link_to doc.doc_type + ": " + doc.description, doc %></td>
     </tr>
   <% end %>
 </table>

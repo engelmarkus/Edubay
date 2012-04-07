@@ -48,7 +48,7 @@
       <td>
         <ul>
           <% for doc in docs %>
-            <li><%= link_to doc.doc_type.name + ": " + doc.description, doc %></li>
+            <li><%= link_to doc.doc_type + ": " + doc.description, doc %></li>
           <% end %>
         </ul>
       </td>

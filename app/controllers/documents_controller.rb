@@ -42,7 +42,7 @@ class DocumentsController < ApplicationController
     # extract file extension for storing
     file = params[:fileToUpload]
     params[:document][:file_extension] = File.extname(params[:fileToUpload].original_filename)
-    params[:document][:uploader_id] = @current_user.uid
+    params[:document][:uploader_id] = "huhu" #current_user.uid
     
     @document = Document.new(params[:document])
 
@@ -97,7 +97,7 @@ class DocumentsController < ApplicationController
   def download
     @document = Document.find(params[:id])
     #send_file 'uploaded_files/test.txt', :type => 'text/txt'
-    path = File.join(@document.lecture.get_folder(), Utils.sanitize_filename(@document.lecture_date.to_s), Utils.sanitize_filename(@document.doc_type.name + '_' + @document.id.to_s + @document.file_extension))
+    path = File.join(@document.course.get_folder(), Utils.sanitize_filename(@document.course_date.to_s), Utils.sanitize_filename(@document.doc_type + '_' + @document.id.to_s + @document.file_extension))
     
     #path = File.join(@document.lecture.get_folder(), Utils.sanitize_filename(@document.lecture_date.to_s), Utils.sanitize_filename(@document.doc_type.name + '_' + @document.id.to_s + ".pdf"))
     send_file path

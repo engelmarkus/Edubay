@@ -7,7 +7,7 @@ class CreateDocuments < ActiveRecord::Migration
       t.string :doc_type, null: false
       t.references :course, null: false
       t.integer :lock_version
-      t.string :uploader_id, null: false
+      t.string :uploader_id
 
       t.timestamps
     end

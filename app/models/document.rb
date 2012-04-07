@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
   include Enumerize
   
-  enumerize :doc_type, in: [:pencast, :slides]
+  enumerize :doc_type, in: [:Pencast, :Slides]
   
   belongs_to :course
   #belongs_to :uploader
@@ -13,7 +13,7 @@ class Document < ActiveRecord::Base
   attr_reader :filename
   # The name of the file belonging to this document.
   def filename
-    File.join(get_folder(), Utils.sanitize_filename(doc_type.name + '_' + id.to_s + file_extension))
+    File.join(get_folder(), Utils.sanitize_filename(doc_type + '_' + id.to_s + file_extension))
   end  
   
   # Retrieves the folder containing this document's associated file.

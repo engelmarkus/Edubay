@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
     t.string   "doc_type",       :null => false
     t.integer  "course_id",      :null => false
     t.integer  "lock_version"
+    t.string   "uploader_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
-  before_filter :redirect_if_not_admin, except: ['index', 'show', 'download']
-  before_filter :redirect_if_not_logged_in, only: ['download']
+  before_filter :redirect_if_not_admin, except: ['index', 'show', 'new', 'download']
+  before_filter :redirect_if_not_logged_in, only: ['new', 'download']
   
   # GET /documents
   def index

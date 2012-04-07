@@ -26,35 +26,11 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
   add_index "courses", ["lecturer_id"], :name => "index_courses_on_lecturer_id"
   add_index "courses", ["term_id"], :name => "index_courses_on_term_id"
 
-  create_table "dev_types", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "devices", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "dev_type_id",  :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "devices", ["dev_type_id"], :name => "index_devices_on_dev_type_id"
-
-  create_table "doc_types", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "documents", :force => true do |t|
     t.string   "description",    :null => false
     t.date     "course_date",    :null => false
     t.string   "file_extension"
-    t.integer  "doc_type_id",    :null => false
+    t.string   "doc_type",       :null => false
     t.integer  "course_id",      :null => false
     t.integer  "lock_version"
     t.datetime "created_at",     :null => false
@@ -62,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
   end
 
   add_index "documents", ["course_id"], :name => "index_documents_on_course_id"
-  add_index "documents", ["doc_type_id"], :name => "index_documents_on_doc_type_id"
 
   create_table "lecturers", :force => true do |t|
     t.string   "name",         :null => false
@@ -70,17 +45,6 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
-
-  create_table "reservations", :force => true do |t|
-    t.datetime "time_from",    :null => false
-    t.datetime "time_to",      :null => false
-    t.integer  "device_id",    :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "reservations", ["device_id"], :name => "index_reservations_on_device_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -105,15 +69,5 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_foreign_key "courses", "lecturers", :name => "courses_lecturer_id_fk"
-  add_foreign_key "courses", "terms", :name => "courses_term_id_fk"
-
-  add_foreign_key "devices", "dev_types", :name => "devices_dev_type_id_fk"
-
-  add_foreign_key "documents", "courses", :name => "documents_course_id_fk"
-  add_foreign_key "documents", "doc_types", :name => "documents_doc_type_id_fk"
-
-  add_foreign_key "reservations", "devices", :name => "reservations_device_id_fk"
 
 end

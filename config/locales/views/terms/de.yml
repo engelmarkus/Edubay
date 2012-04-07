@@ -2,6 +2,10 @@ de:
   terms:
     index:
       page_title: "Liste der Semester"
+      page_intro: "Hier findest du eine Liste der Semester, für die bereits Materialien hochgeladen wurden.
+                    Nachdem du auf einen Eintrag geklickt hast, kannst du die Lehrveranstaltung auswählen,
+                    für die du die Dateien anzeigen lassen möchtest."
+
       edit: "Bearbeiten"
       destroy: "Löschen"
       destroy_confirm: "Sind Sie sicher?"
@@ -16,6 +20,7 @@ de:
     
     show:
       page_title: "Details zum Semester"
+      available_courses: "Verfügbare Lehrveranstaltungen"
 
   activerecord:
     models:

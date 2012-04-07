@@ -1,6 +1,6 @@
+<h1><%= t '.page_title' %></h1>
 <p id="notice"><%= notice %></p>
 
-<h1><%= t '.page_title' %></h1>
 <ul>
   <li>
     <b><%= Lecturer.human_attribute_name(:name) %>:</b>
@@ -27,5 +27,6 @@
 
 <br/>
 
-<%= link_to t('.edit'), edit_lecturer_path(@lecturer) %><!-- |-->
-<%# link_to 'Back', lecturers_path %>
+<% if admin? %>
+  <%= link_to t('.edit'), edit_lecturer_path(@lecturer) %>
+<% end %>

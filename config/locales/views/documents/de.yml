@@ -22,7 +22,7 @@ de:
     attributes:
       document:
         description: "Beschreibung"
-        lecture_date: "Vorlesungsdatum"
+        course_date: "Veranstaltungsdatum"
         doc_type_id: "Kategorie"
         lecture_id: "Vorlesung"
         uploader: "Uploader"

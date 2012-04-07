@@ -9,7 +9,10 @@
     <th><%= Document.human_attribute_name(:uploader_id) %></th>
     <!--<th></th>-->
     <!--<th>Edit</th>-->
-    <th><%= t '.destroy' %></th>
+    
+    <% if admin? %>
+      <th><%= t '.destroy' %></th>
+    <% end %>
   </tr>
 
 <% @documents.each do |document| %>
@@ -21,11 +24,16 @@
     <td><%= document.uploader_id %></td>
     <!--<td><%# link_to 'Show', document %></td>-->
     <!--<td><%#link_to image_tag("edit.gif", :title => 'Edit'), edit_document_path(document) %></td>-->
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), document, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    
+    <% if admin? %>
+      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), document, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to t('.create_new_document'), new_document_path %>
+<% if logged_in? %>
+  <%= link_to t('.create_new_document'), new_document_path %>
+<% end %>

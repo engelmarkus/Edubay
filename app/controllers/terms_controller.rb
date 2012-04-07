@@ -1,4 +1,6 @@
 class TermsController < ApplicationController
+  before_filter :redirect_if_not_admin, except: ['index', 'show']
+  
   # GET /terms
   def index
     @terms = Term.all
@@ -12,6 +14,10 @@ class TermsController < ApplicationController
   # GET /terms/1
   def show
     @term = Term.find(params[:id])
+    
+    @courses = @term.courses.find(:all)
+    #@documents_by_date = @documents.group_by { |doc| doc.course_date }
+    
 
     respond_to do |format|
       format.html # show.html.erb

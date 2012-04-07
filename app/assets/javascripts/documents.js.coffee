@@ -18,7 +18,7 @@ $(document).ready( ->
       "document[course_date]":
         required: true
         date: true
-      "document[doc_type_id]":
+      "document[doc_type]":
         required: true
       "document[course_id]":
         required: true

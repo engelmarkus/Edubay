@@ -1,23 +1,30 @@
 <h1><%= t '.page_title' %></h1>
+<p><%= t '.page_intro' %></p>
 
 <table class="listing">
   <tr>
     <th><%= Term.human_attribute_name(:name) %></th>
-    <!--<th></th>-->
-    <th><%= t '.edit' %></th>
-    <th><%= t '.destroy' %></th>
+    
+    <% if admin? %>
+      <th><%= t '.edit' %></th>
+      <th><%= t '.destroy' %></th>
+    <% end %>
   </tr>
 
 <% @terms.each do |term| %>
   <tr>
-    <td><%= term.name %></td>
-    <!--<td><%# link_to 'Show', term %></td>-->
-    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_term_path(term) %></td>
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), term, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    <td><%= link_to term.name, term %></td>
+    
+    <% if admin? %>
+      <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_term_path(term) %></td>
+      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), term, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to t('.create_new_term'), new_term_path %>
+<% if admin? %>
+  <%= link_to t('.create_new_term'), new_term_path %>
+<% end %>

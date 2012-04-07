@@ -12,8 +12,5 @@ class CreateCourses < ActiveRecord::Migration
     
     add_index :courses, :term_id
     add_index :courses, :lecturer_id
-    
-    add_foreign_key :courses, :terms, dependent: :destroy
-    add_foreign_key :courses, :lecturers, dependent: :destroy
   end
 end

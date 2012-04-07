@@ -13,8 +13,8 @@
   </li>
 
   <li>
-    <b><%= Document.human_attribute_name(:doc_type_id) %>:</b>
-    <%= @document.doc_type.name %>
+    <b><%= Document.human_attribute_name(:doc_type) %>:</b>
+    <%= @document.doc_type %>
   </li>
 
   <li>
@@ -22,14 +22,16 @@
     <%= @document.course.name %>
   </li>
 
-  <li>
-    <b><%= Document.human_attribute_name(:uploader_id) %>:</b>
-    <%= @document.uploader_id %>
-  </li>
+<!--  <li>
+    <b><%#= Document.human_attribute_name(:uploader_id) %>:</b>
+    <%#= @document.uploader_id %>
+  </li>-->
 </ul>
 
 <br/>
-<%= button_to "Download", download_document_path(@document), method: :get %>
+<% if logged_in? %>
+  <%= button_to "Download", download_document_path(@document), method: :get %>
+<% end %>
 <br/>
 
 <%# link_to 'Edit', edit_document_path(@document) %><!-- |-->

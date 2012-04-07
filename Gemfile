@@ -29,9 +29,8 @@ gem 'capistrano'
 # For menu on the left
 gem "simple-navigation"
 
-# Allows foreign keys in database
-gem "foreigner"
-
 # Authentication via Shibboleth
 gem "omniauth"
 gem "omniauth-shibboleth"
+
+gem "enumerize"

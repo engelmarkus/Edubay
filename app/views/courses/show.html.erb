@@ -2,9 +2,9 @@
   <%= auto_discovery_link_tag(:rss, {controller: "courses", id: @course.id, action: "feed"}) %>
 <% end %>
 
+<h1><%= t '.page_title' %></h1>
 <p id="notice"><%= notice %></p>
 
-<h1><%= t '.page_title' %></h1>
 <ul>
   <li>
     <b><%= Course.human_attribute_name(:name) %>:</b>
@@ -30,6 +30,12 @@
 <br/>
 
 <h2><%= t '.available_documents' %></h2>
+<% if logged_in? %>
+  <p><%= t '.rss_feed_info' %></br>
+    <%= link_to "RSS News Feed", feed_course_path(@course) %>
+  </p>
+<% end %>
+
 <table class="listing">
   <tr>
     <th><%= Document.human_attribute_name(:course_date) %></th>
@@ -51,8 +57,6 @@
 </table>
 
 <br/>
-
-<%= link_to "RSS News Feed", feed_course_path(@course) %>
 
 <%# link_to t('.edit'), edit_lecture_path(@lecture) %><!-- |-->
 <%# link_to 'Back', lectures_path %>

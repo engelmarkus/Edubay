@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  before_filter :redirect_if_not_admin, except: ['index', 'show', 'feed']
+  before_filter :redirect_if_not_logged_in, only: ['feed']
+
   # GET /courses
   def index
     @courses = Course.all

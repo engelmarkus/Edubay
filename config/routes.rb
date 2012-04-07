@@ -1,10 +1,12 @@
 Edubay::Application.routes.draw do
+  # Add download URL to single documents.
   resources :documents do
     member do
       get 'download'
     end
   end
   
+  # Add a news feed to each course.
   resources :courses do
     member do
       get 'feed', as: :feed, defaults: {format: 'rss'}
@@ -12,14 +14,18 @@ Edubay::Application.routes.draw do
   end
   
   resources :lecturers
-  resources :doc_types
   resources :terms
   
+  # Main page
   get "home/index"
+  
+  # Tutorial
   get "home/intro"
   
+  # Omniauth URLs
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", as: :signout
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

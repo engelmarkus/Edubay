@@ -1,5 +1,6 @@
 require "bundler/capistrano"
 
+# A system wide installation of RVM will be run on the server.
 set :rvm_ruby_string, "1.9.2"
 set :rvm_type, :system
 
@@ -8,6 +9,7 @@ require "rvm/capistrano"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
+# Deploy user
 set :user, "engel"
 set :use_sudo, true
 
@@ -26,6 +28,7 @@ role :web, production_server
 role :app, production_server
 role :db, production_server, primary: true
 
+# Make Passenger restart after deployment.
 namespace :deploy do
   task :start do ; end
   task :stop do ; end

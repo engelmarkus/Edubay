@@ -30,7 +30,7 @@
 				</a>
       -->
       
-        <% if current_user %>
+        <% if logged_in? %>
           <%= current_user.name %>
           <%= link_to signout_path do %>
             <%= image_tag "login.gif", height: 16, border: 0 %>

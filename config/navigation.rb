@@ -60,35 +60,49 @@ SimpleNavigation::Configuration.run do |navigation|
     
     primary.item :terms, t('navigation.terms'), url_for(action: 'index', controller: 'terms'), :highlights_on => Regexp.new('/terms') do |sub_nav|
       sub_nav.item :terms_list, t('navigation.list'), url_for(action: 'index', controller: 'terms')
-      sub_nav.item :terms_new, t('navigation.new'), url_for(action: 'new', controller: 'terms')
+      
+      if admin? then
+        sub_nav.item :terms_new, t('navigation.new'), url_for(action: 'new', controller: 'terms')
+      end
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
     primary.item :lecturers, t('navigation.lecturers'), url_for(action: 'index', controller: 'lecturers'), :highlights_on => Regexp.new('/lecturers') do |sub_nav|
       sub_nav.item :lecturers_list, t('navigation.list'), url_for(action: 'index', controller: 'lecturers')
-      sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lecturers')
+      
+      if admin? then
+        sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lecturers')
+      end
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
     primary.item :courses, t('navigation.courses'), url_for(action: 'index', controller: 'courses'), :highlights_on => Regexp.new('/courses') do |sub_nav|
       sub_nav.item :courses_list, t('navigation.list'), url_for(action: 'index', controller: 'courses')
-      sub_nav.item :courses_new, t('navigation.new'), url_for(action: 'new', controller: 'courses')
+      
+      if admin? then
+        sub_nav.item :courses_new, t('navigation.new'), url_for(action: 'new', controller: 'courses')
+      end
       
       sub_nav.dom_class = 'nav_depth02'
     end
-    
-    primary.item :doc_types, t('navigation.doc_types'), url_for(action: 'index', controller: 'doc_types'), :highlights_on => Regexp.new('/doc_types') do |sub_nav|
-      sub_nav.item :doc_types_list, t('navigation.list'), url_for(action: 'index', controller: 'doc_types')
-      sub_nav.item :doc_types_new, t('navigation.new'), url_for(action: 'new', controller: 'doc_types')
-      
-      sub_nav.dom_class = 'nav_depth02'
+
+    if admin? then
+      primary.item :doc_types, t('navigation.doc_types'), url_for(action: 'index', controller: 'doc_types'), :highlights_on => Regexp.new('/doc_types') do |sub_nav|
+        sub_nav.item :doc_types_list, t('navigation.list'), url_for(action: 'index', controller: 'doc_types')
+        sub_nav.item :doc_types_new, t('navigation.new'), url_for(action: 'new', controller: 'doc_types')
+        
+        sub_nav.dom_class = 'nav_depth02'
+      end
     end
     
     primary.item :documents, t('navigation.documents'), url_for(action: 'index', controller: 'documents'), :highlights_on => Regexp.new('/documents') do |sub_nav|
       sub_nav.item :documents_list, t('navigation.list'), url_for(action: 'index', controller: 'documents')
-      sub_nav.item :documents_new, t('navigation.new'), url_for(action: 'new', controller: 'documents')
+      
+      if logged_in? then
+        sub_nav.item :documents_new, t('navigation.new'), url_for(action: 'new', controller: 'documents')
+      end
       
       sub_nav.dom_class = 'nav_depth02'
     end

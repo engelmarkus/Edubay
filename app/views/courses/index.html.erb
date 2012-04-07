@@ -6,8 +6,11 @@
     <th><%= Course.human_attribute_name(:abbreviation) %></th>
     <th><%= Course.human_attribute_name(:term_id) %></th>
     <th><%= Course.human_attribute_name(:lecturer_id) %></th>
-    <th><%= t '.edit' %></th>
-    <th><%= t '.destroy' %></th>
+    
+    <% if admin? %>
+      <th><%= t '.edit' %></th>
+      <th><%= t '.destroy' %></th>
+    <% end %>
   </tr>
 
 <% @courses.each do |course| %>
@@ -16,12 +19,17 @@
     <td><%= course.abbreviation %></td>
     <td><%= course.term.name %></td>
     <td><%= course.lecturer.name %></td>
-    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_course_path(course) %></td>
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), course, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+
+    <% if admin? %>
+      <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_course_path(course) %></td>
+      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), course, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to t('.create_new_course'), new_course_path %>
+<% if admin? %>
+  <%= link_to t('.create_new_course'), new_course_path %>
+<% end %>

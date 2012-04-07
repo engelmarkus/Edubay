@@ -1,21 +1,30 @@
 <h1><%= t '.page_title' %></h1>
+<p><%= t '.page_intro' %></p>
 
 <table class="listing">
   <tr>
     <th><%= Lecturer.human_attribute_name(:name) %></th>
-    <th><%= t '.edit' %></th>
-    <th><%= t '.destroy' %></th>
+    
+    <% if admin? %>
+      <th><%= t '.edit' %></th>
+      <th><%= t '.destroy' %></th>
+    <% end %>
   </tr>
 
 <% @lecturers.each do |lecturer| %>
   <tr>
     <td><%= link_to lecturer.name, lecturer %></td>
-    <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_lecturer_path(lecturer) %></td>
-    <td><%= link_to image_tag("delete.gif", title: t('.destroy')), lecturer, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    
+    <% if admin? %>
+      <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_lecturer_path(lecturer) %></td>
+      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), lecturer, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br/>
 
-<%= link_to t('.create_new_lecturer'), new_lecturer_path %>
+<% if admin? %>
+  <%= link_to t('.create_new_lecturer'), new_lecturer_path %>
+<% end %>

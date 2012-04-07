@@ -1,4 +1,7 @@
 class DocumentsController < ApplicationController
+  before_filter :redirect_if_not_admin, except: ['index', 'show', 'download']
+  before_filter :redirect_if_not_logged_in, only: ['download']
+  
   # GET /documents
   def index
     @documents = Document.all
@@ -39,7 +42,8 @@ class DocumentsController < ApplicationController
     # extract file extension for storing
     file = params[:fileToUpload]
     params[:document][:file_extension] = File.extname(params[:fileToUpload].original_filename)
-
+    params[:document][:uploader_id] = @current_user.uid
+    
     @document = Document.new(params[:document])
 
     respond_to do |format|

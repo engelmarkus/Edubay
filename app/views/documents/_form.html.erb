@@ -30,8 +30,8 @@
     <%= f.text_field :course_date %>
   </div>
   <div class="field">
-    <%= f.label :doc_type_id %><br />
-    <%= f.collection_select :doc_type_id, DocType.all, :id, :name, :prompt => true %>
+    <%= f.label :doc_type %><br />
+    <%= f.select :doc_type, Document.doc_type.options, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :course_id %><br />

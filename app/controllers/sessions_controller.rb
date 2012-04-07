@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
-    
     user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
 
-    session[:user_id] = user.id
     reset_session
+    session[:user_id] = user.id
     
     redirect_to request.env["omniauth.origin"] || root_url, notice: "Signed in!"
   end

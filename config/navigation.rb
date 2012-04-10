@@ -50,13 +50,18 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     #primary.item :key_1, 'name', url, options
-    primary.item :home, 'Home', url_for(action: 'index', controller: 'home')
     
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|
       # Add an item to the sub navigation (same params again)
       #sub_nav.item :key_2_1, 'name', url, options
     #end
+
+    primary.item :home, 'Home', url_for(action: 'index', controller: 'home'), hightlights_on: Regexp.new('/home') do |sub_nav|
+      sub_nav.item :home_intro, t('home.intro'), url_for(action: 'intro', controller: 'home')
+      
+      sub_nav.dom_class = "nav_depth02"
+    end
     
     primary.item :terms, t('navigation.terms'), url_for(action: 'index', controller: 'terms'), :highlights_on => Regexp.new('/terms') do |sub_nav|
       sub_nav.item :terms_list, t('navigation.list'), url_for(action: 'index', controller: 'terms')
@@ -86,15 +91,6 @@ SimpleNavigation::Configuration.run do |navigation|
       end
       
       sub_nav.dom_class = 'nav_depth02'
-    end
-
-    if admin? then
-      primary.item :doc_types, t('navigation.doc_types'), url_for(action: 'index', controller: 'doc_types'), :highlights_on => Regexp.new('/doc_types') do |sub_nav|
-        sub_nav.item :doc_types_list, t('navigation.list'), url_for(action: 'index', controller: 'doc_types')
-        sub_nav.item :doc_types_new, t('navigation.new'), url_for(action: 'new', controller: 'doc_types')
-        
-        sub_nav.dom_class = 'nav_depth02'
-      end
     end
     
     primary.item :documents, t('navigation.documents'), url_for(action: 'index', controller: 'documents'), :highlights_on => Regexp.new('/documents') do |sub_nav|

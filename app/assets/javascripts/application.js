@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery-tablesorter
 //= require_tree .
 
 // Liest alle/eine der in der URL übergebenen Variablen aus und packt sie in ein(e) Array/Variable.

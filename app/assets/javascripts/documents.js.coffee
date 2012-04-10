@@ -2,13 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# Fügt einen DatePicker zum entsprechenden Textfeld hinzu.
 $(document).ready( ->
+  # Fügt einen DatePicker zum entsprechenden Textfeld hinzu.
   $('#document_course_date').datepicker();
-);
 
-# Validation rules for submit form
-$(document).ready( ->
+  # Make index table sortable
+  $('#documents_index').tablesorter(
+    sortList: [[0, 0], [2, 1]],
+    headers:
+      5:
+        sorter: false
+  );
+
+  # Validation rules for submit form
   $("#new_document").validate(
     rules:
       "fileToUpload":

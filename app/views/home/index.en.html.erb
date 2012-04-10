@@ -1,0 +1,59 @@
+<h1>Edubay - Austauschplattform für Vorlesungsunterlagen</h1>
+
+<h2>Einführung</h2>
+<p>
+Auf dieser Seite entsteht eine Austauschplattform für Unterlagen zu
+Informatikvorlesungen der Technischen Universität München.</br>
+Im Gegensatz zu den bisher vorhandenen Lösungen gibt es hier auch die
+<b>Möglichkeit für Studenten, selbst Dateien hochzuladen.</b>
+</p>
+
+<p>
+Derzeit liegt der Fokus hauptsächlich auf Vorlesungsmitschriften, die
+mit Hilfe von <b>"Smart Pens"</b> angefertigt wurden. Diese wurden im
+Rahmen einer Studienbeitragsmaßnahme angeschafft und stehen den
+Studenten an der Fakultät für Informatik
+<b>ab dem Sommersemester 2012 zum kostenfreien und einfachen Ausleihen</b>
+zur Verfügung.
+</p>
+
+<h2>Haben wir dein Interesse geweckt?</h2>
+<p>
+Wenn du das Mitschreiben mit einem solchen Smart Pen selbst einmal probieren
+möchtest, dann findest du hier eine detaillierte
+<%= link_to "Anleitung mit Informationen", controller: "home", action: "intro" %>,
+wo du dir schnell und unkompliziert einen Smart Pen ausleihen kannst, wie
+du die Mitschrift nach der Vorlesung auf deinen PC überspielst und wie du diese
+dann anderen Studenten zur Verfügung stellst.
+</p>
+<p>
+Natürlich kannst du auch deinen eigenen Stift verwenden, wenn du einen solchen
+besitzt. Bitte schreibe uns dann eine <b>kurze E-Mail</b>, dass du auch Unterlagen
+hochladen möchstest!
+</p>
+<b>
+Wir freuen uns auf deine Mithilfe!
+</b>
+
+<!--
+</br>
+</br>
+</br>
+
+<h2><%= t '.recently_uploaded_files' %></h2>
+<table class="listing">
+  <tr>
+    <th><%= Document.human_attribute_name(:course_date) %></th>
+    <th><%= Document.human_attribute_name(:course_id) %></th>
+    <th><%= Document.human_attribute_name(:description) %></th>
+  </tr>
+  
+  <% @recently_uploaded_files.each do |doc| %>
+    <tr>
+      <td><%= l(doc.course_date) %></td>
+      <td><%= link_to doc.course.name + " (" + doc.course.abbreviation + ")", doc.course %></td>
+      <td><%= link_to doc.doc_type + ": " + doc.description, doc %></td>
+    </tr>
+  <% end %>
+</table>
+-->

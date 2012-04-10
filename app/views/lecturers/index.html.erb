@@ -1,26 +1,30 @@
 <h1><%= t '.page_title' %></h1>
 <p><%= t '.page_intro' %></p>
 
-<table class="listing">
-  <tr>
-    <th><%= Lecturer.human_attribute_name(:name) %></th>
-    
-    <% if admin? %>
+<table id="lecturers_index" class="listing tablesorter">
+  <thead>
+    <tr>
+      <th><%= Lecturer.human_attribute_name(:name) %></th>
+
+      <% if admin? %>
       <th><%= t '.edit' %></th>
       <th><%= t '.destroy' %></th>
-    <% end %>
-  </tr>
-
-<% @lecturers.each do |lecturer| %>
-  <tr>
-    <td><%= link_to lecturer.name, lecturer %></td>
+      <% end %>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @lecturers.each do |lecturer| %>
+    <tr>
+      <td><%= link_to lecturer.name, lecturer %></td>
     
-    <% if admin? %>
+      <% if admin? %>
       <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_lecturer_path(lecturer) %></td>
       <td><%= link_to image_tag("delete.gif", title: t('.destroy')), lecturer, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
+      <% end %>
+    </tr>
     <% end %>
-  </tr>
-<% end %>
+  </tbody>
 </table>
 
 <br/>

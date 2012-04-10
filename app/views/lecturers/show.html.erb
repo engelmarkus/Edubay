@@ -11,18 +11,24 @@
 <br/>
 
 <h2><%= t '.courses' %></h2>
-<table class="listing">
-  <tr>
-    <th><%= Course.human_attribute_name(:name) %></th>
-    <th><%= Course.human_attribute_name(:term_id) %></th>
-  </tr>
-  
-  <% @lecturer.courses.each do |course| %>
+<table id="lecturer_courses" class="listing tablesorter">
+  <thead>
     <tr>
-      <td><%= link_to course.name, course %></td>
-      <td><%= course.term.name %></td>
+      <th><%= Course.human_attribute_name(:term_id) %></th>
+      <th><%= Course.human_attribute_name(:name) %></th>
+      <th><%= Course.human_attribute_name(:abbreviation) %></th>
     </tr>
-  <% end %>
+  </thead>
+  
+  <tbody>
+    <% @lecturer.courses.each do |course| %>
+    <tr>
+      <td><%= course.term.name %></td>
+      <td><%= link_to course.name, course %></td>
+      <td><%= course.abbreviation %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br/>

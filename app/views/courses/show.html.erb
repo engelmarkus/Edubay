@@ -36,12 +36,15 @@
   </p>
 <% end %>
 
-<table class="listing">
-  <tr>
-    <th><%= Document.human_attribute_name(:course_date) %></th>
-    <th><%= t '.documents' %></th>
-  </tr>
+<table id="course_documents" class="listing tablesorter">
+  <thead>
+    <tr>
+      <th><%= Document.human_attribute_name(:course_date) %></th>
+      <th><%= t '.documents' %></th>
+    </tr>
+  </thead>
   
+  <tbody>
   <% @documents_by_date.sort.each do |date, docs| %>
     <tr>
       <td><%= l(date) %></td>
@@ -54,6 +57,7 @@
       </td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 <br/>

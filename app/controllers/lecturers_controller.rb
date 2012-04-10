@@ -1,6 +1,6 @@
 class LecturersController < ApplicationController
   before_filter :redirect_if_not_admin, except: ['index', 'show']
-    
+  
   # GET /lecturers
   def index
     @lecturers = Lecturer.all
@@ -83,3 +83,22 @@ class LecturersController < ApplicationController
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

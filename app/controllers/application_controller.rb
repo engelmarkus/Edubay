@@ -12,11 +12,13 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :logged_in?, :current_user, :admin?
-  
+    
   protected
 
   # Returns the currently logged in user or nil
   def current_user
+    @current_user = User.new
+    return @current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
@@ -27,7 +29,7 @@ class ApplicationController < ActionController::Base
   
   # Returns true if the currently logged in user is an admin.
   def admin?
-    return false
+    return true
   end
   
   def redirect_if_not_logged_in

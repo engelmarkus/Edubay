@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # Setzt die Locale.
   before_filter :set_locale
+  helper_method :logged_in?, :current_user, :admin?
+  
+  # Setzt die Locale.
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -11,14 +13,12 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
   
-  helper_method :logged_in?, :current_user, :admin?
-    
   protected
 
   # Returns the currently logged in user or nil
   def current_user
-    @current_user = User.new
-    return @current_user
+    #@current_user = User.new
+    #return @current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
@@ -29,9 +29,11 @@ class ApplicationController < ActionController::Base
   
   # Returns true if the currently logged in user is an admin.
   def admin?
-    return true
+    return false
   end
   
+  # Forces a redirect if the user is not logged in, but tries to access
+  # a URL he is not allowed to.
   def redirect_if_not_logged_in
     if logged_in? then
       return true
@@ -40,6 +42,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # Forces a redirect if the user is not logged in / no admin, but tries
+  # to access a URL he is not allowed to.  
   def redirect_if_not_admin
     if admin? then
       return true

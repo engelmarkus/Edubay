@@ -1,34 +1,10 @@
-<h1><%= t '.page_title' %></h1>
-<p><%= t '.page_intro' %></p>
+<% content_for :table_head do %>
+  <th><%= Term.human_attribute_name(:name) %></th>
+<% end %>
 
-<table id="terms_index" class="listing tablesorter">
-  <thead>
-    <tr>
-      <th><%= Term.human_attribute_name(:name) %></th>
-    
-      <% if admin? %>
-      <th><%= t '.edit' %></th>
-      <th><%= t '.destroy' %></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @terms.each do |term| %>
-    <tr>
-      <td><%= link_to term.name, term %></td>
-    
-      <% if admin? %>
-      <td><%= link_to image_tag("edit.gif", title: t('.edit')), edit_term_path(term) %></td>
-      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), term, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
-      <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br />
-
-<% if admin? %>
-  <%= link_to t('.create_new_term'), new_term_path %>
+<%= render layout: 'shared/index', locals: {
+    cls: Term, items: @terms, is_creatable: admin?, is_editable: admin?, is_destroyable: admin?
+  } do |term| %>
+  
+  <td><%= link_to term.name, term %></td>
 <% end %>

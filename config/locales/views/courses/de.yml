@@ -5,7 +5,7 @@ de:
       edit: "Bearbeiten"
       destroy: "Löschen"
       destroy_confirm: "Sind Sie sicher?"
-      create_new_course: "Neue Lehrveranstaltung erstellen"
+      create_new: "Neue Lehrveranstaltung erstellen"
     
     edit:
       page_title: "Lehrveranstaltung bearbeiten"

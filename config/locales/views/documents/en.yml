@@ -4,7 +4,7 @@ en:
       page_title: "Document listing"
       destroy: "Delete"
       destroy_confirm: "Are you sure?"
-      create_new_document: "Create new document"
+      create_new: "Create new document"
     
     edit:
       page_title: "Editing document"
@@ -23,7 +23,7 @@ en:
       document:
         description: "Description"
         lecture_date: "Lecture date"
-        doc_type_id: "Category"
+        doc_type: "Category"
         lecture_id: "Lecture"
         uploader: "Uploader"
         

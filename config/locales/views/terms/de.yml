@@ -9,7 +9,7 @@ de:
       edit: "Bearbeiten"
       destroy: "Löschen"
       destroy_confirm: "Sind Sie sicher?"
-      create_new_term: "Neues Semester erstellen"
+      create_new: "Neues Semester erstellen"
     
     edit:
       page_title: "Semester bearbeiten"

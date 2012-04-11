@@ -5,7 +5,7 @@ en:
       edit: "Edit"
       destroy: "Delete"
       destroy_confirm: "Are you sure?"
-      create_new_term: "Create new term"
+      create_new: "Create new term"
     
     edit:
       page_title: "Editing term"

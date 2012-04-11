@@ -5,7 +5,7 @@ en:
       edit: "Edit"
       destroy: "Delete"
       destroy_confirm: "Are you sure?"
-      create_new_course: "Crete new course"
+      create_new: "Crete new course"
     
     edit:
       page_title: "Editing course"

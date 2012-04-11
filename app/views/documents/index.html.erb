@@ -1,41 +1,18 @@
-<h1><%= t '.page_title' %></h1>
-
-<table id="documents_index" class="listing tablesorter">
-  <thead>
-    <tr>
-      <th><%= Document.human_attribute_name(:course_id) %></th>
-      <th><%= Document.human_attribute_name(:doc_type_id) %></th>
-      <th><%= Document.human_attribute_name(:course_date) %></th>
-      <th><%= Document.human_attribute_name(:description) %></th>
-      <th><%= Document.human_attribute_name(:uploader_id) %></th>
-      <!--<th></th>-->
-      <!--<th>Edit</th>-->
-    
-    <% if admin? %>
-      <th><%= t '.destroy' %></th>
-    <% end %>
-    </tr>
-  </thead>
-  
-<% @documents.each do |document| %>
-  <tr>
-    <td><%= document.course.name %></td>
-    <td><%= document.doc_type %></td>
-    <td><%= l(document.course_date) %></td>
-    <td><%= link_to document.description, document %></td>
-    <td><%= document.uploader_id %></td>
-    <!--<td><%# link_to 'Show', document %></td>-->
-    <!--<td><%#link_to image_tag("edit.gif", :title => 'Edit'), edit_document_path(document) %></td>-->
-    
-    <% if admin? %>
-      <td><%= link_to image_tag("delete.gif", title: t('.destroy')), document, confirm: t('.destroy_confirm'), method: :delete, remote: true, class: 'delete_button' %></td>
-    <% end %>
-  </tr>
+<% content_for :table_head do %>
+  <th><%= Document.human_attribute_name(:course_id) %></th>
+  <th><%= Document.human_attribute_name(:doc_type_id) %></th>
+  <th><%= Document.human_attribute_name(:course_date) %></th>
+  <th><%= Document.human_attribute_name(:description) %></th>
+  <th><%= Document.human_attribute_name(:uploader_id) %></th>
 <% end %>
-</table>
 
-<br />
-
-<% if logged_in? %>
-  <%= link_to t('.create_new_document'), new_document_path %>
+<%= render layout: 'shared/index', locals: {
+    cls: Document, items: @documents, is_creatable: logged_in?, is_editable: false, is_destroyable: admin?
+  } do |document| %>
+  
+  <td><%= document.course.name %></td>
+  <td><%= document.doc_type %></td>
+  <td><%= l(document.course_date) %></td>
+  <td><%= link_to document.description, document %></td>
+  <td><%= document.uploader_id %></td>
 <% end %>

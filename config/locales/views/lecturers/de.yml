@@ -6,7 +6,7 @@ de:
       edit: "Bearbeiten"
       destroy: "Löschen"
       destroy_confirm: "Sind Sie sicher?"
-      create_new_lecturer: "Neuen Vortragenden erstellen"
+      create_new: "Neuen Vortragenden erstellen"
     
     edit:
       page_title: "Vortragenden bearbeiten"

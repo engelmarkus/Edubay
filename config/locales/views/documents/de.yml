@@ -4,7 +4,7 @@ de:
       page_title: "Liste der Dokumente"
       destroy: "Löschen"
       destroy_confirm: "Sind Sie sicher?"
-      create_new_document: "Neues Dokument erstellen"
+      create_new: "Neues Dokument erstellen"
     
     edit:
       page_title: "Dokument bearbeiten"
@@ -23,7 +23,7 @@ de:
       document:
         description: "Beschreibung"
         course_date: "Veranstaltungsdatum"
-        doc_type_id: "Kategorie"
+        doc_type: "Kategorie"
         lecture_id: "Vorlesung"
         uploader: "Uploader"
         

@@ -5,7 +5,7 @@ en:
       edit: "Edit"
       destroy: "Delete"
       destroy_confirm: "Are you sure?"
-      create_new_lecturer: "Create new lecturer"
+      create_new: "Create new lecturer"
     
     edit:
       page_title: "Editing lecturer"

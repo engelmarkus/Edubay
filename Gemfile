@@ -6,6 +6,9 @@ gem 'rails-i18n'
 # Gems only used in development environment.
 group :development do
   gem 'sqlite3'
+  
+  # To use debugger
+  gem 'debugger'
 end
 
 # Gems only used in production environment.
@@ -44,6 +47,3 @@ gem 'simple-navigation'
 
 # CAMPUSonline web service access
 gem 'httparty'
-
-# To use debugger
-gem 'debugger'

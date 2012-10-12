@@ -40,20 +40,20 @@
 </br>
 </br>
 
-<h2><%= t '.recently_uploaded_files' %></h2>
+<h2><%#= t '.recently_uploaded_files' %></h2>
 <table class="listing">
   <tr>
-    <th><%= Document.human_attribute_name(:course_date) %></th>
-    <th><%= Document.human_attribute_name(:course_id) %></th>
-    <th><%= Document.human_attribute_name(:description) %></th>
+    <th><%#= Document.human_attribute_name(:course_date) %></th>
+    <th><%#= Document.human_attribute_name(:course_id) %></th>
+    <th><%#= Document.human_attribute_name(:description) %></th>
   </tr>
   
-  <% @recently_uploaded_files.each do |doc| %>
+  <%# @recently_uploaded_files.each do |doc| %>
     <tr>
-      <td><%= l(doc.course_date) %></td>
-      <td><%= link_to doc.course.name + " (" + doc.course.abbreviation + ")", doc.course %></td>
-      <td><%= link_to doc.doc_type + ": " + doc.description, doc %></td>
+      <td><%#= l(doc.course_date) %></td>
+      <td><%#= link_to doc.course.name + " (" + doc.course.abbreviation + ")", doc.course %></td>
+      <td><%#= link_to doc.doc_type + ": " + doc.description, doc %></td>
     </tr>
-  <% end %>
+  <%# end %>
 </table>
 -->

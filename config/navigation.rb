@@ -50,80 +50,21 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     #primary.item :key_1, 'name', url, options
-    
+
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|
       # Add an item to the sub navigation (same params again)
       #sub_nav.item :key_2_1, 'name', url, options
     #end
 
-    primary.item :home, 'Home', url_for(action: 'index', controller: 'home'), hightlights_on: Regexp.new('/home') do |sub_nav|
-      sub_nav.item :home_intro, t('home.intro'), url_for(action: 'intro', controller: 'home')
-      
-      sub_nav.dom_class = "nav_depth02"
-    end
-    
-    primary.item :terms, t('navigation.terms'), url_for(action: 'index', controller: 'terms'), :highlights_on => Regexp.new('/terms') do |sub_nav|
-      sub_nav.item :terms_list, t('navigation.list'), url_for(action: 'index', controller: 'terms')
-      
-      if admin? then
-        sub_nav.item :terms_new, t('navigation.new'), url_for(action: 'new', controller: 'terms')
-      end
+    primary.item :home, 'Home', home_index_path, hightlights_on: Regexp.new('/home') do |sub_nav|
+      sub_nav.item :home_intro, 'Intro', home_intro_path
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :lecturers, t('navigation.lecturers'), url_for(action: 'index', controller: 'lecturers'), :highlights_on => Regexp.new('/lecturers') do |sub_nav|
-      sub_nav.item :lecturers_list, t('navigation.list'), url_for(action: 'index', controller: 'lecturers')
-      
-      if admin? then
-        sub_nav.item :lecturers_new, t('navigation.new'), url_for(action: 'new', controller: 'lecturers')
-      end
-      
-      sub_nav.dom_class = 'nav_depth02'
-    end
-    
-    primary.item :courses, t('navigation.courses'), url_for(action: 'index', controller: 'courses'), :highlights_on => Regexp.new('/courses') do |sub_nav|
-      sub_nav.item :courses_list, t('navigation.list'), url_for(action: 'index', controller: 'courses')
-      
-      if admin? then
-        sub_nav.item :courses_new, t('navigation.new'), url_for(action: 'new', controller: 'courses')
-      end
-      
-      sub_nav.dom_class = 'nav_depth02'
-    end
-    
-    primary.item :documents, t('navigation.documents'), url_for(action: 'index', controller: 'documents'), :highlights_on => Regexp.new('/documents') do |sub_nav|
-      sub_nav.item :documents_list, t('navigation.list'), url_for(action: 'index', controller: 'documents')
-      
-      if logged_in? then
-        sub_nav.item :documents_new, t('navigation.new'), url_for(action: 'new', controller: 'documents')
-      end
-      
-      sub_nav.dom_class = 'nav_depth02'
-    end
+    primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), hightlights_on: Regexp.new('/courses')
 
-    #primary.item :dev_types, t('navigation.dev_types'), url_for(action: 'index', controller: 'dev_types'), :highlights_on => Regexp.new('/dev_types') do |sub_nav|
-    #  sub_nav.item :dev_types_list, t('navigation.list'), url_for(action: 'index', controller: 'dev_types')
-    #  sub_nav.item :dev_types_new, t('navigation.new'), url_for(action: 'new', controller: 'dev_types')
-    #  
-    #  sub_nav.dom_class = 'nav_depth02'
-    #end
-    
-    #primary.item :devices, t('navigation.devices'), url_for(action: 'index', controller: 'devices'), :highlights_on => Regexp.new('/devices') do |sub_nav|
-    #  sub_nav.item :devices_list, t('navigation.list'), url_for(action: 'index', controller: 'devices')
-    #  sub_nav.item :devices_new, t('navigation.new'), url_for(action: 'new', controller: 'devices')
-    #  
-    #  sub_nav.dom_class = 'nav_depth02'
-    #end
-
-    #primary.item :reservations, t('navigation.reservations'), url_for(action: 'index', controller: 'reservations'), :highlights_on => Regexp.new('/reservations') do |sub_nav|
-    #  sub_nav.item :reservations_list, t('navigation.list'), url_for(action: 'index', controller: 'reservations')
-    #  sub_nav.item :reservations_new, t('navigation.new'), url_for(action: 'new', controller: 'reservations')
-    #  
-    #  sub_nav.dom_class = 'nav_depth02'
-    #end
-    
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
@@ -138,6 +79,5 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false
-
   end
 end

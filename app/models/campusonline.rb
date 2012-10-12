@@ -16,24 +16,33 @@ class CAMPUSonline
   base_uri 'https://campus.tum.de/tumonlinej/ws/webservice_v1.0'
   ssl_version :SSLv3
  
-  @@token = "### your_secret_token_here ###"
-
   # Wird benutzt, um einen Fehler "400" beim Aufruf des Web-Services anzuzeigen.
   #
   # Wird normalerweise ausgelöst, wenn die übergebenen Parameter ungültig waren, bzw. ein benötigter Parameter gefehlt hat.
   class BadRequest < RuntimeError; end
-  
-  # Wird benutzt, um einen unbekannten Fehler (alle außer "400" bzw. "404") beim Aufruf des Web-Services anzuzeigen.
-  class UnknownError < RuntimeError; end
   
   # Wird benutzt, um einen Fehler "404" beim Aufruf des Web-Services anzuzeigen.
   #
   # Wird normalerweise ausgelöst, wenn kein Datensatz zu einer übergebenen ID gefunden wurde.
   class NotFound < RuntimeError; end
 
+  # Wird benutzt, um einen unbekannten Fehler (alle außer "400" bzw. "404") beim Aufruf des Web-Services anzuzeigen.
+  class UnknownError < RuntimeError; end
+  
   class << self
+    # Holt Daten vom Web Service.
+    #
+    # * *Parameter*:
+    #   - +url+ -> die Teiladresse der zu holenden Daten
+    #   - +params+ -> beim Abrufen von der Adresse zu übergebende Daten
+    # * *Rückgabewert*:
+    #   - Antwort des Servers
+    # * *Ausnahmen*:
+    #   - siehe BadRequest
+    #   - siehe NotFound
+    #   - siehe UnknownError
     def fetch(url, params = {})
-      params[:token] = @@token
+      params[:token] = Edubay::Application.config.campusonline_token
       response = get(url, query: params)
       
       raise BadRequest, response if response.code == 400
@@ -45,11 +54,11 @@ class CAMPUSonline
     
     # Ermittelt Informationen zu einer Veranstaltung.
     #
-    # * *Parameters*:
+    # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
-    # * *Returns*:
+    # * *Rückgabewert*:
     #   - Hash mit Informationen
-    # * *Raises*:
+    # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCourse(courseID)
       fetch('/cdm/course/xml', courseID: courseID)
@@ -57,11 +66,11 @@ class CAMPUSonline
     
     # Ermittelt eine Liste aller Veranstaltungen einer Organisation.
     #
-    # * *Parameters*:
+    # * *Parameter*:
     #   - +orgUnitID+ -> die ID der Organisation
-    # * *Returns*:
+    # * *Rückgabewert*:
     #   - Hash mit Informationen
-    # * *Raises*:
+    # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCoursesOfOrganisation(orgUnitID)
       fetch('/cdm/organization/courses/xml', orgUnitID: orgUnitID)
@@ -69,11 +78,11 @@ class CAMPUSonline
 
     # Ermittelt eine Liste aller Veranstaltungen, die von einer Person angeboten werden.
     #
-    # * *Parameters*:
+    # * *Parameter*:
     #   - +personID+ -> die ID der Person
-    # * *Returns*:
+    # * *Rückgabewert*:
     #   - Hash mit Informationen
-    # * *Raises*:
+    # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCoursesOfPerson(personID)
       fetch('/cdm/person/courses/xml', personID: personID)
@@ -81,11 +90,11 @@ class CAMPUSonline
     
     # Ermittelt eine Liste aller Abhaltungstermine einer Veranstaltung.
     #
-    # * *Parameters*:
+    # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
-    # * *Returns*:
+    # * *Rückgabewert*:
     #   - Hash mit Informationen
-    # * *Raises*:
+    # * *Ausnahmen*:
     #   - siehe ::fetch
     def getEventsOfCourse(courseID)
       fetch('/rdm/course/events/xml', courseID: courseID)
@@ -93,11 +102,11 @@ class CAMPUSonline
     
     # Ermittelt eine Liste aller zu einer Veranstaltung angemeldeten Studenten.
     #
-    # * *Parameters*:
+    # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
-    # * *Returns*:
+    # * *Rückgabewert*:
     #   - Hash mit Informationen
-    # * *Raises*:
+    # * *Ausnahmen*:
     #   - siehe ::fetch
     def getStudentsOfCourse(courseID)
       fetch('/cdm/course/students/xml', courseID: courseID)

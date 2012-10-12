@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Edubay::Application.config.secret_token = '29fde714755ee878124619e64f0e83a5917b78af2e5ed5ef8c84a235e08c53dfc15ae831bc87119b833d5d2be4f313252ff95a7b52987bd06770eece63b2f983'
+Edubay::Application.config.secret_token = '3416b37ddeac76d82849a542d04c05dfb12d993dd0a7663e04e3cc495c3c59c1ca206386e80d28373c3b281c9220c2b8941f9e1d114c43afc71832dda75e89d7'

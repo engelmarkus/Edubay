@@ -11,41 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406190635) do
+ActiveRecord::Schema.define(:version => 20121001175544) do
 
   create_table "courses", :force => true do |t|
-    t.string   "name",         :null => false
-    t.string   "abbreviation", :null => false
-    t.integer  "term_id",      :null => false
-    t.integer  "lecturer_id",  :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "courses", ["lecturer_id"], :name => "index_courses_on_lecturer_id"
-  add_index "courses", ["term_id"], :name => "index_courses_on_term_id"
-
-  create_table "documents", :force => true do |t|
-    t.string   "description",    :null => false
-    t.date     "course_date",    :null => false
-    t.string   "file_extension"
-    t.string   "doc_type",       :null => false
-    t.integer  "course_id",      :null => false
-    t.integer  "lock_version"
-    t.string   "uploader_id"
+    t.boolean  "visible_to_all"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "documents", ["course_id"], :name => "index_documents_on_course_id"
+  add_index "courses", ["id"], :name => "index_courses_on_id", :unique => true
 
-  create_table "lecturers", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "documents", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "description"
+    t.date     "date"
+    t.string   "user_id"
+    t.string   "extension"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "documents", ["course_id"], :name => "index_documents_on_course_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -56,13 +42,6 @@ ActiveRecord::Schema.define(:version => 20120406190635) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "terms", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "uid"

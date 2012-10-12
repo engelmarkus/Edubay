@@ -1,47 +1,20 @@
-<%= form_for(@document, remote: true, html: { multipart: true }) do |f| %>
-  <% if @document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
-
-      <ul>
-      <% @document.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div id="dialog" title="Uploading file..." style="display: none;">
-    <div id="progressbar"></div>
-    <div style="position: relative; width: 100%; text-align: center;"><span id="percentCompleted"></span></div>
-  </div>
-
-  <div class="field">
-    <%= file_field_tag "fileToUpload", required: true %>
-    <p><span id="fileSize"></span></p>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, required: true %>
-  </div>
-  <div class="field">
-    <%= f.label :course_date %><br />
-    <%# f.date_select :lecture_date %>
-    <%= f.text_field :course_date %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_type %><br />
-    <%= f.select :doc_type, Document.doc_type.options, prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :course_id %><br />
-    <%= f.collection_select :course_id, Course.all, :id, :name, :prompt => true %>
-  </div>
-  <div class="field">
-    <%#= f.label :uploader_id %><br />
-    <%#= f.text_field :uploader_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit id: "commit" %>
-  </div>
+<%= form_for([@course, @document], remote: true, html: { multipart: true }) do |f| %>
+<fieldset>
+	<div class="field">
+		<%= file_field_tag "file" %>
+	</div>
+	<div class="field">
+		<%= f.label :date %>
+		<br />
+		<%= select :document, :date, options_for_select(@course.dates.map { |date| [l(date, format: :long), date] }) %>
+	</div>
+	<div class="field">
+		<%= f.label :description %>
+		<br />
+		<%= f.text_field :description %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</fieldset>
 <% end %>

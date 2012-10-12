@@ -1,31 +1,33 @@
 Edubay::Application.routes.draw do
-  # Add download URL to single documents.
-  resources :documents do
-    member do
-      get 'download'
+
+  # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
+  resources :courses, only: [ :index, :show ] do
+    resources :documents do
+      member do
+        get 'download'
+      end
+    end
+  end
+
+  namespace :admin do
+    resources :courses do
+      resources :documents do
+        member do
+          get 'download'
+        end
+      end
     end
   end
   
-  # Add a news feed to each course.
-  resources :courses do
-    member do
-      get 'feed', as: :feed, defaults: {format: 'rss'}
-    end
-  end
-  
-  resources :lecturers
-  resources :terms
-  
-  # Main page
+  # Startseite, Tutorial, etc.
   get "home/index"
-  
-  # Tutorial
   get "home/intro"
-  
+  get "home/access_denied"
+
   # Omniauth URLs
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/signout" => "sessions#destroy", as: :signout
-  
+  match "/auth/:provider/callback" => "session#create"
+  match "/signout" => "session#destroy", as: :signout
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -75,9 +77,8 @@ Edubay::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
   root to: 'home#index'
-  
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

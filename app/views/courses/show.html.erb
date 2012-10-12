@@ -1,61 +1,27 @@
-<% content_for :head do %>
-  <%= auto_discovery_link_tag(:rss, {controller: "courses", id: @course.id, action: "feed"}) %>
-<% end %>
-
-<h1><%= t '.page_title' %></h1>
-<p id="notice"><%= notice %></p>
+<h1>Details zur Veranstaltung</h1>
 
 <ul>
-  <li>
-    <b><%= Course.human_attribute_name(:name) %>:</b>
-    <%= @course.name %>
-  </li>
-  
-  <li>
-    <b><%= Course.human_attribute_name(:abbreviation) %>:</b>
-    <%= @course.abbreviation %>
-  </li>
-  
-  <li>
-    <b><%= Course.human_attribute_name(:term_id) %>:</b>
-    <%= @course.term.name %>
-  </li>
-  
-  <li>
-    <b><%= Course.human_attribute_name(:lecturer_id) %>:</b>
-    <%= @course.lecturer.name %>
-  </li>
+	<li>
+		<b>Veranstaltungsname:</b>
+		<%= @course.name %>
+	</li>
+	
+	<li>
+		<b>Semester:</b>
+		<%= @course.teaching_term %>
+	</li>
+	
+	<li>
+		<b>Vortragende:</b>
+		<ul>
+			<% @course.lecturers.each do |le| %>
+			<li><%= le %></li>
+			<% end %>
+		</ul>
+	</li>
+		
+	<li>
+	  <b>Für alle sichtbar:</b>
+	  <%= @course.visible_to_all %>
+	</li>
 </ul>
-
-<br/>
-
-<h2><%= t '.available_documents' %></h2>
-<% if logged_in? %>
-  <p><%= t '.rss_feed_info' %></br>
-    <%= link_to "RSS News Feed", feed_course_path(@course) %>
-  </p>
-<% end %>
-
-<table id="course_documents" class="listing tablesorter">
-  <thead>
-    <tr>
-      <th><%= Document.human_attribute_name(:course_date) %></th>
-      <th><%= t '.documents' %></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-  <% @documents_by_date.sort.each do |date, docs| %>
-    <tr>
-      <td><%= l(date) %></td>
-      <td>
-        <ul>
-          <% for doc in docs %>
-            <li><%= link_to doc.doc_type + ": " + doc.description, doc %></li>
-          <% end %>
-        </ul>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>

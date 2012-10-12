@@ -1,67 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<title>Edubay</title>
-		
-		<%= stylesheet_link_tag    "application" %>
+		<%= stylesheet_link_tag    "application", media: "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 		<%= yield :head %>
 	</head>
-	
-	<body>
+
+	<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 		<!-- display with decoration -->
 		<div id="visual-portal-wrapper">
-			<div id="portal-top">
-				<h1 style=""><a href="http://portal.mytum.de/welcome?current_group=home">Technische Universität München</a></h1>
-				<h2 style="">Headerimage</h2>
-				<h3 style="position:absolute; z-index:222; left:197px; height:117px; width:100%; margin:0; background:url(<%= asset_path 'zeichnung.gif' %>) no-repeat;">Zeichnung</h3>
-				<h4 style="float:right; height:117px; margin:0; width:177px; z-index:333; background:url(<%= asset_path 'header_foto.jpg' %>)  no-repeat;">Headerfoto</h4>
-				<h5 id="claim_de">Slogan TUM fuer Deutsche Sprache</h5>
-			</div>
-			
+			<%= render 'layouts/header' %>
+
 			<div id="portal-personaltools">
-        <% if logged_in? %>
-          <%= current_user.name %>
-          <%= link_to signout_path do %>
-            <%= image_tag "login.gif", height: 16, border: 0 %>
-            Abmelden
-          <% end %>
-        <% else %>
-          Sie sind nicht angemeldet.
-          <%= link_to "/auth/shibboleth" do %>
-            <%= image_tag "login.gif", height: 16, border: 0 %>
-            Login
-          <% end %>
-        <% end %>
-      
+				<% if logged_in? %>
+					<%= current_user.name %>
+					<%= link_to signout_path do %>
+						<%= image_tag "login.gif", height: 16, border: 0 %>
+						Abmelden
+					<% end %>
+				<% else %>
+					Sie sind nicht angemeldet.
+					<%= link_to "/auth/shibboleth" do %>
+						<%= image_tag "login.gif", height: 16, border: 0 %>
+						Login
+					<% end %>
+				<% end %>
+
 				<!-- user_links (category: user_links) -->
 				<!-- new style dropdown for subgrouped actions-->
-				&nbsp;&nbsp;&nbsp;|
-				
+				<!--&nbsp;&nbsp;&nbsp;|
+
 				<div class="actions_submenu inline_block_fix">
-					<span class="actions_submenu_title">
-						<%= image_tag "dropdown.gif", height: 16, border: 0 %>
-						<span>Support</span>
-					</span>
-					
+					<span class="actions_submenu_title"> <%= image_tag "dropdown.gif", height: 16, border: 0 %> <span>Support</span> </span>
+
 					<ul>
 						<li>
-							<a id="login" href="">
-								<%= image_tag "help.gif", height: 16, border: 0 %>
-								Hilfe
-							</a>
+							<a id="login" href=""> <%= image_tag "help.gif", height: 16, border: 0 %>
+							Hilfe </a>
 						</li>
-						
+
 						<li>
-							<a id="login" href="">
-								<%= image_tag "documentation.gif", height: 16, border: 0 %>
-								Documentation
-							</a>
+							<a id="login" href=""> <%= image_tag "documentation.gif", height: 16, border: 0 %>
+							Documentation </a>
 						</li>
 					</ul>
 				</div>
-				
+				-->
 				<!--  old style for ungrouped -->
 				<!-- language selector  We need to replace this later and set it by method -->
 				<!--<div id="language_switch">
@@ -71,70 +57,59 @@
 				<a href="http://portal.mytum.de/welcome/document_view?set_language=en">English</a>
 				</form>
 				</div>-->
-				<div id="language_switch">
+				<!--<div id="language_switch">
 					<div class="actions_submenu inline_block_fix">
-						<span class="actions_submenu_title">
-							<%= image_tag "dropdown.gif", height: 16, border: 0 %>
-							<span>Select Language</span>
-						</span>
-						
+						<span class="actions_submenu_title"> <%#= image_tag "dropdown.gif", height: 16, border: 0 %> <span>Select Language</span> </span>
+
 						<ul>
 							<li>
-								<%= link_to "Deutsch", url_for(locale: 'de'), id: 'german' %>
+								<%#= link_to "Deutsch", url_for(locale: 'de'), id: 'german' %>
 							</li>
-							
+
 							<li>
-								<%= link_to "English", url_for(locale: 'en'), id: 'english' %>
+								<%#= link_to "English", url_for(locale: 'en'), id: 'english' %>
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
-			
+
 			<div class="row_blank"></div>
-			
+
 			<table id="layouttable">
 				<tr>
-					<!-- linker Portlet-Bereich Start -->
-					<td id="portal-column-one">
-						<!-- sticky portlets left--><!-- standard portlets -->
-						<span>
-							<div class="portlet">
-								<h3>Links</h3>
-								
-								<span>
-									<h3 id="navigationheading" class="access_aural">Navigation</h3>
-									<%= render_navigation %>
-								</span>
-							</div>
-						</span>
-						
-						<span>
-							<div class="portlet_no_box">
-								<div style="padding: 0px; margin-top:20px;">
-									<a target="blank" href="http://www.exzellente-lehre.de/index.html">
-                    <%= image_tag "exzellente_lehre.gif", border: 0 %>
-									</a>
-								</div>
-							</div>
-						</span>
-					</td>
-					<!-- linker Portlet-Bereich Ende -->
-					
+					<!-- linker Portlet-Bereich -->
+					<%= render 'layouts/navigation' %>
+
 					<!-- Inhalts-Bereich Start -->
 					<td id="portal-column-content">
 						<div class="contentBox" id="content">
-							<!-- Eigentlicher Inhalt: Start -->
 							<div class="document">
-								<!-- THE CONTENT -->
 								<div id="maincontentwrapper">
-                  <noscript>
-                    <div class="error">
-                      Achtung, für einige der Funktionen dieser Website muss Javascript aktiviert sein!
-                    </div>
-                    <br/>
-                  </noscript>
-                  
+									<noscript>
+										<p class="error">
+											<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+											Achtung, für einige der Funktionen dieser Website muss Javascript aktiviert sein!
+										</p>
+									</noscript>
+	
+									<% if flash[:notice] %>
+									<p class="notice">
+										<span class="ui-icon ui-icon-info" style="float: left; margin: 0 7px 20px 0;"></span>
+										<%= flash[:notice] %>
+									</p>
+									<% end %>
+									
+									<% if flash[:error] %>
+									<p class="error">
+										<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+										<%= flash[:error] %>
+									</p>
+									<% end %>
+									
+									<%# clear flash messages after every render / redirect %>
+									<% flash[:notice] = flash[:error] = nil %>
+	
 									<div class="documentBody">
 										<%= yield %>
 									</div>
@@ -142,54 +117,14 @@
 							</div>
 						</div>
 					</td>
-          <!-- Inhalts-Bereich Ende -->
+					<!-- Inhalts-Bereich Ende -->
 
-          <!-- rechter Portlet-Bereich Start -->
-          <td id="portal-column-two">
-            <span>
-              <div class="portlet">
-                <h3>Banner Rechte Seite</h3>
-                <div>
-                  <div style="margin-top: 4px;">
-                    <%= image_tag "facebook_youtube.gif", usemap: "#Map", width: 176, border: 0 %>
-                    <map id="Map" name="Map">
-                      <area shape="RECT" target="_blank" alt="Zum Youtube-Kanal der TUM" coords="122,1,178,27" href="http://www.youtube.com/user/TUMuenchen1">
-                      <area shape="RECT" target="_blank" alt="Zur Facebook-Seite der TUM" coords="1,2,87,26" href="http://www.facebook.com/TU.Muenchen">
-                      <area shape="RECT" target="_blank" alt="Zur Twitter-Seite der TUM" coords="91,1,118,26" href="http://www.twitter.com/TU_Muenchen">
-                    </map>
-                  </div>
-                </div>
-              </div>
-            </span>
-
-            <span>
-              <div class="portlet_no_box">
-                <!-- portlet_personalnews start -->
-                <div class="portlet_personalnews">
-                  <h3>Aktuelles</h3>
-                  <h3>
-                  </h3>
-                </div>
-                <!-- portlet_personalnews end -->
-              </div>
-            </span>
-
-          </td>
-          <!-- rechter Portlet-Bereich Ende -->
-        </tr>
+					<!-- rechter Portlet-Bereich -->
+					<%= render 'layouts/rightColumn' %>
+				</tr>
 			</table>
-			
-			<div id="footer">
-    	  <span class="footer_left">&copy;&nbsp;TUM 2003-<%= Time.new.year %>,
-    	   	<a href="">TU M&uuml;nchen, WWW & Online Services</a>
-    	  </span>
 
-	      <span class="footer_right">
-	        <a href="">Impressum</a>
-	      	&nbsp;
-	      	<a href="">About</a>
-	      </span>
-      </div>
+			<%= render 'layouts/footer' %>
 		</div>
 	</body>
 </html>

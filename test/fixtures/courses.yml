@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  abbreviation: MyString
-  term: 
-  lecturer: 
-  course_type: 
-  lock_version: 1
+  id: MyString
+  visible_to_all: 
 
 two:
-  name: MyString
-  abbreviation: MyString
-  term: 
-  lecturer: 
-  course_type: 
-  lock_version: 1
+  id: MyString
+  visible_to_all: 

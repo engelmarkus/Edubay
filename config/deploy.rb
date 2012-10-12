@@ -1,7 +1,6 @@
 require "bundler/capistrano"
 
-# A system wide installation of RVM will be run on the server.
-set :rvm_ruby_string, "1.9.2"
+set :rvm_ruby_string, "1.9.3@edubay"
 set :rvm_type, :system
 
 require "rvm/capistrano"
@@ -28,11 +27,11 @@ role :web, production_server
 role :app, production_server
 role :db, production_server, primary: true
 
-# Make Passenger restart after deployment.
+# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  task :restart, roles: :app, except: { no_release: true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
   end
 end

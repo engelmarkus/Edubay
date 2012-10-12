@@ -1,0 +1,66 @@
+/********************************/
+/* Standarddesign für Tabellen */
+#maincontentwrapper table {
+  table-layout: auto;
+  width: 100%;
+  border: 1px solid #a3b7c7;
+  border-collapse: collapse;
+  padding: 0;
+  
+  th {
+    background-color: #edf1f3;
+    border: 1px solid #a3b7c7;
+    text-align: left;
+    padding: 0.4em;
+    width: auto;
+  }
+  
+  td {
+    border: 1px solid #a3b7c7;
+    padding: 0.4em;
+    width: auto;
+    text-align: left;
+    margin: 0;
+    vertical-align: middle !important;
+  }
+  
+  /* Wenn eine Tabellenzelle nur einen Button beinhaltet, soll sie diesen zentriert anzeigen */
+  td.button_cell {
+    text-align: center;
+  }
+}
+/********************************/
+
+/********************************/
+/* Pfeilsymbole für sortierbare Tabellen */
+table.tablesorter thead tr {
+  .tablesorter-header {
+    background-image: image-url('tablesorter/bg.gif');
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+  }
+  
+  .tablesorter-headerSortUp {
+    background-image: image-url('tablesorter/asc.gif');
+  }
+  
+  .tablesorter-headerSortDown {
+    background-image: image-url('tablesorter/desc.gif');
+  }
+}
+/********************************/
+
+/********************************/
+/* gepunktete Rahmen um Links verstecken */
+a {
+  outline: 0;
+}
+/********************************/
+
+/********************************/
+/* Anpassungen für JQuery-UI */
+.ui-widget {
+  font-size: 100% !important;
+}
+/********************************/

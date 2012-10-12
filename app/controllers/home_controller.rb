@@ -1,8 +1,20 @@
 class HomeController < ApplicationController
   def index
-    @recently_uploaded_files = Document.find(:all, :order => 'created_at DESC', :limit => 10)
+  end
+
+  def intro
   end
   
-  def intro
+  def access_denied
+    respond_to do |format|
+      format.html {
+        flash[:error] = "Sie sind nicht angemeldet oder nicht berechtigt, auf die angeforderte Seite zuzugreifen."
+        render text: "", layout: true, status: :unauthorized
+      }
+      
+      format.any {
+        head status: :unauthorized
+      }
+    end
   end
 end

@@ -1,35 +1,30 @@
 <p id="notice"><%= notice %></p>
-<h1><%= t '.page_title' %></h1>
 
-<ul>
-  <li>
-    <b><%= Document.human_attribute_name(:description) %>:</b>
-    <%= @document.description %>
-  </li>
+<p>
+  <b>Course:</b>
+  <%= @document.course %>
+</p>
 
-  <li>
-    <b><%= Document.human_attribute_name(:course_date) %>:</b>
-    <%= l(@document.course_date) %>
-  </li>
+<p>
+  <b>Description:</b>
+  <%= @document.description %>
+</p>
 
-  <li>
-    <b><%= Document.human_attribute_name(:doc_type) %>:</b>
-    <%= @document.doc_type %>
-  </li>
+<p>
+  <b>Date:</b>
+  <%= @document.date %>
+</p>
 
-  <li>
-    <b><%= Document.human_attribute_name(:course_id) %>:</b>
-    <%= @document.course.name %>
-  </li>
+<p>
+  <b>User:</b>
+  <%= @document.user_id %>
+</p>
 
-<!--  <li>
-    <b><%#= Document.human_attribute_name(:uploader_id) %>:</b>
-    <%#= @document.uploader_id %>
-  </li>-->
-</ul>
+<p>
+  <b>Extension:</b>
+  <%= @document.extension %>
+</p>
 
-<br/>
-<% if logged_in? %>
-  <%= button_to "Download", download_document_path(@document), method: :get %>
-<% end %>
-<br/>
+
+<%#= link_to 'Edit', edit_document_path(@document) %> |
+<%#= link_to 'Back', documents_path %>

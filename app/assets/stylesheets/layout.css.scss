@@ -1,0 +1,2018 @@
+code, tt {
+    font-size:10pt;
+    font-family: Courier, monospace;
+}
+
+* html #visual-portal-wrapper {width:100%;}
+
+/*bei firefox-rundung mit border-collapse:collapse wird tabelle 1px breiter! daher border-spacing:0; vgl. https://bugzilla.mozilla.org/show_bug.cgi?id=319350*/ 
+
+table#layouttable {table-layout:fixed; font-size:100%; width:100%; border-spacing:0; border-left:2px solid #fff; border-right:2px solid #fff;}
+
+* html table#layouttable {border-collapse:collapse;}
+
+table#layouttable td {vertical-align:top;}
+
+*:first-child+html table#layouttable {border-collapse:collapse;}
+
+
+td#portal-column-one {width:14.5em; padding:0; background:#f5f7f7 url(5pxgradient_leftcolumn.gif) right repeat-y;}
+
+/* padding-bottom:11px; wg. #documentfooter!*/
+
+
+td#portal-column-two {width:13.75em; padding:0 0 11px 0; background-color:#fff;}
+
+
+
+/**************/
+
+/*headers head*/
+
+/**************/
+
+#portal-top h1 a {width:100%; height:100%; text-indent:-99999px; display:block; text-decoration:none; outline:none;}
+
+* html #portal-top h1 a {width:99.99%;}
+
+
+
+#portal-top h2, #portal-top h3, #portal-top h4 {text-indent:-99999px;}
+
+/*wird jetzt inline erledigt!*/
+
+/*obacht: h2 ist ganz rechts*/
+
+/*
+
+#portal-top h2 {position:absolute; right:0; z-index:99; width:777px; height:117px; margin:0; background:url(headerimg4.gif) right top no-repeat;}
+
+*/
+
+/*obacht: h3 ist mittig*/
+
+/*
+
+#portal-top h3 {position:absolute; left:336px; z-index:222; width:100%; height:117px; margin:0; background:url(headerimg2.gif) no-repeat;}
+
+*/
+
+/*gepaart mit h3*/
+
+/*
+
+#portal-top h4 {position:absolute; left:469px; z-index:333; width:100%; height:117px; margin:0; background:url(headerimg3.gif) no-repeat;}
+
+*/
+
+
+
+/* anmelden etc. */
+
+
+#portal-personaltools a {color:#333333; text-decoration:none; margin:0 0.75em 0 0; white-space:nowrap;}
+
+#portal-personaltools a img {vertical-align:middle;}
+
+/* language... */
+
+#portal-personaltools #language_switch form {}
+
+* html #portal-personaltools #language_switch {top:auto;}
+
+#portal-personaltools #language_switch a {}
+
+#portal-personaltools #language_switch a.selected_language {text-decoration:none; font-weight:bold;}
+
+
+/* action submenues... */
+
+
+#portal-personaltools .actions_submenu {
+position:relative;
+height:1.3em;
+}
+
+#portal-personaltools .inline_block_fix{
+display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline;
+}
+
+#portal-personaltools .actions_submenu .actions_submenu_title {
+display:inline;
+padding-left:5px;
+height:1.3em;
+}
+
+#portal-personaltools .actions_submenu a:hover {
+font-weight: bold;
+}
+
+#portal-personaltools .actions_submenu .actions_submenu_title img {
+vertical-align:middle;
+}
+#portal-personaltools .actions_submenu .actions_submenu_title span{
+}
+
+#portal-personaltools .actions_submenu ul {
+display:none;
+position:absolute;
+margin:0;
+padding:0.3em 0 0;
+top:1.3em;
+left:0;
+background-color:#DBDEDE;
+border: solid #FFFFFF 0;
+}
+
+
+#portal-personaltools .actions_submenu:hover ul {
+display:block !important;
+}
+
+#portal-personaltools .actions_submenu li {
+border-top:1px solid #FFFFFF;
+list-style:none outside none;
+margin:0 5px;
+padding:0.1em 0 0.1em 0;
+}
+
+
+/* leerer grauer balken kurz vor content */
+
+/* skin for pathbar & TUMSkin200807 */
+
+.row_blank{
+    height:20px;
+    background:#fff;
+}
+
+.div_pathbar{
+    background-color:#f5f7f6;
+    overflow:hidden;
+}
+
+* html .div_pathbar{
+    overflow:hidden;
+    width:100%;
+}
+
+
+.pathbar{
+    border-width:2px 2px 0 2px;
+    border-color:white ;
+    border-style:solid;
+}
+
+.container{
+			min-width:45em;
+    		max-width:55em;   		
+    	}
+
+* html .container{
+			min-width:48em;
+    		max-width:55em;   		
+    	}
+
+
+*:first-child+html .container{
+ 			min-width:20em;
+    		max-width:55em;   		   
+}
+
+
+.container a:visited{
+    color:#0A5096;
+}
+
+.div_menu{
+    width:100%; font-size:100%;
+}
+
+.main_menu{ height:25px; font-size:100%;}
+
+.left_c{ width:16.31em;}
+
+* html .left_c{ width:16.23em;}
+
+*:first-child+html .left_c{
+    width:16.23em;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .left_c{
+        width:16.23em;
+    }
+    .right_c{ padding-left:14px;}
+    .container{ min-width:48em;}
+
+}
+
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) { 
+    .container{ min-width:20em; }
+}
+
+.right_c{ width:169px; padding-left:18px;}
+
+* html .right_c{
+    padding-left:16px;
+}
+
+*:first-child+html .right_c{
+    padding-left:18px;
+}
+
+
+.span_group_1{
+    display:block;
+    text-align:left;
+    padding:3px 0px 3px 0px;
+    float:right;
+}
+
+.span_group_container{
+    text-align:right;
+    display:block;
+}
+
+.span_group{
+    background:url(vertical_line.gif) left center no-repeat;
+    padding:3px 0 3px 8px;
+    float:right;
+    display:block;
+}
+
+.horizontal_link{
+  	color:#0A5096;
+	background:url(my_bluearrow-left-to-right.gif) left center no-repeat;
+	font-weight:bold;
+	cursor:pointer;
+	text-decoration: none;
+    display:block;
+	text-indent:8px;
+
+}
+
+/* end skin for pathbar & TUMSkin200807 */
+
+
+
+#portal-column-content #portal-breadcrumbs {font-size:90%; margin:0.6em 0 0 1.95em;}
+
+#portal-column-content #portal-breadcrumbs a {color:#333333; text-decoration:none; white-space:nowrap;}
+
+#portal-column-content #portal-breadcrumbs a:link {}
+
+#portal-column-content #portal-breadcrumbs a:visited {}
+
+#portal-column-content #portal-breadcrumbs a:hover {color:#000;}
+
+#portal-column-content #portal-breadcrumbs a:active {}
+
+
+
+#portal-column-content #portal-breadcrumbs a.breadcrumb_link:link {background:url(breadcrumb-arrow.gif) left center no-repeat; padding:0 0 0 7px;}
+
+#portal-column-content #portal-breadcrumbs a.breadcrumb_link:visited {background:url(breadcrumb-arrow.gif) left center no-repeat; padding:0 0 0 7px;}
+
+#portal-column-content #portal-breadcrumbs a.breadcrumb_link:hover {color:#000;}
+
+#portal-column-content #portal-breadcrumbs a.breadcrumb_link:active {}
+
+
+
+#portal-column-content #portal-breadcrumbs span#last_breadcrumb_link {background:url(breadcrumb-arrow.gif) left center no-repeat; padding:0 0 0 7px; text-decoration:none; color:#333333; font-weight:bold; white-space:nowrap;}
+
+
+
+/* switch normal-inhaltssicht */
+
+#portal-column-content #portal-breadcrumbs a#view_switch {float:right; margin:1px 0.83em 0 0;}
+
+#portal-column-content #portal-breadcrumbs a#view_switch img {vertical-align:middle; border:none;}
+
+
+
+/******************************/
+
+/* extranavigation im content */
+
+/******************************/
+
+/*border-top fuer firefox*/
+
+#portal-column-content #extranavigation {margin:0 0 18px 0; border-top:1px solid #fff;}
+
+#portal-column-content #extranavigation .menuspalte {float:left; min-width:32.22%; position:relative;}
+
+* html #portal-column-content #extranavigation .menuspalte {width:27%;}
+
+#portal-column-content #extranavigation .menuspalte a {display:block; background-color:#dbe2e9; padding:0.25em 0.25em 0.35em 19px; margin:2px 2px 0 0; border:1px solid #c4d2d8; text-decoration:none; white-space:nowrap; overflow:hidden;}
+
+#portal-column-content #extranavigation .menuspalte a:link {}
+
+#portal-column-content #extranavigation .menuspalte a:visited {color:#0a5096;}
+
+#portal-column-content #extranavigation .menuspalte a:hover {}
+
+#portal-column-content #extranavigation .menuspalte a:active {}
+
+
+
+* html #portal-column-content #extranavigation .menuspalte a {width:100%;}
+
+
+
+#portal-column-content #extranavigation .menuspalte a.withsubmenu {background:#dbe2e9 url(extranav-arrow-left-to-right.gif) left center no-repeat;}
+
+
+
+#portal-column-content #extranavigation .dropdown {position:static; width:100%;}
+
+#portal-column-content #extranavigation .dropdown a {background-color:#fff; margin-top:0; border-top:0;}
+
+#portal-column-content #extranavigation .floatleftclearer {clear:left;}
+
+
+
+/************************/
+
+/*                      */
+
+/************************/
+
+.portlet {padding:0;}
+
+.portlet h3 {display:none;}
+
+
+
+/************************/
+
+/* PORTLET LINKE SEITE  */
+
+/************************/
+
+
+
+/* tum_search_box */
+
+form#search-box, form#targetgroup-box, a#help, a#advancedsearchlink {border:1px solid #d3dee3; border-width:1px 0 1px 0; padding:0.4em 1.33em 0.5em 0.75em; margin:0; background:url(5pxgradientandarrow.gif) no-repeat right; background-color:#edf1f4;}
+
+input#search-field {font-size:90%; font-family:Arial, Helvetica, sans-serif; width:14ex; border:none; color:#333333; background:#fff url(gradientsearchfield.gif) repeat-x; padding:1px 2px; vertical-align:middle; margin-right:5px;}
+
+input#search-button, input#targetgroup-button {font-size:90%; font-family:Arial, Helvetica, sans-serif; border:none; background-color:transparent; padding:1px 0 0 0; color:#333333; vertical-align:middle; cursor:hand; cursor:pointer; text-align:right; width:4em;}
+
+a#advancedsearchlink, a#help {font-size:90%; display:block; border-width:0 0 1px 0; color:#333333; text-decoration:none;}
+
+
+
+/* die alte search_box */
+
+.portlet .content {padding:0.4em 1.33em 0.5em 0.75em; background:#edf1f4 url(5pxgradient_nav_depth02.gif) repeat-y right; border-collapse:collapse;}
+
+.portlet .content.notlast {}
+
+.portlet .content.last {border-bottom:1px solid #d3dee3;}
+
+.portlet .content a {font-size:90%; color:#333333; text-decoration:none; background:url(greyarrow.gif) no-repeat right center; padding:1px 8px 0 0;}
+
+.portlet .content a img{display:none;}
+
+.portlet .content input {font-size:90%; font-family:Arial, Helvetica, sans-serif; width:14ex; border:none; color:#333333; background:#fff url(gradientsearchfield.gif) repeat-x; padding:1px 2px; vertical-align:middle; margin-right:5px;}
+
+.portlet .content input.context.widget {font-size:90%; font-family:Arial, Helvetica, sans-serif; border:none; padding:1px 6px 0 0; color:#333333; vertical-align:middle; cursor:hand; cursor:pointer; width:auto; text-align:left; display:block; background:url(greyarrow.gif) no-repeat right center; margin:0;}
+
+
+
+/*targetgroup_box*/ 
+
+form#targetgroup-box {border-width:0 0 1px 0;}
+
+select#targetgroup-dropdown {font-size:90%; font-family:Arial, Helvetica, sans-serif; border:none; color:#333333; vertical-align:middle;}
+
+
+
+/*die alte targetgroup_box*/
+
+td#portal-column-one .portlet_no_box .box {padding:0.4em 1.33em 0.5em 0.75em; background:#edf1f4 url(5pxgradient_nav_depth02.gif) repeat-y right; border-bottom:1px solid #d3dee3;}
+
+.portlet_no_box .title {display:none;}
+
+.portlet_no_box .portletContent select {font-size:90%; font-family:Arial, Helvetica, sans-serif; border:none; color:#333333; vertical-align:middle;}
+
+.portlet_no_box .portletContent input.context.widget {font-size:90%; font-family:Arial, Helvetica, sans-serif; border:none; padding:1px 6px 0 0; color:#333333; vertical-align:middle; cursor:hand; cursor:pointer; width:auto; text-align:left; display:block; background:url(greyarrow.gif) no-repeat right center; margin:0;}
+
+/*fuer IE6*/
+
+.portlet_no_box .box .body form {margin:0;}
+
+
+
+/* navigation_box */
+
+h3#navigationheading {font-size:100%; margin:0; padding:0.4em 1.33em 0.5em 0.75em; margin:0; background:#fff url(5pxgradient_nav_depth03.gif) repeat-y right; color:#fff;} 
+
+/*.access_aural*/
+
+h3#navigationheading {color:#fff;}
+
+/*width:100% sonst border nicht im IE6*/
+
+/* Fix <IE6 (list-bottom-space). Hide from IE Mac \*/
+
+* html ul#navigationlist li {float:left;}
+
+* html ul#navigationlist li a {height:1%;}
+
+/* End */
+
+/* Fix IE7 list-top-space */
+
+*+html ul#navigationlist li {display:inline;}
+
+*+html ul#navigationlist li a {display:inline-block;}
+
+*+html ul#navigationlist li a {display:block;}
+
+
+ul#navigationlist li a:link {} 
+
+ul#navigationlist li a:hover {color:#469be6;}
+
+ul#navigationlist li a:active {}
+
+ul#navigationlist li a:visited {}
+
+
+
+/*aufklapp-link vor dem link*/
+
+ul#navigationlist li a.collapsed {background:url(nav-arrow-left-to-right.gif) no-repeat left center; text-indent:-99999px; width:16px; height:1em; padding:0.4em 0 0.5em 0; position:absolute; top:0; left:0;}
+
+ul#navigationlist li a.collapsed:hover {background-image:url(nav-arrow-top-to-bottom.gif);}
+
+ul#navigationlist li a.expanded {background:url(nav-arrow-top-to-bottom.gif) no-repeat left center; text-indent:-99999px; width:16px; height:1em; padding:0.4em 0 0.5em 0; position:absolute; top:0; left:0;}
+
+ul#navigationlist li a.expanded:hover {background-image:url(nav-arrow-left-to-right.gif)}
+
+
+ul#navigationlist {margin:0; padding:0; border-bottom:1px solid #c4d2d8; width:100%;}
+
+ul#navigationlist li {border-top:1px solid #a3b7c7; background:url(5pxgradient_nav_depth01.gif) repeat-y right; padding-right:5px; list-style-type:none; position:relative; }
+
+ul#navigationlist li li{background:url(5pxgradient_nav_depth02.gif) repeat-y right; margin-right:-5px; border-top:1px solid #c4d2d8;}
+
+ul#navigationlist li li li {background:url(5pxgradient_nav_depth03.gif) repeat-y right; margin-right:-5px;}
+
+ul#navigationlist li a {display:block; text-decoration:none; background-color:#dbe2e9; color:#004682; padding:0.4em 1.33em 0.5em 22px; outline:none; font-size:100%;} 
+
+/*navigation depth02*/
+
+ul#navigationlist ul {margin:0; padding:0;}
+
+ul#navigationlist li ul.nav_depth02 a {background-color:#eef2f5;} 
+
+
+
+/*navigation depth03*/
+
+ul#navigationlist li ul.nav_depth03 a {background-color:#fff;}
+
+
+
+/* die alte navigationbox (links) */
+
+/*
+.portlet table {width:100%; font-size:100%;}
+
+.portlet table tbody td {text-decoration:none; background-color:#dbe2e9; color:#004682; padding:0.4em 0 0.5em 0; outline:none; font-size:100%; border-bottom:1px solid #a3b7c7;}
+
+.portlet table tbody td a {text-decoration:none; color:#004682;}
+
+.portlet table tbody td a:link {}
+
+.portlet table tbody td a:visited {color:#004682;}
+
+.portlet table tbody td a:hover {color:#469be6;}
+
+.portlet table tbody td a:active {}
+
+
+
+.portlet table tbody td .boxNavElement {padding:0 0 0 6px;}
+*/
+/*versteckspiel: pfeil nach unten nur sichtbar wenn noch tatsaechl. aufklappbar!*/
+/*
+.portlet table tbody td.item img {visibility:hidden;}
+
+.portlet table tbody td.item_separated img {visibility:hidden;}
+
+.portlet table tbody td.item a img {visibility:visible;}
+
+.portlet table tbody td.item_separated a img {visibility:visible;}
+*/
+
+
+
+
+/* page_outdated_form*/
+/*
+.portlet form.portlet_outdated_form {padding:0.4em 1.33em 0.5em 0.75em;}
+
+.portlet form.portlet_outdated_form input.context.widget {width:100%;}
+*/
+
+
+/*******************/
+
+/* portlets rechts */
+
+/*******************/
+
+#visuelleausflipparea {background-color:#1e64aa; text-align:center;}
+
+
+
+/* the old language chooser               */
+
+/* wir unterstellen: die ist immer rechts */
+
+#portal-column-two .portlet_no_box .box {
+
+	border:1px solid #d3dee3; padding:0.4em 1.33em 0.5em 0.75em; margin:0; background-color:#edf1f4;
+
+	}
+
+/* zukuenfiges .portlet_linklist genau wie .portlet_personalnews*/
+
+
+/*date*/
+
+.portlet_linklist h4 {font-size:100%; font-style:italic; font-weight:normal; margin:1em 0 0; padding:0 1em;}
+
+.portlet_linklist p {margin:0; border-bottom:1px solid #d9e2e6; padding:0 1em 1em;}
+
+.portlet_linklist a {color:#333333; font-weight:bold; text-decoration:none; display:block;}
+
+.portlet_linklist a:link {}
+
+.portlet_linklist a:visited {color:#999;}
+
+.portlet_linklist a:hover {}
+
+.portlet_linklist a:active {}
+
+.portlet_linklist img {display:none;}
+
+
+
+/* #portlet_todaysevent */
+
+
+/*date*/
+
+#portlet_todaysevents h4 {font-size:100%; font-style:italic; font-weight:normal; margin:1em 0 0; padding:0 1em;}
+
+#portlet_todaysevents span {padding:0 1em;}
+
+#portlet_todaysevents p {margin:0; border-bottom:1px solid #d9e2e6; padding:0 1em 1em;}
+
+#portlet_todaysevents p a {color:#333333; font-weight:bold; text-decoration:none; display:block; padding:0; border:none;}
+
+#portlet_todaysevents p br {display:none;}
+
+#portlet_todaysevents img {display:none;}
+
+#portlet_todaysevents a {padding:0.5em 1em; display:block; border-bottom:1px solid #d9e2e6; color:#333333; text-decoration:none;}
+
+
+
+/* portlet ratingbox */
+/*
+.portlet_ratingbox {background-color:#f7f6f6; font-size:83%; border:1px solid #d9e2e6; border-width:1px 1px 0 1px; margin:0;}
+
+.portlet_ratingbox h3 {display:block; font-size:100%; text-transform:uppercase; font-weight:normal; color:#dc6e0f; background-color:#f3efed; padding:0.6em 1em; margin:0; border:1px solid #d9e2e6; border-width:1px 0 1px 0;}
+
+.portlet_ratingbox form {margin:1em 0 0;}
+
+.portlet_ratingbox #rating_stars {margin:3px 0 3px 1em;}
+
+.portlet_ratingbox .rating_inputs {margin:0 1em 1em;}
+
+.portlet_ratingbox .rating_inputs input {vertical-align:middle; padding:0; margin:0 0 4px;}
+
+.portlet_ratingbox .rating_inputs label {vertical-align:middle; padding:0; margin:0 0 4px 0.5em;}
+
+.portlet_ratingbox .context.widget {margin:0 1em 1em; font-size:90%;}
+*/
+
+
+/***********/
+
+
+
+/* </dtml-with> */
+
+
+
+
+
+/* <dtml-with stylesheet_properties> */
+
+
+
+/*****************/
+
+/*content general*/
+
+/*****************/
+
+
+
+/*zeilenabstand konstant haltend*/
+
+
+
+
+
+/*#portal-column-content a#hereistthecontent {display:none;}
+*/
+
+
+
+/*5sep06*/
+
+.documentBody {min-width:33em; max-width:155em;}
+
+* html .documentBody {width:auto;}
+
+/**/
+
+#portal-column-content a.email {font-style:italic; background-image:none; padding:0; text-decoration:none;}
+
+#portal-column-content a.doc {background-image:url(doc.gif);}
+
+
+
+#portal-column-content a img {border:none; vertical-align:middle;}
+
+#portal-column-content h2, #portal-column-content h3 {font-size:100%; line-height:133%; color:#0a5096; margin:0;}
+
+#portal-column-content h3 {color:#333333;}
+
+#portal-column-content h4 {color:#0a5096;}
+
+#portal-column-content h4, #portal-column-content h5 {font-size:100%; margin:1.1em 0 1.25em 0; padding:0.2em 0 0.3em; border-top:3px solid #cdd9dd; border-bottom:1px solid #e8eff1;}
+
+* html #portal-column-content h5 {height:1.3em;} /*hoehenangabe wg. IE BUG*/
+
+#portal-column-content h6 {margin:0; font-size:100%;}
+
+
+
+#portal-column-content p {margin:0 0 1em 0;}
+
+
+
+/* width nur angeben wenn bildgroesse immer gleich (sonst lange bildunterschriften mit <br /> umbrechen) */
+
+#portal-column-content .img-caption-floatleft {float:left; margin:0.35em 12px 0.5em 0;}
+
+#portal-column-content .img-caption-floatleft img {}
+
+#portal-column-content .img-caption-floatleft p {font-size:83%; font-style:italic; line-height:121%; margin:0.5em 0 0 0; padding:0;}
+
+
+
+#portal-column-content ul {list-style:square; list-style-position:outside; margin:0.75em 0 1em 1.22em; padding:0;}
+
+#portal-column-content ul li {padding:0; margin:0 0 0.2em 0;}
+
+#portal-column-content ol ul li {padding:0; margin:0 0 0.2em 0;}
+
+#portal-column-content ol {list-style:decimal; list-style-position:outside; margin:0.75em 0 1em 1.77em; padding:0;}
+
+#portal-column-content ol li {padding:0 0 0 0; margin:0 0 0.2em 0;}
+
+
+
+/*#portal-column-content table {margin:0 0 1.66em 0; border-collapse:collapse; border:none; font-size:100%;}
+
+#portal-column-content table caption {font-weight:bold; text-align:left; border:1px solid #cdd9dd; border-width:3px 0 1px; padding:0.5em;}
+
+#portal-column-content table tr {}
+
+#portal-column-content td {padding:0.1em; border:none; background-color:transparent;}
+
+#portal-column-content th {text-align:left; vertical-align:top; font-weight:bold; padding:0.5em; border:none; background-color:transparent;}
+
+#portal-column-content th em {font-weight:normal;}
+
+#portal-column-content th span.non-uppercase {text-transform:none;}
+*/
+
+
+/*hervorhebung zelle*/
+/*
+#portal-column-content table td.highlighted {background-color:#f4f7f8; border:1px solid #cdd9dd; border-width:1px 0;}
+*/
+/*hervorhebung zeile*/
+/*
+#portal-column-content table tr.highlighted td{background-color:#f4f7f8; border:1px solid #cdd9dd; border-width:1px 0;}
+*/
+
+/*
+#portal-column-content table tr.last td {background-color:#f4f7f8; border:1px solid #cdd9dd; border-width:1px 0 3px; font-weight:normal;}
+*/
+
+
+#portal-column-content img.banner {margin:0 0 0 -1.4em;}
+
+
+
+/***********************************************/
+
+/* contentNavActions = blaettern in foren etc. */
+
+/***********************************************/
+
+.contentNavActions_bereitsbelegt {clear:left; position:relative; background:url(3pxCDD9DD-line.gif) repeat-x; border-bottom:3px solid #cdd9dd; padding:0.4em 0 0.3em; margin:1.5em 0; color:#0a5096;}
+
+
+
+/****************************************/
+
+/* documentActions unten am inhalt dran */
+
+/****************************************/
+
+/* werden 2. footer 15aug06 ! siehe layout.css #documentfooter*/
+
+#portal-column-content .documentActions {border-top:1px solid #eee; padding:0.35em 0 0 0; position:relative; height:0.5em; margin:1em 0 0;}
+
+#portal-column-content .documentActions span {position:absolute; right:9px;}
+
+#portal-column-content .documentActions a:link {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .documentActions a:visited {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .documentActions a:hover {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .documentActions a:active {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .documentActions a img {vertical-align:middle;}
+
+
+
+/*******************************************/
+
+/* kalenderzeile für termin- und newsboard */
+
+/*******************************************/
+
+#portal-column-content #calendarview_switch {border-top:3px solid #cdd9dd; padding:0.3em 0.1em; margin:1.5em 0 0;}
+
+#portal-column-content #calendarview_switch a {text-decoration:none; margin-right:1em;}
+
+#portal-column-content #calendarview_switch a:link {}
+
+#portal-column-content #calendarview_switch a:visited {color:#0a5096;}
+
+#portal-column-content #calendarview_switch a:hover {}
+
+#portal-column-content #calendarview_switch a:active {}
+
+
+
+/*border-bottom:2px solid #cdd9dd; padding:0.3em 0; margin:0; height:1.2em; overflow:hidden;*/
+
+#portal-column-content div.description {margin:0 0 1em;}
+
+
+
+#portal-column-content #calendar {background:url(3pxCDD9DD-line.gif) repeat-x; border-bottom:3px solid #cdd9dd; padding:0.4em 0; margin:0 0 1.5em; height:1.2em;}
+
+#portal-column-content #calendar a {display:block; float:left; width:5.8%; min-width:4.4ex; padding:0; margin:0 0.55%; position:static; text-decoration:none;}
+
+#portal-column-content #calendar a:link {text-decoration:none;}
+
+#portal-column-content #calendar a:visited {text-decoration:none;}
+
+#portal-column-content #calendar a:hover {text-decoration:none;}
+
+#portal-column-content #calendar a:active {text-decoration:none;}
+
+
+
+#portal-column-content #calendar a#skip_year_backward {background:url(bluearrow-right-to-left.gif) left center no-repeat; width:10px; min-width:10px; text-indent:-99999px; margin:0;}
+
+#portal-column-content #calendar a#skip_year_forward {background:url(bluearrow-left-to-right.gif) right center no-repeat; width:10px; min-width:10px; text-indent:-99999px; margin:0 5% 0 0;}
+
+#portal-column-content #calendar a#actual_year {margin:0; width:auto;}
+
+
+
+/*************/
+
+/* newsboard */
+
+/*************/
+
+#portal-column-content .contentNav .contentNavActions {background:url(3pxCDD9DD-line.gif) repeat-x; border-bottom:3px solid #cdd9dd; padding:0.4em 0 0.3em; margin:1.5em 0.83em 1.5em 1.75em;}
+
+#portal-column-content .contentNav .contentNavActions * {vertical-align:top;}
+
+#portal-column-content .contentNav .contentNavActions a img {}
+
+
+
+/*titel newsboard*/
+
+#newsboard h2 {font-size:100%; text-transform:none; margin:0; padding:0.3em 0 0.6em; border-top:9px solid #e8eff1;}
+
+/*datum newsboard*/
+
+/*ziemlich wie h5 oben!*/
+
+#newsboard h5 {margin:0 0 0.5em 0; clear:left;}
+
+/* bild=120px rand=20px */
+
+/*der eigentliche artikel*/
+
+#newsboard h3 {margin-left:150px;}
+
+#newsboard h6 {margin-left:150px;}
+
+#newsboard p.main {margin-left:150px;}
+
+/* IE Three Pixel Text-Jog vgl. http://www.positioniseverything.net/explorer/threepxtest.html */
+
+/* Hide from IE5-mac. Only IE-win sees this. \*/
+
+* html #newsboard p {height:1%;}
+
+/* End hide from IE5/mac */
+
+#newsboard .img-caption-floatleft {margin:0 20px 8px 0; width:130px;}
+
+#newsboard .newsboard-newsseparator {border-top:1px solid #cdd9dd; height:1px; line-height:1px; font-size:0.5em; margin-bottom:1em;}
+
+
+
+/***************/
+
+/* newsarticle */
+
+/***************/
+
+#news-content h2 {font-size:100%; text-transform:none; margin:0; padding:0.3em 0 0.6em; /*border-top:9px solid #e8eff1;*/}
+
+/*ziemlich wie h5 oben!*/
+
+#news-content h5 {margin:0 0 0.5em 0; clear:left;}
+
+/* bild=120px rand=20px */
+
+#news-content h3 {margin-left:0;}
+
+#news-content h6 {margin-left:0;}
+
+#news-content p {margin-left:0;}
+
+#news-content .img-caption-floatleft {margin:0 20px 0 0; width:130px;}
+
+
+
+/**************/
+
+/*terminboard */
+
+/**************/
+
+/* Veranstaltungen im ... (Zeitraum) */
+
+#dateboard-content h2 {clear:left; font-size:100%; text-transform:none; margin:0; padding:0.3em 0 0.6em;}
+
+/* Datum */
+
+#dateboard-content h4 {margin:0 0 0.5em 0;}
+
+
+
+/* Die Veranstaltung */
+
+#dateboard-content p.date-event-type {font-style:italic; margin:0.5em 0 0 0;}
+
+#dateboard-content h3 {margin:0 0 0 0;}
+
+#dateboard-content p.date-event-speaker {margin:0 0 0 0;}
+
+#dateboard-content p.date-event-morelink {margin:0 0 0.5em 0;}
+
+#dateboard-content p {margin:0 0 0.5em 0;}
+
+
+
+#dateboard-content .dateboard-eventseparator {border-top:1px solid #cdd9dd; height:1px; line-height:1px; font-size:0.5em; margin-bottom:0.5em;}
+
+
+
+/*********/
+
+/*termin */
+
+/*********/
+
+#date-content p#date-event-type {font-style:italic; margin:1em 0 0 0;}
+
+
+
+/********************************/
+
+/* staffmember=mitarbeiter-info */
+
+/********************************/
+
+#staffmember-content {background:url(9pxE8EFF1square.gif) repeat-x bottom; border-bottom:2px solid #cdd9dd; padding-bottom:1em;}
+
+* html #staffmember-content {height:0.01%;} /*s.u.*/
+
+#staffmember-content h1 {background:url(2pxCDD9DDsquare.gif) repeat-x bottom; border-bottom:9px solid #e8eff1; padding-bottom:1em;}
+
+/* bild=120px rand=20px */
+
+* html #staffmember-content h1 {height:0.01%;} /*IE: sonst zeigen sich nicht die zwei vorgesehenen linien*/
+
+#staffmember-content h3 {margin-left:150px;}
+
+#staffmember-content h3.separator {border-top:1px solid #cdd9dd; padding-top:0.83em;}
+
+#staffmember-content p {margin-left:150px;}
+
+
+
+/******************/
+
+/* dynocontainer */
+
+/*****************/
+
+#dynocontainer-content {background:url(2pxCDD9DDsquare.gif) repeat-x bottom; border-bottom:9px solid #e8eff1; padding-bottom:1em;}
+
+* html #dynocontainer-content {height:0.01%;} /*IE: sonst zeigen sich nicht die zwei vorgesehenen linien*/
+
+#dynocontainer-content h1#document-firstheading {border:none; padding:0;}
+
+#dynocontainer-content h1 {border-bottom:2px solid #cdd9dd; padding:0 0 1em 0; margin:0;}
+
+#dynocontainer-content h2 {border-top:9px solid #e8eff1; border-bottom:3px solid #cdd9dd; padding:0.3em 0 0.6em; margin-bottom:0.3em;}
+
+#dynocontainer-content p {border-bottom:1px solid #e8eff1; padding:0 0 0.4em 0; margin:0 0 0.4em 0;}
+
+#dynocontainer-content p.lastitem {border-bottom:none;}
+
+
+
+/*********************************************/
+
+/* google-artige blaetterfunktion: 1|2|3|... */
+
+/* fuer news, ... */
+
+/*********************************************/
+
+#portal-column-content .listingBar {clear:left; position:relative; background:url(3pxCDD9DD-line.gif) repeat-x; border-bottom:3px solid #cdd9dd; padding:0.4em 0 0.3em; margin:1.5em 0; color:#0a5096;}
+
+
+
+/*aktuelle seite*/
+
+#portal-column-content .listingBar span#current_page {text-decoration:underline;}
+
+
+
+#portal-column-content .listingBar a {text-decoration:none;}
+
+
+
+#portal-column-content .listingBar a:link {}
+
+
+
+#portal-column-content .listingBar a:visited {color:#0a5096;}
+
+
+
+#portal-column-content .listingBar a:hover {}
+
+
+
+#portal-column-content .listingBar a:active {}
+
+
+
+#portal-column-content .listingBar .next a {position:absolute; right:0; background:url(two-bluearrows-left-to-right.gif) no-repeat right center; padding-right:19px;}
+
+* html #portal-column-content .listingBar .next a {right:9px;}
+
+/*********************************************/
+
+/* google-artige blaetterfunktion: 1|2|3|... */
+
+/* fuer foldercontents (Inhaltssicht) */
+
+/*********************************************/
+
+
+
+
+
+/* </dtml-with> */
+
+
+
+
+
+/* <dtml-with stylesheet_properties> */
+
+
+
+/******************************************/
+
+/* editor barren direkt ueber dem content */
+
+/******************************************/
+
+#portal-column-content .contentBoxAdminHeader {background-color:#ebefef; margin:0.5em 0.83em 0 1.95em; font-size:90%; padding:0.25em 6px 0.4em 19px; border-top:1px solid #e8eff1; border-bottom:1px solid #e8eff1;}
+
+#portal-column-content .contentBoxHeader {background-color:#f5f7f6; margin:0 0.83em 0 1.95em; font-size:90%; padding:0.25em 6px 0.4em 19px; border-bottom:1px solid #e8eff1;}
+
+
+
+#portal-column-content .contentActions {text-align:right;}
+
+
+
+#portal-column-content .contentActions h6 {display:inline; margin:0 1em 0 0; float:left;}
+
+#portal-column-content .contentActions ul {display:inline; list-style-type:none; margin:0; padding:0;}
+
+#portal-column-content .contentActions ul li {display:inline;}
+
+#portal-column-content .contentActions ul li a {white-space:nowrap; margin:0 1em 0 0; padding:0;}
+
+#portal-column-content .contentActions ul li a:link {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .contentActions ul li a:visited {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .contentActions ul li a:hover {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .contentActions ul li a:active {color:#333333; text-decoration:none; border:none;}
+
+#portal-column-content .contentActions ul li a img {vertical-align:middle; padding:0;}
+
+
+
+/* massage: "your changes have been saved etc. */
+
+#portal-column-content .message {background:#FFB98A; padding:0.25em 6px 0.4em 19px; border-bottom:1px solid #e8eff1; margin:0 0.83em 0 1.95em; font-size:90%;}
+
+#portal-column-content .message img {vertical-align:middle;}
+
+#portal-column-content .message span {vertical-align:middle;}
+
+/*******************************************/
+
+
+
+/* portlet edit */
+
+a.action {text-align:right; background: #FFB98A; display:block; height:20px; border:1px solid #bbb; border-width:0 0 1px 0;}
+
+a.action img {height:16px; width:16px; padding:2px 4px;}
+
+
+
+/* inhalt-sicht tabelle */
+/*
+#portal-column-content table.listing {table-layout:auto; width:100%; font-size:90%; white-space:normal; border:none; border-collapse:collapse; margin:1em 0 0; padding:0;}
+
+#portal-column-content table.listing th {font-size:100%; text-align:left; padding:0 0.25em 0.25em; color:#0a5096; border-bottom:3px solid #cdd9dd; width:auto;}
+
+#portal-column-content table.listing td {font-size:100%; border-top:1px solid #cdd9dd; padding:0.3em 0.25em 0.3em; width:auto; text-align:left; margin:0;}
+
+#portal-column-content table.listing th, #portal-column-content table.listing td {}
+
+
+
+#portal-column-content table.listing td.noborder {border-top:none;}
+
+#portal-column-content table.listing td input {margin:1px;}
+
+#portal-column-content table.listing tr {font-size:100%;}
+
+#portal-column-content table.listing tr.odd {}
+
+#portal-column-content table.listing tr.even {}
+
+#portal-column-content table.listing td span.imageButton a img {border:1px solid #ccc; width:16px; height:16px;}
+
+
+
+#portal-column-content table.listing td span.imageButton a:link img {}
+
+#portal-column-content table.listing td span.imageButton a:visited img {}
+
+#portal-column-content table.listing td span.imageButton a:hover img {border:1px solid #cdd9dd; width:16px; height:16px; background-color:#eee;}
+
+#portal-column-content table.listing td span.imageButton a:active img {}
+*/
+
+
+/* helpers: move up/down arrows */
+/*
+#portal-column-content table.listing ul.inlinestyle {
+
+display: inline;
+
+list-style-image: none;
+
+list-style: none;
+
+white-space: nowrap;
+
+margin: 0;
+
+padding: 0;
+
+}
+
+#portal-column-content table.listing ul.inlinestyle li {
+
+display: inline;
+
+margin: 0;
+
+padding: 0;
+
+}
+
+#portal-column-content table.listing ul.inlinestyle li a img{
+
+display:inline;
+
+}
+
+*/
+
+#portal-column-content .languageFloater {
+
+padding:0.5em 1em;
+
+margin:0 0 0.5em;
+
+border:1px solid #f00;
+
+}
+
+
+
+/***********************/
+
+/* einige cms elemente */
+
+/***********************/
+
+.hiddenstructure, .hiddenLabel {display:none;}
+
+
+/*
+form.group  {
+    border: 1px solid #bbbbbb;
+    margin:1em 0em 1em 0em;
+    padding: 0em 1em;
+}
+*/
+
+
+fieldset {
+    border: 1px solid #bbbbbb;
+    margin: 1em 0em;
+    padding: 1.5em;
+}
+
+.field {
+  margin-bottom: 1.5em;
+}
+
+.field:last-child {
+  margin-bottom: 0em;
+}
+
+.field label {
+  font-weight: bold;
+}
+
+
+span.legend {
+    background: White;
+    padding: 0.2em 0.5em;
+    font-weight: bold;
+    position : relative;
+    top: -0.8em;
+    left: 0em;
+}
+
+legend {
+    background: White;
+    padding: 0.2em 0.5em;
+    font-weight: bold;
+}
+
+
+/* old legend 
+legend {font-size:100%; font-weight:bold; margin:1.1em 0 0.85em 0; padding:0.2em 0 0.3em; border-top:3px solid #cdd9dd; border-bottom:1px solid #e8eff1; display:block; width:100%;}
+*/
+
+/* formular modul a */
+/*
+.row {border-bottom:1px solid #e8eff1; padding:0 0.1em 0.65em; margin:0 0 0.25em;}
+
+.row .label {font-weight:bold;}
+
+.row .required {}
+
+.row .field {margin:0.2em 0;}
+
+.row .help {display:none;}
+*/
+
+
+/* formular modul b */
+
+
+/*.field * {vertical-align:top;}
+
+.field input {margin-bottom:5em;}
+
+.field textarea, .group textarea {width:100%; height:auto; overflow:visible; margin-bottom:0.5em;}
+
+.field img {}
+
+.formHelp {font-size:90%; color:#999; margin:0.1em 0}
+
+.formControls {padding:0.65em 0.1em 0; margin:0.5em 0;}
+*/
+
+
+/* passwort merken checkbox*/
+
+input#cb_remember {border:none;}
+
+/* formular elemente */
+
+/*.field input {padding:2px;}
+
+.field select {}
+*/
+.field input, .field select, .field textarea {border:1px solid #cdd9dd;}
+/*
+.info {font-style: italic;}
+
+
+
+input.noborder {border:none; margin:0; background-color:transparent;}
+*/
+
+/*
+div.label {display:inline;}
+*/
+
+/*
+input.standalone,
+
+input.context,
+
+input.destructive,
+
+span.action,
+
+input.action,
+
+div.fakeButton,
+
+div.fakeButtons span.fakeButton {width:auto; display:inline; border:1px solid #cdd9dd; border-width:1px 2px 2px 1px; text-align:left; cursor: pointer; cursor:hand; font-size:80%; font-family:Arial, Helvetica, sans-serif; color:#333333; padding:0.1em 8px 0.1em 8px; margin:2px 0; background:#e8eff1 url(lightgreyarrow.gif) center right no-repeat; white-space:nowrap;}
+
+div.fakeButton, div.fakeButtons span.fakeButton {}
+
+div.fakeButton a, div.fakeButtons span.fakeButton a {text-decoration:none; color:#333333; padding:0.1em 4px 0.1em}
+
+
+
+input.standalone {background:#c8d7f7 url(lightgreyarrow.gif) center right no-repeat;}
+
+input.destructive {background:#ffb98a url(lightgreyarrow.gif) center right no-repeat;}
+
+
+
+div.action {margin-bottom:0.5em;}
+
+
+
+#portal-column-content span.action a {text-decoration:none; color:#333333; font-size:110%;}
+*/
+
+
+/* editor textfeld*/
+
+#portal-column-content textarea#text {width:100%; height:100%; overflow:visible;}
+
+
+
+/* configlets = einstell-listen */
+
+#portal-column-content ul.configlets {margin:0.75em 0 1em 0; padding:0;}
+
+#portal-column-content ul.configlets li {list-style-type:none; margin:0 0 0.5em 0; padding:0;}
+
+#portal-column-content ul.configlets li a {text-decoration:none;}
+
+
+
+
+
+/* eine ebene hoeher link*/
+
+#portal-column-content .navigationParentLink {border-top:none; font-size:80%; margin:0.25em 0 0.4em 0;}
+
+#portal-column-content .navigationParentLink a {text-decoration:none;}
+
+#portal-column-content .navigationParentLink a img {vertical-align:middle;}
+
+
+
+a.link-parent {display:block; font-size: 80%; margin:0.25em 0 0.4em 0; background:transparent url("/levelup.gif") 0px 0px no-repeat; padding: 1px 0 1px 20px;}
+
+
+
+.visualClear {clear:both;}
+
+
+
+/*forum zeugs*/
+
+#portal-column-content div.commentBox {margin:0.5em 0.83em 1em 1.87em;}
+
+#portal-column-content div.commentBoxHeader {margin:0.5em 0; font-weight:bold; border:1px solid #cdd9dd; border-width:3px 0 1px; padding:0.5em;}
+
+#portal-column-content table.comments td.spacer {padding:0; margin:0;}
+
+#portal-column-content table.comments tr {}
+
+#portal-column-content table.comments td {padding:0 0.25em; font-size:90%; border:none;}
+
+
+
+/*spezielle hervorhebungen*/
+
+/* Class for error indication in forms */
+.error {
+  background: #FFB98A;
+  border: 1px solid #FF6600;
+  padding: 1em;
+  margin: 0;
+  display: block;
+}
+
+.notice {
+  background: #8AFFB9;
+  border: 1px solid #00FF66;
+  padding: 1em;
+  margin: 0;
+  display: block;  
+}
+
+label.validation_error {
+  color: #FF6600;
+  line-height: 1.4em;
+}
+
+.inlinemessage {
+
+background: #FFB98A; /* !important;*/
+
+border: 1px solid #FF6600; /*!important;*/
+
+padding: 0.25em 0.5em;
+
+font-weight:bold;
+
+width:auto;
+
+font-size:90%;
+
+}
+
+.code {
+
+background-color:#ffe0b0;
+
+padding: 0.25em 0.5em;
+
+border: 1px solid #FF6600; /*!important;*/
+
+width:auto;
+
+font-size:90%;
+
+}
+
+
+
+.window {
+
+background: #FFB98A;
+
+border: 1px solid #FF6600;
+
+color: #000000;
+
+margin: 1em 0em 1em 0em;
+
+padding: 0.5em 1em;
+
+}
+
+
+
+span.windowLegend {
+
+font-weight: bold;
+
+}
+
+
+
+.window div.row {
+
+border: none !important;
+
+}
+
+
+
+.private {
+
+color: Black;
+
+}
+
+
+
+.published {
+
+color: #74AE0B;
+
+}
+
+
+
+.pending {
+
+color: #FFA500;
+
+}
+
+
+
+.syndicated {
+
+color: #008000;
+
+}
+
+
+
+.expired {
+
+color: #FF6600;
+
+}
+
+
+
+.inactive {
+
+color: #666666;
+
+}
+
+
+
+.small {
+
+font-size:80%;
+
+}
+
+
+
+.hilite {
+
+background: #E6EDFB; /*!important;*/
+
+}
+
+
+/* normale tabelle */
+/*
+table {
+    
+}
+*/
+
+/* for highlighting of search terms */
+
+.highlightedSearchTerm {
+   background-color: #feff82;
+}
+
+/* </dtml-with> */
+
+
+
+
+/* Tabellenklassen Medienzentrum */
+
+/* a, tabelle allgemein */
+/*#portal-column-content table {margin: 0 0 1.66em 0; border-collapse:
+collapse; border: none; font-size: 100%;
+}
+#portal-column-content table caption {font-weight: bold; text-align:
+left; border: 1px solid #cdd9dd; border-width: 3px 0 1px; padding:0.5em;
+}
+#portal-column-content table tr {text-align: left; vertical-align: top;
+}
+#portal-column-content table th {padding: 0.5em;
+}
+#portal-column-content table td {padding: 0.5em;
+}*/
+/* b, tabelle mit rahmen und gitternetz */
+/*#portal-column-content .gitternetz {border: 3px solid #dde5e8;
+border-width: 3px 1px 3px 1px; margin: 0 0 1.66em 0; border-collapse:
+collapse;
+}
+#portal-column-content .gitternetz td,th {border: 1px solid #dde5e8;
+border-width: 1px 0px 1px 1px; border-collapse: collapse;
+}*/
+/* c, generische klasse fuer linien oben unten, z.B. als rahmen fuer die
+erste zeile einer tabelle, aber beliebig einsetzbar */
+/*#portal-column-content .linien {margin: 1.1em 0 1.25em 0; padding: 0.2em
+0 0.3em 0; border-top: 3px solid #cdd9dd; border-bottom: 1px solid
+#e8eff1; border-collapse: collapse;
+}*/
+/* d, generische klasse fuer hintergrundfarbe, z.B. als farbhinterlegung fuer
+eine tabellenzelle, aber beliebig einsetzbar */
+/*#portal-column-content .highlighted {background-color: #f3f7f8;
+}*/
+
+
+
+
+
+
+
+/* Navileiste Engler  */
+
+.navileisteoben {padding-top: 0.3em; padding-bottom: 0.3em; width: 100%; background-color: #EAEFF3; margin-bottom:1.5em; margin-top: 0px; border-color: #C1CED9; border-width:1px; border-style:solid; }
+a.navileiste {color: #004586; text-decoration:none; padding-left: 0.3em; padding-right: 0.3em; }
+a.navileiste:hover { color: #469BE6; } 
+
+
+/* language message: "sorry, this document ist not available in */
+
+#portal-column-content .languagemessage {background:#FFF000; padding:0.25em 6px 0.4em 19px; border-bottom:1px solid #e8eff1; margin:0 0.83em 0 1.95em; font-size:90%;}
+
+#portal-column-content .languagemessage img {vertical-align:middle;}
+
+#portal-column-content .languagemessage span {vertical-align:middle;}
+
+/*******************************************/
+
+
+div.group {border: 1px solid #bbbbbb;
+    margin:1em 0em 1em 0em;
+    padding: 0em 1em 1em;
+}
+
+
+
+div.line {
+    clear: both;
+    padding:0;
+    margin:4px 0px 0px 0px;
+    border-top: 1px solid #B1C7F3;
+    height: 1px;
+    font-size:1px;
+    background-color: transparent;
+}
+
+/* TT-FIX */ /* ///////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Yeu cau 1*/
+#visual-portal-wrapper {
+	border:1px solid #B2B2B2;
+	margin:0 auto;
+	/*max-width:1088px;*/
+	width:100%;
+}
+
+body {
+	background-color:#f1f4f7; 
+	font-size:80%; 
+	font-family:Arial, Helvetica, sans-serif; 
+	color:#333333; 
+	margin:0 auto;
+	max-width: 1250px;
+	padding-right:10px;
+	padding-left:10px;
+}
+* html body {
+       /*width:980px;*/
+	background-color:#f1f4f7; 
+	font-size:80%; 
+	font-family:Arial, Helvetica, sans-serif; 
+	color:#333333; 
+	margin:0 auto;
+	padding-right:10px;
+	padding-left:10px;
+
+}
+* html #visual-portal-wrapper {
+    position:relative;
+    border:1px solid #B2B2B2;
+	margin:0 auto;
+	width:100%;
+
+}
+/*
+* html body {
+	width: expression(document.body.clientWidth >1129?1130:"auto");
+	
+}
+* html #visual-portal-wrapper {
+	width: expression(document.body.clientWidth >1087?1088:"auto");
+}
+*/
+*+html td#portal-column-one span {
+	position:relative;
+	display:inline;
+}
+
+*+html #visual-portal-wrapper{
+	position:relative;
+
+}
+
+#portal-column-content h1 {
+	font-size:110%; 
+	line-height:121%; 
+	text-transform:none; 
+	color:#0a5096; 
+	margin:0 0 1em 0;
+	}
+/* yeu cau 3 */
+
+
+
+td#portal-column-content {
+	background-color:#fff; 
+	padding:1px 9px 11px 0; 
+	line-height:133%; 
+	overflow:hidden;
+}
+
+
+/* Modify by Dung requirement 6*/
+a {text-decoration:none;}
+
+a:link {color:#0a5096;}
+
+a:hover {text-decoration: underline;}
+
+a:active {color:#0a5096;}
+
+a:visited {color:#0a5096;}
+/*Yeu cau 6*/
+.pathbar a:hover {
+	text-decoration: none;
+	}
+/* .portlet_personalnews */
+
+.portlet_personalnews {
+	background-color:#F7F6F6; 
+	font-size:83%; 
+	border:1px solid #d9e2e6; 
+	border-width:1px 1px 0 1px; 
+	margin:4px 0 0 0;
+	}
+
+.portlet_personalnews h4 {
+	font-size:100%; 
+	font-style:italic; 
+	font-weight:normal; 
+	margin:1em 0 0; 
+	padding:0 1em;
+	}
+
+.portlet_personalnews p {
+	margin:0; 
+	border-bottom:1px solid #d9e2e6; 
+	padding:0 1em 1em;}
+
+.portlet_personalnews a {
+	color:#333333; 
+	font-weight:bold; 
+	text-decoration:none; 
+	display:block;}
+
+.portlet_personalnews a:link {
+	color:#333333;
+	}
+
+.portlet_personalnews a:visited {
+	color:#999;
+	}
+
+.portlet_personalnews a:hover {
+	text-decoration:none;
+	}
+
+.portlet_personalnews a:active {}
+
+.portlet_personalnews img {
+	display:none;
+	}
+/*-------------*/
+#portlet_todaysevents {
+    background-color:#F7F6F6;
+    border-color:#D9E2E6;
+    border-style:solid;
+    border-width:1px 1px 0;
+    font-size:83%;
+    margin:4px 0 0;
+}
+.portlet_linklist {
+    background-color:#F7F6F6; 
+    font-size:83%; 
+    border:1px solid #d9e2e6; 
+    border-width:1px 1px 0 1px; 
+    margin:4px 0 0 0;
+    }
+
+/*portlet title - Requirement 7*/
+
+.portlet_linklist h3, .portlet_personalnews h3 {
+	background-color:#F7F6F6;
+	border-bottom:1px solid #D9E2E6;
+	display:block;
+	font-size:100%;
+	margin:0;
+	padding:0.6em 1em;
+	}
+
+#portlet_todaysevents h3 {
+    border-bottom:1px solid #D9E2E6;
+	display:block; 
+	font-size:100%; 
+	background-color:#F7F6F6; 
+	padding:0.6em 1em; 
+	margin:0 0 0.5em;
+	}
+/* footer - Requirement 8*/
+
+
+footer {
+	background-color: #dbdede; 
+	border: 2px solid #fff; 
+	border-width: 0 2px 2px 2px; 
+	padding: 4px 0 6px 9px; 
+	font-size: 90%; 
+	position: relative; 
+	height: 1em;
+	color: #666666;
+}
+
+footer span.footer_left {}
+
+footer span.footer_right {
+	position: absolute;
+	right: 0;
+}
+
+footer a {
+	color: #333333 !important; 
+	text-decoration: none;
+}
+
+footer span.footer_right a {
+	margin-right: 9px;
+}
+
+/* portal-personal-tool -Requirement 8 */
+#portal-personaltools {
+	background-color:#DBDEDE;
+	border-color:#FFFFFF;
+	border-style:solid;
+	border-width:2px 2px 0;
+	font-size:90%;
+	height:auto;
+	padding:0.1em 14em 0.2em 9px;
+	position:relative;
+}
+
+header {
+	position: relative; 
+	height: 117px; 
+	overflow: hidden; 
+	border: 2px solid #fff; 
+	border-width: 0 2px 0 2px; 
+	background: image-url('verlauf_background.gif') repeat-x;
+}
+
+header #logo {
+    position: absolute;
+    z-index: 111;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 219px;
+    margin: 0;
+    background: #004682 image-url('logo.gif') no-repeat;
+}
+
+header #zeichnung {
+	position: absolute;
+	z-index: 222;
+	left: 197px;
+	height: 117px;
+	width: 100%;
+	margin: 0;
+	background: image-url('zeichnung.gif') no-repeat;
+}
+
+header #foto {
+	float: right;
+	height: 117px;
+	margin: 0;
+	width: 177px;
+	z-index: 333;
+	background: image-url('header_foto.jpg')  no-repeat;
+}
+
+
+#portal-personaltools #language_switch {
+	position:absolute; 
+	top:2px; 
+	right:10px;
+	}
+
+
+#claim_de {
+	position:absolute; 
+	right:188px; 
+	bottom:21px; 
+	margin:0; 
+	width:245px; 
+	height:117px;	
+	z-index:1111; 
+	font-size:2em; 
+	background:url(claim_transparent.gif) 0 21px no-repeat !important; 
+	text-indent:-99999px;
+}
+
+#claim_en {
+	position:absolute; 
+	right:188px; 
+	bottom:21px; 
+	margin:0; 
+	width:245px;	
+	height:117px; 
+	z-index:1111; 
+	font-size:2em; 
+	background:url(claim_en_transparent.gif) 0 21px no-repeat; 
+	text-indent:-99999px;
+}
+
+* html #claim_en {
+	position:absolute; 
+	right:188px; 
+	bottom:21px; 
+	margin:0; 
+	width:245px; 
+	height:117px; 
+	z-index:1111; 
+	font-size:2em; 
+	text-indent:-99999px;
+	background:url(claim_en_transparent.gif) 0 21px no-repeat; 
+
+}
+
+* html #claim_de {
+	position:absolute;
+	right:188px; 
+	bottom:21px; 
+	margin:0; 
+	width:245px; 
+	height:117px; 
+	z-index:1111; 
+	font-size:2em; 
+    background:url(claim_transparent.gif) 0 21px no-repeat !important; 
+	text-indent:-99999px;
+} 
+
+/* Requirement 10*/
+
+*+html ul#navigationlist li {
+	background:transparent url(5pxgradient_nav_depth01.gif) right repeat-y;
+	list-style-type:none;
+	position:relative;
+
+}
+
+*+html ul#navigationlist li li{
+	background:transparent url(5pxgradient_nav_depth02.gif) right repeat-y; 
+	background-attachment: fixed;
+	position: relative;
+	border-top:none !important;
+}
+
+*+html ul#navigationlist li li li{
+	background:transparent url(5pxgradient_nav_depth03.gif) right repeat-y;
+    position: relative;
+
+}
+
+*+html ul#navigationlist li a,
+*+html ul#navigationlist li li a,
+*+html ul#navigationlist li li li a {
+	margin-right:1px;
+	font-weight:normal;
+
+}
+
+*+html ul#navigationlist li a.collapsed {
+	background:transparent url(nav-arrow-left-to-right.gif) no-repeat scroll left center;
+	height:1em;
+	left:0;
+	padding:0.4em 0 0.5em;
+	position:absolute;
+	text-indent:-99999px;
+	top:0;
+	width:16px;
+}
+*+html ul#navigationlist li a.expanded {
+	background:transparent url(nav-arrow-top-to-bottom.gif) no-repeat scroll left center;
+	height:1em;
+	left:0;
+	padding:0.4em 0 0.5em;
+	position:absolute;
+	text-indent:-99999px;
+	top:0;
+	width:16px;
+}
+
+/* Requirement 16 */
+#portal-column-content img {
+	border:none;
+}
+/* requirement 11 */
+/* IE6 */
+/*
+* html #portal-column-content table.listing {font-size:90%; width:auto;}
+*+html #portal-column-content table.listing {font-size:90%;}
+* */
+/* TUM CD */
+/*der hier umschliesst allen content (aber nicht breadcrumbs und die editor-barren)*/
+
+#maincontentwrapper {
+    padding:0.75em 0.83em 0.83em 1.75em;
+
+    }
+#maincontentwrapper *, 
+#maincontentwrapper p 
+/*#maincontentwrapper table *, 
+#maincontentwrapper table p*/ {
+    line-height:1.4em;
+   
+    }
+ 
+.selected {
+    color:#3f9bdb !important;
+}
+.dTitle {
+    color:#333333;
+    font-family:Arial;
+    font-size:12px;
+    font-weight:bold;
+}

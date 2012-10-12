@@ -1,16 +1,13 @@
-<% content_for :table_head do %>
-  <th><%= Course.human_attribute_name(:term_id) %></th>
-  <th><%= Course.human_attribute_name(:name) %></th>
-  <th><%= Course.human_attribute_name(:abbreviation) %></th>
-  <th><%= Course.human_attribute_name(:lecturer_id) %></th>
-<% end %>
+<h1>Liste der Veranstaltungen</h1>
 
-<%= render layout: 'shared/index', locals: {
-  cls: Course, items: @courses, is_creatable: admin?, is_editable: admin?, is_destroyable: admin?
-  } do |course| %>
-  
-  <td><%= link_to course.term.name, course.term %></td>
-  <td><%= link_to course.name, course %></td>
-  <td><%= course.abbreviation %></td>
-  <td><%= link_to course.lecturer.name, course.lecturer %></td>
-<% end %>
+<table id="courses_table">
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= render partial: 'single_table_row', collection: @courses, as: :course %>
+	</tbody>
+</table>

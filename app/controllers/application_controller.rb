@@ -1,54 +1,43 @@
+# coding: utf-8
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  before_filter :set_locale
+  
   helper_method :logged_in?, :current_user, :admin?
   
-  # Setzt die Locale.
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-  
-  def default_url_options(options = {})
-    { locale: I18n.locale }
-  end
-  
   protected
-
-  # Returns the currently logged in user or nil
+  
+  # Gibt den aktuellen angemeldeten Benutzer oder nil zurück
   def current_user
-    #@current_user = User.new
-    #return @current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
-  # Returns whether the user is logged in.
+  
+  # Gibt zurück, ob der Benutzer angemeldet ist.
   def logged_in?
     current_user != nil
   end
   
-  # Returns true if the currently logged in user is an admin.
+  # Gibt true zurück, wenn der aktuell angemeldete Benutzer ein Administrator ist.
   def admin?
     return false
   end
   
-  # Forces a redirect if the user is not logged in, but tries to access
-  # a URL he is not allowed to.
+  # Leitet um, falls der Benutzer nicht angemeldet ist und eine geschützte Seite öffnen möchte.
   def redirect_if_not_logged_in
     if logged_in? then
       return true
     else
-      redirect_to root_url
+      redirect_to home_access_denied_url
     end
   end
   
-  # Forces a redirect if the user is not logged in / no admin, but tries
-  # to access a URL he is not allowed to.  
+  # Leitet um, falls der Benutzer nicht angemeldet bzw. kein Administrator ist und
+  # eine geschützte Seite öffnen möchte.
   def redirect_if_not_admin
     if admin? then
       return true
     else
-      redirect_to root_url
+      redirect_to home_access_denied_url
     end
   end
 end

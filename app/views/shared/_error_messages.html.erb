@@ -1,0 +1,16 @@
+<%#
+Dieses div wird bei einem Fehler beim Erstellen / Bearbeiten / Löschen eines Datensatzes vom Server per
+Ajax zurückgesandt und vom Client als Dialog dargestellt.
+%>
+<div id="error_messages" title="Fehler">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+		<%= error_messages.count %> Fehler bei der Ausführung:
+	</p>
+	
+	<ul>
+		<% error_messages.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>

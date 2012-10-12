@@ -1,0 +1,7 @@
+<tr>
+	<td><%= course.id %></td>
+	<td><%= link_to course.name, admin_course_path(course) %></td>
+	<td><%= course.visible_to_all %></td>
+	<td class="button_cell"><%= link_to 'Bearbeiten', edit_admin_course_path(course), remote: true, title: "Bearbeiten", class: 'edit_button' %></td>
+	<td class="button_cell"><%= link_to 'Löschen', admin_course_path(course), method: :delete, data: { confirm: 'Bitte bestätigen Sie, dass Sie diese Veranstaltung und alle dazugehörigen Dokumente wirklich löschen möchten.' }, title: "Löschen", class: 'delete_button' %></td>
+</tr>

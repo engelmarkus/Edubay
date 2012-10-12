@@ -1,14 +1,10 @@
 class DocumentsController < ApplicationController
-  before_filter :redirect_if_not_admin, except: ['index', 'show', 'new', 'download']
-  before_filter :redirect_if_not_logged_in, only: ['new', 'download']
-  
   # GET /documents
   def index
     @documents = Document.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render xml: @documents }
     end
   end
 
@@ -18,17 +14,16 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render xml: @document }
     end
   end
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @course = Course.find(params[:course_id])
+    @document = Document.new(course_id: @course.id)
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render xml: @document }
     end
   end
 
@@ -40,23 +35,21 @@ class DocumentsController < ApplicationController
   # POST /documents
   def create
     # extract file extension for storing
-    file = params[:fileToUpload]
-    params[:document][:file_extension] = File.extname(params[:fileToUpload].original_filename)
-    params[:document][:uploader_id] = "huhu" #current_user.uid
+    file = params[:file]
+    params[:document][:extension] = File.extname(params[:file].original_filename)
+    params[:document][:user_id] = "huhu" #current_user.uid
     
+    params[:document][:course_id] = params[:course_id]
+    @course = Course.find(params[:course_id])
     @document = Document.new(params[:document])
 
     respond_to do |format|
       if @document.save
-        @document.store_file_on_create(file)
-      
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.xml { head :created, location: document_path(@document) }
-        format.js
+        @document.store_uploaded_file(file)        
+        
+        format.html { redirect_to url_for([@course, @document]), notice: 'Document was successfully created.' }
       else
         format.html { render action: "new" }
-        format.xml { render status: :unprocessable_entity, xml: @document.errors.full_messages }
-        format.js
       end
     end
   end
@@ -68,10 +61,8 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.xml { head :created, location: document_path(@document) }
       else
         format.html { render action: "edit" }
-        format.xml { render status: :unprocessable_entity, xml: @document.errors.full_messages }
       end
     end
   end
@@ -82,24 +73,7 @@ class DocumentsController < ApplicationController
     @document.destroy
 
     respond_to do |format|
-      if @document.destroy
-        format.html { redirect_to documents_url }
-        format.any(:xml, :js) { head :ok }
-      else
-        format.html { redirect_to documents_url }
-        format.xml { render status: :conflict }
-        format.js { render status: :conflict, text: "There was an error deleting this document." }
-      end
+      format.html { redirect_to documents_url }
     end
-  end
-  
-  # GET /documents/1/download
-  def download
-    @document = Document.find(params[:id])
-    #send_file 'uploaded_files/test.txt', :type => 'text/txt'
-    path = File.join(@document.course.get_folder(), Utils.sanitize_filename(@document.course_date.to_s), Utils.sanitize_filename(@document.doc_type + '_' + @document.id.to_s + @document.file_extension))
-    
-    #path = File.join(@document.lecture.get_folder(), Utils.sanitize_filename(@document.lecture_date.to_s), Utils.sanitize_filename(@document.doc_type.name + '_' + @document.id.to_s + ".pdf"))
-    send_file path
   end
 end

@@ -1,0 +1,14 @@
+Fri, 12 Oct 2012 23:49:16 +0200
+doc/README_FOR_APP	Thu, 27 Sep 2012 18:02:29 +0200
+app/models/document.rb	Fri, 12 Oct 2012 01:07:53 +0200
+app/models/user.rb	Fri, 28 Sep 2012 23:03:29 +0200
+app/models/course.rb	Fri, 12 Oct 2012 20:47:53 +0200
+app/models/campusonline.rb	Fri, 12 Oct 2012 21:36:07 +0200
+app/controllers/admin/courses_controller.rb	Fri, 12 Oct 2012 01:59:09 +0200
+app/controllers/admin/documents_controller.rb	Thu, 11 Oct 2012 22:04:36 +0200
+app/controllers/courses_controller.rb	Fri, 12 Oct 2012 23:36:37 +0200
+app/controllers/session_controller.rb	Fri, 28 Sep 2012 23:02:49 +0200
+app/controllers/documents_controller.rb	Sun, 07 Oct 2012 18:08:09 +0200
+app/controllers/application_controller.rb	Thu, 11 Oct 2012 21:57:43 +0200
+app/controllers/home_controller.rb	Thu, 11 Oct 2012 21:52:06 +0200
+lib/utils.rb	Thu, 11 Oct 2012 20:41:42 +0200

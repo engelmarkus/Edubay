@@ -1,65 +1,40 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+Site.documents ||= {}
 
-$(document).ready( ->
-  # Fügt einen DatePicker zum entsprechenden Textfeld hinzu.
-  $('#document_course_date').datepicker();
+Site.documents.index = ->
+  $("#documents_table").tablesorter()
+  
+  $("#new_document_button").button(
+    icons:
+      primary: "ui-icon-plusthick"
+  )
 
-  # Make index table sortable
-  $('#documents_index').tablesorter(
-    sortList: [[0, 0], [2, 1]],
-    headers:
-      5:
-        sorter: false
-  );
-
-  # Validation rules for submit form
-  $("#new_document").validate(
-    rules:
-      "fileToUpload":
-        required: true
-      "document[description]":
-        required: true
-      "document[course_date]":
-        required: true
-        date: true
-      "document[doc_type]":
-        required: true
-      "document[course_id]":
-        required: true
-  );
-);
-
-
-# * Uploading file using rails.js
-# * =============================
-# *
-# * By default, browsers do not allow files to be uploaded via AJAX. As a result, if there are any non-blank file fields
-# * in the remote form, this adapter aborts the AJAX submission and allows the form to submit through standard means.
-# *
-# * The `ajax:aborted:file` event allows you to bind your own handler to process the form submission however you wish.
-# *
-# * Ex:
-# *     $('form').live('ajax:aborted:file', function(event, elements){
-# *       // Implement own remote file-transfer handler here for non-blank file inputs passed in `elements`.
-# *       // Returning false in this handler tells rails.js to disallow standard form submission
-# *       return false;
-# *     });
-# *
-# * The `ajax:aborted:file` event is fired when a file-type input is detected with a non-blank value.
-# *
-# * Third-party tools can use this hook to detect when an AJAX file upload is attempted, and then use
-# * techniques like the iframe method to upload the file instead.
-
-$(document).ready( ->
-  $('form').live('ajax:aborted:file', ->
+Site.documents.new = ->
+  # * Uploading file using rails.js
+  # * =============================
+  # *
+  # * By default, browsers do not allow files to be uploaded via AJAX. As a result, if there are any non-blank file fields
+  # * in the remote form, this adapter aborts the AJAX submission and allows the form to submit through standard means.
+  # *
+  # * The `ajax:aborted:file` event allows you to bind your own handler to process the form submission however you wish.
+  # *
+  # * Ex:
+  # *     $('form').live('ajax:aborted:file', function(event, elements){
+  # *       // Implement own remote file-transfer handler here for non-blank file inputs passed in `elements`.
+  # *       // Returning false in this handler tells rails.js to disallow standard form submission
+  # *       return false;
+  # *     });
+  # *
+  # * The `ajax:aborted:file` event is fired when a file-type input is detected with a non-blank value.
+  # *
+  # * Third-party tools can use this hook to detect when an AJAX file upload is attempted, and then use
+  # * techniques like the iframe method to upload the file instead.
+  $('form').on('ajax:aborted:file', ->
     # Das würde einen normalen AJAX-Call machen, aber er lässt dabei einfach
     # das Datei-Feld bei der Übertragung raus.
     # $.post($(this).attr("action")+'.js', $(this).serialize(), null, "script");
-    
-    # Deswegen benutzen wir HTML5, mit einem XMLHttpRequest Level 2 gehts
-    # nämlich trotzdem.
     
     fd = new FormData($(this)[0]);
     
@@ -69,7 +44,7 @@ $(document).ready( ->
     xhr.addEventListener("error", uploadFailed, false);
     xhr.addEventListener("abort", uploadCanceled, false);
     
-    xhr.open("POST", "/documents.js");
+    xhr.open("POST", $(this)[0].action);
     xhr.send(fd);
     
     $('#dialog').dialog({
@@ -86,7 +61,7 @@ $(document).ready( ->
     # Das Formular nicht normal posten.
     return false;
   );
-
+  
   uploadProgress = (event) ->
     if event.lengthComputable
       percent = Math.round(event.loaded * 100 / event.total);
@@ -94,29 +69,13 @@ $(document).ready( ->
       $('#progressbar').progressbar({ value: percent });
     else
       $('#percentCompleted').html("unable to compute");
-
+  
   uploadFailed = (event) ->
     window.alert("There was an error attempting to upload the file.");
-
+  
   uploadCanceled = (event) ->
     window.alert("The upload has been canceled by the user or the browser dropped the connection.");
-
+  
   uploadComplete = (event) ->
     $('#percentCompleted').html("Upload complete...");
     window.location = event.target.response;
-
-  # Größe der hochzuladenden Datei bei Änderung berechnen und im span "fileSize" ausgeben.
-  $('#fileToUpload').on('change', ->
-    file = $(this)[0].files[0];
-    
-    if file
-      fileSize = 0;
-      
-      if file.size > 1024 * 1024
-        fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + ' MB';
-      else
-        fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + ' KB';
-      
-      $('#fileSize').html("Size: #{fileSize}");
-  );
-);

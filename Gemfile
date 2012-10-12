@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'rails-i18n'
 
 # Gems only used in development environment.
 group :development do
@@ -13,11 +14,11 @@ group :production do
 
   # Use passenger as the app server
   gem 'passenger'
-
-  # Authentication via Shibboleth
-  gem 'omniauth'
-  gem 'omniauth-shibboleth'
 end
+
+# Authentication via Shibboleth
+gem 'omniauth'
+gem 'omniauth-shibboleth'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,6 +29,8 @@ group :assets do
   gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'

@@ -1,18 +1,31 @@
-<% content_for :table_head do %>
-  <th><%= Document.human_attribute_name(:course_id) %></th>
-  <th><%= Document.human_attribute_name(:doc_type_id) %></th>
-  <th><%= Document.human_attribute_name(:course_date) %></th>
-  <th><%= Document.human_attribute_name(:description) %></th>
-  <th><%= Document.human_attribute_name(:uploader_id) %></th>
-<% end %>
+<h1>Liste der Dokumente</h1>
 
-<%= render layout: 'shared/index', locals: {
-    cls: Document, items: @documents, is_creatable: logged_in?, is_editable: false, is_destroyable: admin?
-  } do |document| %>
-  
-  <td><%= document.course.name %></td>
-  <td><%= document.doc_type %></td>
-  <td><%= l(document.course_date) %></td>
-  <td><%= link_to document.description, document %></td>
-  <td><%= document.uploader_id %></td>
-<% end %>
+<table id="documents_table">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Description</th>
+			<th>Extension</th>
+			<th class="{sorter: false}"></th>
+			<th class="{sorter: false}"></th>
+			<th class="{sorter: false}"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @documents.each do |document| %>
+		<tr>
+			<td><%= document.date %></td>
+			<td><%= document.description %></td>
+			<td><%= document.extension %></td>
+			<td><%= link_to 'Show', course_document_path(document) %></td>
+			<td><%= link_to 'Edit', edit_course_document_path(document) %></td>
+			<td><%= link_to 'Destroy', course_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Document', new_course_document_path, id: 'new_document_button' %>

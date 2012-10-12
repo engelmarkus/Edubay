@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  # List of authentication services to be used.
+  # List der erlaubten Authentifizierungsservices
   provider :shibboleth, {
-    # Additional attributes provided by the Shibboleth IdP.
+    # Zusätzliche Attribute, die vom Shibboleth Identity Provider übermittelt werden
     extra_fields: [
       :"unscoped-affiliation",
       :entitlement,

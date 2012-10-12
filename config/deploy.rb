@@ -27,11 +27,20 @@ role :web, production_server
 role :app, production_server
 role :db, production_server, primary: true
 
-# If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
+  
+  desc "Restart the application"
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
   end
+  
+  desc "Copy database.yml and edubay.yml into the latest release"
+  task :copy_in_yml_files do
+    run "cp -f ~/database.yml #{release_path}/config/database.yml"
+    run "cp -f ~/edubay.yml #{release_path}/config/edubay.yml"
+  end
 end
+
+before "deploy:assets:precompile", "deploy:copy_in_yml_files"

@@ -1,8 +1,7 @@
 development:
   campusonline_token: "yourtokenhere"
   cache_expiration: 20.seconds
-  
+
 production:
   campusonline_token: "yourtokenhere"
   cache_expiration: 10.minutes
-  

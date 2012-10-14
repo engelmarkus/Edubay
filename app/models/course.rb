@@ -72,7 +72,7 @@ class Course < ActiveRecord::Base
   # TODO: anderen Cache verwenden, bei dem sich mehrere Instanzen die Daten teilen können?
   
   # Der globale Cache, in dem Veranstaltungsdaten vom CAMPUSonline-Web Service zwischengespeichert werden.
-  @@campusonline_cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes, race_condition_ttl: 10.seconds)
+  @@campusonline_cache = ActiveSupport::Cache::MemoryStore.new(expires_in: Edubay::Application.config.cache_expiration, race_condition_ttl: 10.seconds)
   
   # Wird benutzt, um alle Informationen zur Veranstaltung auf einmal vom Webservice zu holen und zwischenzuspeichern,
   # sodass nicht mehrere getrennte Aufrufe notwendig sind, wenn mehrere Attribute benötigt werden.

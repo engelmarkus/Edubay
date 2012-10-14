@@ -22,7 +22,6 @@ Edubay::Application.routes.draw do
   # Startseite, Tutorial, etc.
   get "home/index"
   get "home/intro"
-  get "home/access_denied"
 
   # Omniauth URLs
   match "/auth/:provider/callback" => "session#create"

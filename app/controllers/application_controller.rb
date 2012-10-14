@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   
   # Gibt true zurück, wenn der aktuell angemeldete Benutzer ein Administrator ist.
   def admin?
-    logged_in? and Edubay::Application.config.admin_ids.include?(current_user)
+    logged_in? and Edubay::Application.config.admin_ids.include?(current_user.uid)
   end
   
   # Rendert eine Fehlermeldung, wenn dem Benutzer der Zugriff auf eine Seite verweigert wurde.

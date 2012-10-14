@@ -1,5 +1,5 @@
 class Admin::DocumentsController < ApplicationController
-  #before_filter :redirect_if_not_admin
+  before_filter :redirect_if_not_admin
   
   # GET /admin/documents
   def index

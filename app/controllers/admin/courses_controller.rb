@@ -1,5 +1,5 @@
 class Admin::CoursesController < ApplicationController
-  #before_filter :redirect_if_not_admin
+  before_filter :redirect_if_not_admin
   
   # GET /admin/courses
   def index

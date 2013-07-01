@@ -58,14 +58,16 @@ SimpleNavigation::Configuration.run do |navigation|
     #end
 
     primary.item :home, 'Home', home_index_path, highlights_on: Regexp.new('/home') do |sub_nav|
-      sub_nav.item :home_intro, 'Intro', home_intro_path
+      #sub_nav.item :home_intro, 'Intro', home_intro_path
       
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')
+    primary.item :bach_sem, 'Bachelor-Seminare', url_for(controller: 'seminars', action: 'index') 
+    
+    #primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')
 
-    primary.item :admin, "Administration", admin_courses_path, highlights_on: Regexp.new('/admin'), if: Proc.new { admin? }
+    #primary.item :admin, "Administration", admin_courses_path, highlights_on: Regexp.new('/admin'), if: Proc.new { admin? }
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

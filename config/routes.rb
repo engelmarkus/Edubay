@@ -1,31 +1,33 @@
 Edubay::Application.routes.draw do
 
-  # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
-  resources :courses, only: [ :index, :show ] do
-    resources :documents do
-      member do
-        get 'download'
-      end
-    end
-  end
+  resources :seminars, only: [ :index ]
 
-  namespace :admin do
-    resources :courses do
-      resources :documents do
-        member do
-          get 'download'
-        end
-      end
-    end
-  end
+  # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
+  # resources :courses, only: [ :index, :show ] do
+    # resources :documents do
+      # member do
+        # get 'download'
+      # end
+    # end
+  # end
+# 
+  # namespace :admin do
+    # resources :courses do
+      # resources :documents do
+        # member do
+          # get 'download'
+        # end
+      # end
+    # end
+  # end
   
   # Startseite, Tutorial, etc.
   get "home/index"
   get "home/intro"
 
   # Omniauth URLs
-  match "/auth/:provider/callback" => "session#create"
-  match "/signout" => "session#destroy", as: :signout
+  #match "/auth/:provider/callback" => "session#create"
+  #match "/signout" => "session#destroy", as: :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

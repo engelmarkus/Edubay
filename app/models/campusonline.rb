@@ -76,6 +76,10 @@ class CAMPUSonline
       fetch('/cdm/organization/courses/xml', orgUnitID: orgUnitID)
     end
 
+    def getNextYearsCoursesOfOrganisation(orgUnitID)
+      fetch('/cdm/organization/courses/nextyear/xml', orgUnitID: orgUnitID)
+    end
+
     # Ermittelt eine Liste aller Veranstaltungen, die von einer Person angeboten werden.
     #
     # * *Parameter*:

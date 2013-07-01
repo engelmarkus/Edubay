@@ -47,3 +47,6 @@ gem 'simple-navigation'
 
 # CAMPUSonline web service access
 gem 'httparty'
+
+# XML Parser
+gem 'nokogiri'

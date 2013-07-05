@@ -7,12 +7,12 @@ class Seminar
   # TODO: anderen Cache verwenden, bei dem sich mehrere Instanzen die Daten teilen können?
   
   # Der globale Cache, in dem Veranstaltungsdaten vom CAMPUSonline-Web Service zwischengespeichert werden.
-  @@campusonline_cache = ActiveSupport::Cache::MemoryStore.new(expires_in: Edubay::Application.config.cache_expiration, race_condition_ttl: 10.seconds)
+  @@campusonline_cache = ActiveSupport::Cache::FileStore.new('tmp/cache/campusonline', expires_in: Edubay::Application.config.cache_expiration)
   
   # Wird benutzt, um alle Informationen zur Veranstaltung auf einmal vom Webservice zu holen und zwischenzuspeichern,
   # sodass nicht mehrere getrennte Aufrufe notwendig sind, wenn mehrere Attribute benötigt werden.
   def self.cache_campusonline_data()
-    #logger.debug "Called cache_campusonline_data"
+    Rails.logger.debug "Called cache_campusonline_data"
 
     # Daten vom Web Service holen.
     data = CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')
@@ -42,7 +42,7 @@ class Seminar
   # wenn die Daten darin abgelaufen oder nicht vorhanden sind.  
   def self.cached_attribute()
     data = @@campusonline_cache.fetch(1) do
-      #logger.debug "Cache miss." # when trying to access attribute #{key} of course #{id}."
+      Rails.logger.debug "Cache miss." # when trying to access attribute #{key} of course #{id}."
       cache_campusonline_data()
     end
     

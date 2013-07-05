@@ -1,0 +1,23 @@
+<table>
+	<tr>
+		<th>Titel</th>
+		<th>Organisation</th>
+	</tr>
+
+	<% @daten.each do |course| %>
+		<% if course.xpath('courseName/text').inner_text.include? 'IN0013' %>
+			<tr>
+				<td>
+					<%=
+						link_to course.xpath('courseName/text').inner_text.sub(/ \(((IN[0-9\/]*)(, )?)*\)/, ''),
+								'https://campus.tum.de/tumonline/lv.detail?clvnr=' + course.xpath('courseID').inner_text
+					%>
+				</td>
+				
+				<td>
+					<%= course.xpath('../orgUnitName/text').inner_text %>
+				</td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

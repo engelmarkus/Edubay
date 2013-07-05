@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  id: MyString
-  visible_to_all: 
-
-two:
-  id: MyString
-  visible_to_all: 

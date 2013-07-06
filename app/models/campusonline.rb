@@ -2,7 +2,7 @@
 # CAMPUSonline stellt einen XML-Webservice zur Verfügung, über den Informationen zu Vorlesungen,
 # Organisationen, Teilnehmern, etc. ausgelesen werden können.
 #
-# Dazu wird ein Token benötigt, das beim Aufruf einer Funktion jeweils mit übergeben werden muss.
+# Dazu wird ein Token benötigt, das in der Konfigurationsdatei 'config/edubay.yml' festgelegt werden muss.
 #
 # Bei Erfolg wird jeweils ein XML-Dokument zurückgegeben, das dem {CDM-Schema}[http://utdanning.no/schemas/CDM/2/CDM.xsd]
 # entspricht. Bei einem Fehler sieht das Dokument folgendermaßen aus:
@@ -15,6 +15,10 @@ class CAMPUSonline
   include HTTParty
   base_uri 'https://campus.tum.de/tumonlinej/ws/webservice_v1.0'
   ssl_version :SSLv3
+  default_params token: Edubay::Application.config.campusonline_token
+  
+  # Parser abschalten, wird später von was anderem übernommen
+  format :plain
  
   # Wird benutzt, um einen Fehler "400" beim Aufruf des Web-Services anzuzeigen.
   #
@@ -30,26 +34,34 @@ class CAMPUSonline
   class UnknownError < RuntimeError; end
   
   class << self
-    # Holt Daten vom Web Service.
+    # Der globale Cache, in dem Daten vom CAMPUSonline-Web Service zwischengespeichert werden.
+    @@cache = ActiveSupport::Cache::FileStore.new('tmp/cache/campusonline', expires_in: Edubay::Application.config.cache_expiration)
+    
+    # Holt Daten aus dem Cache, bzw. vom Web Service, wenn keine aktuellen Daten vorhanden sind.
     #
     # * *Parameter*:
     #   - +url+ -> die Teiladresse der zu holenden Daten
-    #   - +params+ -> beim Abrufen von der Adresse zu übergebende Daten
+    #   - +params+ -> beim Abrufen von der Adresse zu übergebende Parameter
     # * *Rückgabewert*:
-    #   - Antwort des Servers
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe BadRequest
     #   - siehe NotFound
     #   - siehe UnknownError
     def fetch(url, params = {})
-      params[:token] = Edubay::Application.config.campusonline_token
-      response = get(url, query: params)
+      # Erst prüfen, ob aktuelle Daten im Cache vorhanden sind.
+      data = @@cache.fetch(Digest::MD5.hexdigest(url + '/' + params.to_s)) do
+        # Wenn nicht, Anfrage schicken
+        response = get(url, query: params)
+        
+        raise BadRequest, response if response.code == 400
+        raise NotFound, response if response.code == 404
+        raise UnknownError, response unless response.code == 200
+        
+        response.body
+      end
       
-      raise BadRequest, response if response.code == 400
-      raise NotFound, response if response.code == 404
-      raise UnknownError, response unless response.code == 200
-      
-      return response
+      return data
     end
     
     # Ermittelt Informationen zu einer Veranstaltung.
@@ -57,7 +69,7 @@ class CAMPUSonline
     # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
     # * *Rückgabewert*:
-    #   - Hash mit Informationen
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCourse(courseID)
@@ -69,13 +81,21 @@ class CAMPUSonline
     # * *Parameter*:
     #   - +orgUnitID+ -> die ID der Organisation
     # * *Rückgabewert*:
-    #   - Hash mit Informationen
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCoursesOfOrganisation(orgUnitID)
       fetch('/cdm/organization/courses/xml', orgUnitID: orgUnitID)
     end
 
+    # Ermittelt eine Liste aller Veranstaltungen einer Organisation im nächsten Semester.
+    #
+    # * *Parameter*:
+    #   - +orgUnitID+ -> die ID der Organisation
+    # * *Rückgabewert*:
+    #   - String mit XML-Dokument
+    # * *Ausnahmen*:
+    #   - siehe ::fetch
     def getNextYearsCoursesOfOrganisation(orgUnitID)
       fetch('/cdm/organization/courses/nextyear/xml', orgUnitID: orgUnitID)
     end
@@ -85,7 +105,7 @@ class CAMPUSonline
     # * *Parameter*:
     #   - +personID+ -> die ID der Person
     # * *Rückgabewert*:
-    #   - Hash mit Informationen
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
     def getCoursesOfPerson(personID)
@@ -97,7 +117,7 @@ class CAMPUSonline
     # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
     # * *Rückgabewert*:
-    #   - Hash mit Informationen
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
     def getEventsOfCourse(courseID)
@@ -109,7 +129,7 @@ class CAMPUSonline
     # * *Parameter*:
     #   - +courseID+ -> die ID der Veranstaltung
     # * *Rückgabewert*:
-    #   - Hash mit Informationen
+    #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
     def getStudentsOfCourse(courseID)

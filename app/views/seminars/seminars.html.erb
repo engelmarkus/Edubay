@@ -1,23 +1,36 @@
 <table>
 	<tr>
 		<th>Titel</th>
+		<th>Teilnahme/Anmeldung</th>
+		<th>Mitwirkende</th>
 		<th>Organisation</th>
 	</tr>
 
-	<% @daten.each do |course| %>
-		<% if course.xpath('courseName/text').inner_text.include? 'IN0013' %>
-			<tr>
-				<td>
-					<%=
-						link_to course.xpath('courseName/text').inner_text.sub(/ \(((IN[0-9\/]*)(, )?)*\)/, ''),
-								'https://campus.tum.de/tumonline/lv.detail?clvnr=' + course.xpath('courseID').inner_text
-					%>
-				</td>
-				
-				<td>
-					<%= course.xpath('../orgUnitName/text').inner_text %>
-				</td>
-			</tr>
-		<% end %>
+	<% @overview.each do |course| %>
+		<% courseID = course.xpath('courseID').inner_text %>
+		<tr>
+			<td>
+				<%=
+					link_to course.xpath('courseName/text').inner_text.sub(/ \(((IN[0-9\/]*)(, )?)*\)/, ''),
+						'https://campus.tum.de/tumonline/lv.detail?clvnr=' + courseID
+				%>
+			</td>
+			
+			<td>
+				<%= @details[courseID].xpath("/CDM/course/admissionInfo/admissionDescription/text()").text %>
+			</td>
+			
+			<td>
+				<%=
+					@details[courseID].xpath("/CDM/course/contacts/person").map {
+						|person| person.xpath("name/family").text + " " + person.xpath("name/given").text[0]
+					}.join(",<br>").html_safe
+				%>
+			</td>
+			
+			<td>
+				<%= course.xpath('../orgUnitName/text').inner_text %>
+			</td>
+		</tr>
 	<% end %>
 </table>

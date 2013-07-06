@@ -1,7 +1,12 @@
 Edubay::Application.routes.draw do
 
-  resources :seminars, only: [ :index ]
-
+  match "/seminars/bachelorpro" => "seminars#bachelorpro"
+  match "/seminars/bachelor" => "seminars#bachelor"
+  match "/seminars/master" => "seminars#master"
+  
+  match "/practicals/bachelor" => "practicals#bachelor"
+  match "/practicals/master" => "practicals#master"
+  
   # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
   # resources :courses, only: [ :index, :show ] do
     # resources :documents do

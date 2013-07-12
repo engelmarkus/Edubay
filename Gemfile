@@ -50,3 +50,5 @@ gem 'httparty'
 
 # XML Parser
 gem 'nokogiri'
+
+gem 'rails_autolink'

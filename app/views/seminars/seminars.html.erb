@@ -11,13 +11,13 @@
 		<tr>
 			<td>
 				<%=
-					link_to course.xpath('courseName/text').inner_text.sub(/ \(((IN[0-9\/]*)(, )?)*\)/, ''),
+					link_to course.xpath('courseName/text').inner_text.sub(/\s*\(((IN[0-9\/]*)[, ]*)*\)/, '').sub(/^[\w\-\/ ]*?seminar\s?[\:\-\–]?\s*/i, ''),
 						'https://campus.tum.de/tumonline/lv.detail?clvnr=' + courseID
 				%>
 			</td>
 			
 			<td>
-				<%= @details[courseID].xpath("/CDM/course/admissionInfo/admissionDescription/text()").text %>
+				<%= auto_link @details[courseID].xpath("/CDM/course/admissionInfo/admissionDescription/text()").text %>
 			</td>
 			
 			<td>

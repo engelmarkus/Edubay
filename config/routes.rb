@@ -31,8 +31,8 @@ Edubay::Application.routes.draw do
   get "home/intro"
 
   # Omniauth URLs
-  #match "/auth/:provider/callback" => "session#create"
-  #match "/signout" => "session#destroy", as: :signout
+  match "/auth/:provider/callback" => "session#create"
+  match "/signout" => "session#destroy", as: :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

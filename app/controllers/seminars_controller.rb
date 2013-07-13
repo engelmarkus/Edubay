@@ -5,18 +5,25 @@ class SeminarsController < ApplicationController
     
     # Für jede einzelne noch Details abrufen
     details = {}
+    termine = {}
     
     overview.each do |course|
       courseID = course.xpath('courseID').inner_text
+      
       details[courseID] = Nokogiri::XML(CAMPUSonline.getCourse(courseID))
+      
+      termin = Nokogiri::XML(CAMPUSonline.getEventsOfCourse(courseID))
+      termin.remove_namespaces!
+      
+      termine[courseID] = termin.xpath('//resource[@typeID="singleEvent"]').min_by { |node| node.xpath('description/attribute[@attrID="dtstart"]').text }
     end
     
-    return overview, details
+    return overview, details, termine
   end
   
   # GET /seminars/bachelorpro
   def bachelorpro
-    @overview, @details = getData("IN0013")
+    @overview, @details, @termine = getData("IN0013")
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -25,7 +32,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/bachelor
   def bachelor
-    @overview, @details = getData("IN0014")
+    @overview, @details, @termine = getData("IN0014")
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -34,7 +41,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/master
   def master
-    @overview, @details = getData("IN2107")
+    @overview, @details, @termine = getData("IN2107")
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }

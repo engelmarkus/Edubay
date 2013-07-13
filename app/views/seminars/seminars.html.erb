@@ -4,6 +4,7 @@
 		<th>Teilnahme/Anmeldung</th>
 		<th>Mitwirkende</th>
 		<th>Organisation</th>
+		<th>Erster Termin</th>
 	</tr>
 
 	<% @overview.each do |course| %>
@@ -30,6 +31,13 @@
 			
 			<td>
 				<%= course.xpath('../orgUnitName/text').inner_text %>
+			</td>
+			
+			<td>
+				<% if @termine[courseID] != nil %>
+				<%= @termine[courseID].xpath('//attribute[@attrID="dtstart"]')[0].text.to_time.strftime('%d.%m.%y %H:%M') %><br>
+				<%= @termine[courseID].xpath('//attribute[@attrID="singleEventTypeName"]')[0].text %>
+				<% end %>
 			</td>
 		</tr>
 	<% end %>

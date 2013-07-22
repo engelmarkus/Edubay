@@ -3,7 +3,7 @@
 		<th>Titel</th>
 		<th>Teilnahme/Anmeldung</th>
 		<th>Mitwirkende</th>
-		<th>Organisation</th>
+		<th>Lehrstuhl</th>
 		<th>Erster Termin</th>
 	</tr>
 
@@ -24,13 +24,13 @@
 			<td>
 				<%=
 					@details[courseID].xpath("/CDM/course/contacts/person").map {
-						|person| person.xpath("name/family").text + " " + person.xpath("name/given").text[0]
-					}.join(",<br>").html_safe
+						|person| person.xpath("name/family").text
+					}.uniq().join(",<br/>").html_safe
 				%>
 			</td>
 			
 			<td>
-				<%= course.xpath('../orgUnitName/text').inner_text %>
+				<%= course.xpath('../orgUnitName/text').inner_text.sub('Informatik ', 'I').sub('Lehrstuhl für ', '').sub(/\s*\(.+\)/, '') %>
 			</td>
 			
 			<td>

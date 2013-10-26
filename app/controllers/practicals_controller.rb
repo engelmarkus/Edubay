@@ -1,9 +1,31 @@
 class PracticalsController < ApplicationController
+  def getData(courseNumber)
+    # Liste aller gesuchten Veranstaltungen
+    #overview = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
+    overview = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
+    
+    # Für jede einzelne noch Details abrufen
+    details = {}
+    termine = {}
+    
+    overview.each do |course|
+      courseID = course.xpath('courseID').inner_text
+      
+      details[courseID] = Nokogiri::XML(CAMPUSonline.getCourse(courseID))
+      
+      termin = Nokogiri::XML(CAMPUSonline.getEventsOfCourse(courseID))
+      termin.remove_namespaces!
+      
+      termine[courseID] = termin.xpath('//resource[@typeID="singleEvent"]').min_by { |node| node.xpath('description/attribute[@attrID="dtstart"]').text }
+    end
+    
+    return overview, details, termine
+  end
+
+
   # GET /practicals/bachelor
   def bachelor
-    #@daten = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath('//course')
-    @daten = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath('//course')
-    @lvnr = 'IN0012'
+    @overview, @details, @termine = getData("IN0012")
     
     respond_to do |format|
       format.html { render file: 'practicals/practicals.html.erb' }
@@ -12,9 +34,7 @@ class PracticalsController < ApplicationController
   
   # GET /practicals/master
   def master
-    #@daten = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath('//course')
-    @daten = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath('//course')
-    @lvnr = 'IN2106'
+    @overview, @details, @termine = getData("IN2106")
     
     respond_to do |format|
       format.html { render file: 'practicals/practicals.html.erb' }

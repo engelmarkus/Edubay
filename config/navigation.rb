@@ -67,7 +67,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor"
     primary.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master" 
     
-    primary.item :prac_bachelor, 'Praktika Bachelor (IN0013)', "/practicals/bachelor"
+    primary.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor"
     primary.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master"
     
     #primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')

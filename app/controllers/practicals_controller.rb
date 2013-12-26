@@ -1,7 +1,7 @@
 class PracticalsController < ApplicationController
   # GET /practicals/bachelor
   def bachelor
-    @daten = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath('//course')
+    @daten = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath('//course')
     @lvnr = 'IN0012'
     
     respond_to do |format|
@@ -11,7 +11,7 @@ class PracticalsController < ApplicationController
   
   # GET /practicals/master
   def master
-    @daten = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath('//course')
+    @daten = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath('//course')
     @lvnr = 'IN2106'
     
     respond_to do |format|

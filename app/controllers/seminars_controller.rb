@@ -1,7 +1,7 @@
 class SeminarsController < ApplicationController
   def getData(courseNumber)
     # Liste aller gesuchten Veranstaltungen
-    overview = Nokogiri::XML(CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
+    overview = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
     
     # Für jede einzelne noch Details abrufen
     details = {}

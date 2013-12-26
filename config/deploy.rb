@@ -6,7 +6,7 @@ set :rvm_type, :system
 
 # Deploy user
 set :user, "engel"
-set :use_sudo, true
+#set :use_sudo, true
 
 set :application, "edubay"
 #set :production_server, "edubay.in.tum.de"
@@ -22,23 +22,5 @@ set :scm_verbose, true
 #role :web, application
 #role :app, application
 #role :db, application
-
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  
-  desc "Restart the application"
-  task :restart do
-    on "engel@edubay.in.tum.de" do
-    #  execute "touch #{File.join(current_path, 'tmp', 'restart.txt')}"
-    end
-  end
-  
-  desc "Copy database.yml and edubay.yml into the latest release"
-  task :copy_in_yml_files do
-    run "cp -f ~/database.yml #{release_path}/config/database.yml"
-    run "cp -f ~/edubay.yml #{release_path}/config/edubay.yml"
-  end
-end
 
 #before "deploy:assets:precompile", "deploy:copy_in_yml_files"

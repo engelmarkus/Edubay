@@ -1,5 +1,3 @@
-require "bundler/capistrano"
-
 set :rvm_ruby_string, "2.1.0@edubay"
 set :rvm_type, :system
 

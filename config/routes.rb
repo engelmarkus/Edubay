@@ -1,11 +1,11 @@
 Edubay::Application.routes.draw do
 
-  match "/seminars/bachelorpro" => "seminars#bachelorpro"
-  match "/seminars/bachelor" => "seminars#bachelor"
-  match "/seminars/master" => "seminars#master"
+  get "/seminars/bachelorpro" => "seminars#bachelorpro"
+  get "/seminars/bachelor" => "seminars#bachelor"
+  get "/seminars/master" => "seminars#master"
   
-  match "/practicals/bachelor" => "practicals#bachelor"
-  match "/practicals/master" => "practicals#master"
+  get "/practicals/bachelor" => "practicals#bachelor"
+  get "/practicals/master" => "practicals#master"
   
   # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
   # resources :courses, only: [ :index, :show ] do
@@ -31,8 +31,8 @@ Edubay::Application.routes.draw do
   get "home/intro"
 
   # Omniauth URLs
-  match "/auth/:provider/callback" => "session#create"
-  match "/signout" => "session#destroy", as: :signout
+  get "/auth/:provider/callback" => "session#create"
+  get "/signout" => "session#destroy", as: :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,45 +9,15 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001175544) do
+ActiveRecord::Schema.define(version: 20120928201203) do
 
-  create_table "courses", :force => true do |t|
-    t.boolean  "visible_to_all"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "courses", ["id"], :name => "index_courses_on_id", :unique => true
-
-  create_table "documents", :force => true do |t|
-    t.integer  "course_id"
-    t.string   "description"
-    t.date     "date"
-    t.string   "user_id"
-    t.string   "extension"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "documents", ["course_id"], :name => "index_documents_on_course_id"
-
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
-    t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "users", :force => true do |t|
+  create_table "users", force: true do |t|
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

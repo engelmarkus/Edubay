@@ -5,9 +5,9 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-#role :app, %w{deploy@example.com}
-#role :web, %w{deploy@example.com}
-#role :db,  %w{deploy@example.com}
+role :app, %w{engel@edubay.in.tum.de}
+role :web, %w{engel@edubay.in.tum.de}
+role :db,  %w{engel@edubay.in.tum.de}
 
 # Extended Server Syntax
 # ======================
@@ -21,11 +21,11 @@ set :stage, :production
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
 # set it globally
-#  set :ssh_options, {
+  set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
+    forward_agent: true,
 #    auth_methods: %w(password)
-#  }
+  }
 # and/or per server
 # server 'example.com',
 #   user: 'user_name',

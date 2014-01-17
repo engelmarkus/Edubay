@@ -1,23 +1,44 @@
 <table>
 	<tr>
 		<th>Titel</th>
-		<th>Organisation</th>
+		<th>Teilnahme/Anmeldung</th>
+		<th>Mitwirkende</th>
+		<th>Lehrstuhl</th>
+		<th>Erster Termin</th>
 	</tr>
 
-	<% @daten.each do |course| %>
-		<% if course.xpath('courseName/text').inner_text.include? @lvnr %>
-			<tr>
-				<td>
-					<%=
-						link_to course.xpath('courseName/text').inner_text.sub(/ \(((IN[0-9\/]*)(, )?)*\)/, ''),
-								'https://campus.tum.de/tumonline/lv.detail?clvnr=' + course.xpath('courseID').inner_text
-					%>
-				</td>
-				
-				<td>
-					<%= course.xpath('../orgUnitName/text').inner_text %>
-				</td>
-			</tr>
-		<% end %>
+	<% @overview.each do |course| %>
+		<% courseID = course.xpath('courseID').inner_text %>
+		<tr>
+			<td>
+				<%=
+					link_to course.xpath('courseName/text').inner_text.sub(/\s*\(((IN[0-9\/]*)[, ]*)*\)/, '').sub(/^[\w\-\/ ]*?seminar\s?[\:\-\–]?\s*/i, ''),
+						'https://campus.tum.de/tumonline/lv.detail?clvnr=' + courseID
+				%>
+			</td>
+			
+			<td>
+				<%= auto_link @details[courseID].xpath("/CDM/course/admissionInfo/admissionDescription/text()").text %>
+			</td>
+			
+			<td>
+				<%=
+					@details[courseID].xpath("/CDM/course/contacts/person").map {
+						|person| person.xpath("name/family").text
+					}.uniq().join(",<br/>").html_safe
+				%>
+			</td>
+			
+			<td>
+				<%= course.xpath('../orgUnitName/text').inner_text.sub('Informatik ', 'I').sub('Lehrstuhl für ', '').sub(/\s*\(.+\)/, '') %>
+			</td>
+			
+			<td>
+				<% if @termine[courseID] != nil %>
+				<%= @termine[courseID].xpath('//attribute[@attrID="dtstart"]')[0].text.to_time.strftime('%d.%m.%y %H:%M') %><br>
+				<%= @termine[courseID].xpath('//attribute[@attrID="singleEventTypeName"]')[0].text %>
+				<% end %>
+			</td>
+		</tr>
 	<% end %>
 </table>

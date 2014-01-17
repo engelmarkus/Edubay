@@ -63,12 +63,27 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :sem_bachelorpro, 'Proseminare Bachelor (IN0013)', "/seminars/bachelorpro"
-    primary.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor"
-    primary.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master" 
+    primary.item :current_semester, 'Laufendes Semester', '/', highlights_on: Proc.new { true } do |sub_nav|
+      sub_nav.dom_class = 'nav_depth02'
+      
+      sub_nav.item :sem_bachelorpro, 'Proseminare Bachelor (IN0013)', "/seminars/bachelorpro?semester=current"
+      sub_nav.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor?semester=current"
+      sub_nav.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master?semester=current" 
+      
+      sub_nav.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor?semester=current"
+      sub_nav.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master?semester=current"
+    end
     
-    primary.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor"
-    primary.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master"
+    primary.item :next_semester, 'Nächstes Semester', '/', highlights_on: Proc.new { true } do |sub_nav|
+      sub_nav.dom_class = 'nav_depth02'
+      
+      sub_nav.item :sem_bachelorpro, 'Proseminare Bachelor (IN0013)', "/seminars/bachelorpro?semester=next"
+      sub_nav.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor?semester=next"
+      sub_nav.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master?semester=next" 
+      
+      sub_nav.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor?semester=next"
+      sub_nav.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master?semester=next"
+    end
     
     #primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')
 

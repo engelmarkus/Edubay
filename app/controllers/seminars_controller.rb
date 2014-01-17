@@ -1,7 +1,13 @@
 class SeminarsController < ApplicationController
-  def getData(courseNumber)
+  def getData(courseNumber, semester)
     # Liste aller gesuchten Veranstaltungen
-    overview = Nokogiri::XML(CAMPUSonline.getCoursesOfOrganisation('14189')).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
+    if semester == "next" then
+      courses = CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')
+    else
+      courses = CAMPUSonline.getCoursesOfOrganisation('14189')
+    end
+    
+    overview = Nokogiri::XML(courses).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
     
     # Für jede einzelne noch Details abrufen
     details = {}
@@ -23,7 +29,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/bachelorpro
   def bachelorpro
-    @overview, @details, @termine = getData("IN0013")
+    @overview, @details, @termine = getData("IN0013", params[:semester])
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -32,7 +38,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/bachelor
   def bachelor
-    @overview, @details, @termine = getData("IN0014")
+    @overview, @details, @termine = getData("IN0014", params[:semester])
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -41,7 +47,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/master
   def master
-    @overview, @details, @termine = getData("IN2107")
+    @overview, @details, @termine = getData("IN2107", params[:semester])
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }

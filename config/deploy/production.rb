@@ -1,21 +1,12 @@
 set :stage, :production
 
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary
-# server in each group is considered to be the first
-# unless any hosts have the primary property set.
-#role :app, %w{engel@edubay.in.tum.de}
-#role :web, %w{engel@edubay.in.tum.de}
-#role :db,  %w{engel@edubay.in.tum.de}
-
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'edubay.in.tum.de', user: 'engel', roles: %w{web app db}
+server 'edubay.in.tum.de', user: 'engel', roles: [:web, :app, :db]
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -39,5 +30,17 @@ server 'edubay.in.tum.de', user: 'engel', roles: %w{web app db}
 #   }
 # setting per server overrides global ssh_options
 
-# fetch(:default_env).merge!(rails_env: :production)
+fetch(:default_env).merge!(rails_env: :production)
 
+set :linked_files, %w{config/database.yml config/edubay.yml}
+
+namespace :deploy do
+  desc "Restart application"
+  task :restart do
+    on roles :app do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+  
+  after :finishing, :restart
+end

@@ -19,17 +19,17 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  current_term: "Current term"
-  next_term: "Next term"
-  seminars_bachelor: "Bachelor seminar courses (IN0013)"
-  adv_seminars_bachelor: "Bachelor advanced seminar courses (IN0014)"
-  seminars_master: "Master seminar courses (IN2107)"
-  practicals_bachelor: "Bachelor practical courses (IN0012)"
-  practicals_master: "Master practical courses (IN2106)"
+de:
+  current_term: "Laufendes Semester"
+  next_term: "Nächstes Semester"
+  seminars_bachelor: "Proseminare Bachelor (IN0013)"
+  adv_seminars_bachelor: "Seminare Bachelor (IN0014)"
+  seminars_master: "Seminare Master (IN2107)"
+  practicals_bachelor: "Praktika Bachelor (IN0012)"
+  practicals_master: "Praktika Master (IN2106)"
 
-  name: "Name"
-  admission_info: "Admission Info"
-  contacts: "Contacts"
-  chair: "Chair"
-  first_meeting: "First meeting"
+  name: "Titel"
+  admission_info: "Teilnahme/Anmeldung"
+  contacts: "Mitwirkende"
+  chair: "Lehrstuhl"
+  first_meeting: "Erster Termin"

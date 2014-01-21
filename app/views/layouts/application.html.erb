@@ -57,21 +57,21 @@
 				<a href="http://portal.mytum.de/welcome/document_view?set_language=en">English</a>
 				</form>
 				</div>-->
-				<!--<div id="language_switch">
+				<div id="language_switch">
 					<div class="actions_submenu inline_block_fix">
-						<span class="actions_submenu_title"> <%#= image_tag "dropdown.gif", height: 16, border: 0 %> <span>Select Language</span> </span>
+						<span class="actions_submenu_title"> <%= image_tag "dropdown.gif", height: 16, border: 0 %> <span>Select Language</span> </span>
 
 						<ul>
 							<li>
-								<%#= link_to "Deutsch", url_for(locale: 'de'), id: 'german' %>
+								<%= link_to "Deutsch", url_for(params.merge(locale: 'de')), id: 'german' %>
 							</li>
 
 							<li>
-								<%#= link_to "English", url_for(locale: 'en'), id: 'english' %>
+								<%= link_to "English", url_for(params.merge(locale: 'en')), id: 'english' %>
 							</li>
 						</ul>
 					</div>
-				</div>-->
+				</div>
 			</div>
 
 			<div class="row_blank"></div>

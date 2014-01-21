@@ -1,10 +1,10 @@
 class SeminarsController < ApplicationController
-  def getData(courseNumber, semester)
+  def getData(courseNumber, semester, lang)
     # Liste aller gesuchten Veranstaltungen
     if semester == "next" then
-      courses = CAMPUSonline.getNextYearsCoursesOfOrganisation('14189')
+      courses = CAMPUSonline.getCoursesOfOrganisation('14189', :S, lang)
     else
-      courses = CAMPUSonline.getCoursesOfOrganisation('14189')
+      courses = CAMPUSonline.getCoursesOfOrganisation('14189', :W, lang)
     end
     
     overview = Nokogiri::XML(courses).xpath("//course[contains(courseName/text, '#{courseNumber}')]")
@@ -16,7 +16,7 @@ class SeminarsController < ApplicationController
     overview.each do |course|
       courseID = course.xpath('courseID').inner_text
       
-      details[courseID] = Nokogiri::XML(CAMPUSonline.getCourse(courseID))
+      details[courseID] = Nokogiri::XML(CAMPUSonline.getCourse(courseID, lang))
       
       termin = Nokogiri::XML(CAMPUSonline.getEventsOfCourse(courseID))
       termin.remove_namespaces!
@@ -29,7 +29,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/bachelorpro
   def bachelorpro
-    @overview, @details, @termine = getData("IN0013", params[:semester])
+    @overview, @details, @termine = getData("IN0013", params[:semester], I18n.locale)
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -38,7 +38,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/bachelor
   def bachelor
-    @overview, @details, @termine = getData("IN0014", params[:semester])
+    @overview, @details, @termine = getData("IN0014", params[:semester], I18n.locale)
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }
@@ -47,7 +47,7 @@ class SeminarsController < ApplicationController
   
   # GET /seminars/master
   def master
-    @overview, @details, @termine = getData("IN2107", params[:semester])
+    @overview, @details, @termine = getData("IN2107", params[:semester], I18n.locale)
     
     respond_to do |format|
       format.html { render file: 'seminars/seminars.html.erb' }

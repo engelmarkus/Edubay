@@ -72,8 +72,8 @@ class CAMPUSonline
     #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
-    def getCourse(courseID)
-      fetch('/cdm/course/xml', courseID: courseID)
+    def getCourse(courseID, lang)
+      fetch('/cdm/course/xml', courseID: courseID, language: lang)
     end
     
     # Ermittelt eine Liste aller Veranstaltungen einer Organisation.
@@ -84,8 +84,8 @@ class CAMPUSonline
     #   - String mit XML-Dokument
     # * *Ausnahmen*:
     #   - siehe ::fetch
-    def getCoursesOfOrganisation(orgUnitID)
-      fetch('/cdm/organization/courses/xml', orgUnitID: orgUnitID)
+    def getCoursesOfOrganisation(orgUnitID, term, lang)
+      fetch('/cdm/organization/courses/xml', orgUnitID: orgUnitID, teachingTerm: term, language: lang)
     end
 
     # Ermittelt eine Liste aller Veranstaltungen einer Organisation im nächsten Semester.

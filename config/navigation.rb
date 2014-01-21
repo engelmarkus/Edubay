@@ -63,26 +63,26 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.dom_class = 'nav_depth02'
     end
     
-    primary.item :current_semester, 'Laufendes Semester', '/', highlights_on: Proc.new { true } do |sub_nav|
+    primary.item :current_semester, t('current_term'), '/', highlights_on: Proc.new { true } do |sub_nav|
       sub_nav.dom_class = 'nav_depth02'
       
-      sub_nav.item :sem_bachelorpro, 'Proseminare Bachelor (IN0013)', "/seminars/bachelorpro?semester=current"
-      sub_nav.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor?semester=current"
-      sub_nav.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master?semester=current" 
+      sub_nav.item :sem_bachelorpro, t('seminars_bachelor'), url_for(controller: :seminars, action: :bachelorpro, params: {semester: "current"})
+      sub_nav.item :sem_bachelor, t('adv_seminars_bachelor'), url_for(controller: :seminars, action: :bachelor, params: {semester: "current"})
+      sub_nav.item :sem_master, t('seminars_master'), url_for(controller: :seminars, action: :master, params: {semester: "current"})
       
-      sub_nav.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor?semester=current"
-      sub_nav.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master?semester=current"
+      sub_nav.item :prac_bachelor, t('practicals_bachelor'), url_for(controller: :practicals, action: :bachelor, params: {semester: "current"})
+      sub_nav.item :prac_master, t('practicals_master'), url_for(controller: :practicals, action: :master, params: {semester: "current"})
     end
     
-    primary.item :next_semester, 'Nächstes Semester', '/', highlights_on: Proc.new { true } do |sub_nav|
+    primary.item :next_semester, t('next_term'), '/', highlights_on: Proc.new { true } do |sub_nav|
       sub_nav.dom_class = 'nav_depth02'
       
-      sub_nav.item :sem_bachelorpro, 'Proseminare Bachelor (IN0013)', "/seminars/bachelorpro?semester=next"
-      sub_nav.item :sem_bachelor, 'Seminare Bachelor (IN0014)', "/seminars/bachelor?semester=next"
-      sub_nav.item :sem_master, 'Seminare Master (IN2107)', "/seminars/master?semester=next" 
+      sub_nav.item :sem_bachelorpro, t('seminars_bachelor'), url_for(controller: :seminars, action: :bachelorpro, params: {semester: "next"})
+      sub_nav.item :sem_bachelor, t('adv_seminars_bachelor'), url_for(controller: :seminars, action: :bachelor, params: {semester: "next"})
+      sub_nav.item :sem_master, t('seminars_master'), url_for(controller: :seminars, action: :master, params: {semester: "next"})
       
-      sub_nav.item :prac_bachelor, 'Praktika Bachelor (IN0012)', "/practicals/bachelor?semester=next"
-      sub_nav.item :prac_master, 'Praktika Master (IN2106)', "/practicals/master?semester=next"
+      sub_nav.item :prac_bachelor, t('practicals_bachelor'), url_for(controller: :practicals, action: :bachelor, params: {semester: "next"})
+      sub_nav.item :prac_master, t('practicals_master'), url_for(controller: :practicals, action: :master, params: {semester: "next"})
     end
     
     #primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')

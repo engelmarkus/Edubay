@@ -5,6 +5,7 @@
 		<th><%= t 'contacts' %></th>
 		<th><%= t 'chair' %></th>
 		<th><%= t 'first_meeting' %></th>
+		<th><%= t 'language' %></th>
 	</tr>
 
 	<% @overview.each do |course| %>
@@ -38,6 +39,10 @@
 				<%= @termine[courseID].xpath('//attribute[@attrID="dtstart"]')[0].text.to_time.strftime('%d.%m.%y %H:%M') %><br>
 				<%= @termine[courseID].xpath('//attribute[@attrID="singleEventTypeName"]')[0].text %>
 				<% end %>
+			</td>
+			
+			<td>
+				<%= @details[courseID].xpath("/CDM/course/instructionLanguage/@teachingLang").text %>
 			</td>
 		</tr>
 	<% end %>

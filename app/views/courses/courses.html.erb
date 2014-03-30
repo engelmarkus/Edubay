@@ -1,0 +1,16 @@
+<table>
+	<tr>
+		<th><%= t 'name' %></th>
+	</tr>
+
+	<% @courses.each do |course| %>
+		<tr>
+			<td>
+				<%=
+					link_to course.courseName,
+						'https://campus.tum.de/tumonline/lv.detail?clvnr=' + course.courseID
+				%>
+			</td>
+		</tr>
+	<% end %>
+</table>

@@ -7,6 +7,8 @@ Edubay::Application.routes.draw do
   get "/practicals/bachelor" => "practicals#bachelor"
   get "/practicals/master" => "practicals#master"
   
+  resources :courses, only: [:index]
+  
   # Für die Veranstaltungen existieren zwei Controller, ein normaler und einer für den Admin
   # resources :courses, only: [ :index, :show ] do
     # resources :documents do

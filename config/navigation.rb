@@ -73,7 +73,7 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :prac_bachelor, t('practicals_bachelor'), url_for(controller: :practicals, action: :bachelor, params: {semester: "current"})
       sub_nav.item :prac_master, t('practicals_master'), url_for(controller: :practicals, action: :master, params: {semester: "current"})
       
-      sub_nav.item :english_courses, "Englische Veranstaltungen", url_for(controller: :courses, action: :index, params: {semester: "current"})
+      sub_nav.item :english_courses, t('english_courses'), url_for(controller: :courses, action: :index, params: {semester: "current"})
     end
     
     primary.item :next_semester, t('next_term'), '/', highlights_on: Proc.new { true } do |sub_nav|
@@ -86,7 +86,7 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :prac_bachelor, t('practicals_bachelor'), url_for(controller: :practicals, action: :bachelor, params: {semester: "next"})
       sub_nav.item :prac_master, t('practicals_master'), url_for(controller: :practicals, action: :master, params: {semester: "next"})
       
-      sub_nav.item :english_courses, "Englische Veranstaltungen", url_for(controller: :courses, action: :index, params: {semester: "next"})
+      sub_nav.item :english_courses, t('english_courses'), url_for(controller: :courses, action: :index, params: {semester: "next"})
     end
     
     #primary.item :courses, 'Veranstaltungen', url_for(controller: 'courses', action: 'index'), highlights_on: Regexp.new('/courses')

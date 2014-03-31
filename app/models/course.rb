@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
       name = course.xpath('courseName/text').inner_text
       admissionInfo = details.xpath("/CDM/course/admissionInfo/admissionDescription/text()").text
       
-      lang = details.xpath("/CDM/course/instructionLanguage/@teachingLang")
+      lang = details.xpath("/CDM/course/instructionLanguage/@teachingLang")[0].text
       
       if lang == "English" then
         Course.new(courseID: courseID, courseName: name, admissionInfo: admissionInfo).save!        

@@ -4,3 +4,4 @@
 #= require jquery-tablesorter
 #= require init
 #= require common
+#= require courses

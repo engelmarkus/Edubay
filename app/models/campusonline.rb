@@ -14,7 +14,6 @@
 class CAMPUSonline
   include HTTParty
   base_uri 'https://campus.tum.de/tumonlinej/ws/webservice_v1.0'
-  ssl_version :SSLv3
   default_params token: Edubay::Application.config.campusonline_token
   
   # Parser abschalten, wird später von was anderem übernommen
